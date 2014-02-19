@@ -1,0 +1,745 @@
+// Import compass :all
+@import "compass";
+
+// Import foundation
+@import "settings";
+@import "../bower_components/foundation/scss/foundation";
+
+// I know the rest of this file if should be another dependence
+// Basic setting
+
+@mixin left {@include float-left;}
+@mixin right {@include float-right;}
+@mixin clear {@include clearfix;}
+@mixin none {display: none;}
+
+@mixin bold {font-weight: bold;}
+@mixin normal {font-weight: normal;}
+@mixin light {font-weight: 300;}
+
+.none {@include none;}
+.clear {clear: both;}
+
+// Variables
+$white: #fff;
+$ccc: #d4d5cf;
+$lvl2: #898989;
+$secondary: #1e84d3;
+$grey: #f3f5f5;
+$green: #88b43b;
+
+$header-font-family: $body-font-family;
+
+$include-open-sans: false !default;
+$basic-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+$shadow : rgba(0, 0, 0, 0.2);
+
+
+// Buttons mixin
+@mixin basic-button($bg-color:$primary-color, $text-color: $white, $size: 14, $padding: 35) {
+    background: $bg-color;
+    color: $text-color;
+    font-size: rem-calc($size);
+    box-shadow: inset 0 -2px 0 darken($bg-color, 20%);
+    padding: rem-calc(11) rem-calc($padding) rem-calc(12);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    &:hover {
+        background: darken($bg-color, 5%);
+        box-shadow: inset 0 -2px 0 darken($bg-color, 20%);
+    }
+}
+
+.button {
+    @include basic-button(
+        $secondary,
+        $white,
+        15,
+        35
+        );
+}
+
+.button.success {
+    box-shadow: inset 0 -2px 0 darken($success-color, 20%);
+}
+
+// Form
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea {
+    border-radius: 2px;
+}
+
+// Header
+#header {
+    box-shadow: $basic-box-shadow;
+    .name {
+        img {margin: 18px 10px 0 15px;}
+    }
+    .top-bar-section {
+        a.active {
+            font-weight: bold;
+            color: $primary-color;
+        }
+        li .lvl1 {padding: 0 15px;}
+        .dropdown {
+             box-shadow: $basic-box-shadow;
+             li a {line-height: 35px;}
+        }
+        .register {margin-right: 15px; }
+        .talk {
+            @include bold;
+            background: url(../images/cel.jpg) left no-repeat;
+            padding-left: 35px;
+            margin-right: 50px;
+            margin-top: 21px;
+            font-size: rem-calc(13);
+            line-height: 1;
+            span {
+                @include normal;
+                font-size: rem-calc(11);
+                text-transform: uppercase;
+                color: #555;
+            }
+        }
+        .button.create {
+            @include basic-button(
+                $secondary,
+                $white,
+                14,
+                15
+            );
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-top: 10px;
+            right: 20px;
+        }
+    }
+}
+
+
+// Footer
+footer {
+    border-top: 1px solid darken($body-bg, 8%);
+    background: $white;
+    padding: 2em 0 1em;
+    ul {
+        li {
+            list-style: none;
+            line-height: 1;
+            font-size: rem-calc(13);
+            a {
+                color: $body-font-color;
+                &:hover {color: $primary-color;}
+            }
+        }
+    }
+    .right-text {
+        text-align: right;
+    }
+}
+
+
+// Index
+#intro-index {
+    background: url(../images/bg-intro.jpg)  bottom center;
+    .row  {
+        background: url(../images/cargador-intro.png)  no-repeat bottom right;
+        padding: 3em 0;
+    }
+    #intro-tools {
+        .intro {
+            h2 {
+                @include bold;
+                text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+                font-size: rem-calc(30);
+                margin: 0.3em 0 0.5em;
+            }
+            p {
+                text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+                font-size: rem-calc(14);
+                line-height: rem-calc(25);
+                margin-bottom: 0;
+            }
+        }
+        .cotizar {
+            margin: 1em 0 0;
+            h4 {
+                @include bold;
+                text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+                font-size: rem-calc(16);
+                margin-bottom: 1em;
+            }
+            .button-group {
+                li {
+                    .button {
+                        img {margin-right: 4px;}
+                        @include basic-button(
+                            $white,
+                            $primary-color,
+                            14,
+                            22
+                        );
+                        padding: em-calc(15) em-calc(15);
+                        text-shadow: none;
+                        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+                        &:hover {
+                            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#como-index, #testimonios-index, #beneficios-index, #contacto-index , #ayuda-index {
+    padding: 3em 0;
+}
+
+#como-index, #testimonios-index {box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);}
+#ayuda-index {background: $grey; }
+
+.title-section {
+    text-align: center;
+    margin-bottom: 2em;
+    h2 {
+        @include bold;
+        font-size: rem-calc(30);
+        line-height: 1;
+    }
+    h4 {
+        font-size: rem-calc(18);
+        color: $body-font-color;
+        font-weight: 300;
+    }
+}
+
+#beneficios-index .title-section {
+    h2, h4 {
+        color: $white;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+    }
+}
+
+#como-index {
+    img {
+        display: block;
+        margin: auto;
+    }
+    h5 {
+        @include bold;
+        margin: 1em 0 0.3em;
+        text-align: center;
+        font-size: rem-calc(18);
+    }
+    p {
+        text-align: center;
+        font-size: rem-calc(14);
+    }
+}
+
+#beneficios-index {
+    background: url(../images/bg-beneficios.jpg) center bottom;
+    .box {
+        padding: 0;
+        .cargador, .transportista {
+            min-height: 245px;
+            padding: 1em 1em 0.1em;
+        }
+        .cargador {background:  url(../images/cargador-2.jpg) right bottom no-repeat;}
+        .transportista {background:  url(../images/transportista-2.jpg) right bottom no-repeat;}
+        img {
+            margin: 1em 1.5em 1em 1em;
+        }
+        h5 {
+            @include bold;
+            font-size: rem-calc(18);
+        }
+        ul {
+            margin-right: 5em;
+            li {
+                list-style: none;
+                font-size: rem-calc(14);
+                line-height: 1.6;
+                margin-bottom: 10px;
+                i {
+                    position: absolute;
+                    left: 28px;
+                    color: $green;
+                }
+            }
+        }
+    }
+}
+
+#testimonios-index {
+    .orbit-timer, .orbit-slide-number {@include none;}
+    .orbit-container {min-height: 100px;}
+    .margin {margin: 0 3em;}
+    img {
+        display: block;
+        margin: auto;
+    }
+    blockquote {
+        margin: 1em 0;
+        border-left: none;
+        padding: 0;
+    }
+}
+
+#ayuda-index {
+    ul {
+        list-style:none;
+        margin:0;
+        padding:0;
+        text-align:center;
+        li {
+            display: inline-block;
+            list-style: none;
+            line-height: 1;
+            margin: 1em 0.5em;
+            a {
+                font-size: rem-cacl(13);
+                line-height: 1;
+                padding: 0.5em 1em;
+                border-radius: 2px;
+                border: 2px solid $primary-color;
+                &:hover {
+                    background: $primary-color;
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+// Content page
+#content-page {
+    padding: 2em 0 4em;
+    background: $grey;
+}
+
+.box {
+    background: $white;
+    box-shadow: $basic-box-shadow;
+    margin-bottom: 1.5em;
+    padding: 1em 1em 0.5em;
+}
+
+.title-page {
+    margin-bottom: 2em;
+    h3 {
+        @include bold;
+        margin-top: 0;
+        font-size: rem-calc(30);
+        margin-bottom: 0.7em;
+    }
+}
+
+.title-page.form {
+    margin-bottom: 1.125em;
+    border-bottom: 1px solid $ccc;
+    h6 {
+        line-height: 0.8;
+        margin-bottom: 0;
+    }
+    h3 {margin-bottom: 0.5em;}
+    .button {
+        @include basic-button(
+            lighten(#ccc, 10%),
+            $body-font-color,
+            13,
+            20
+            );
+        text-shadow: none;
+    }
+}
+
+// Sidebar
+.filters {
+    h4 {
+        @include bold;
+        text-transform: uppercase;
+        font-size: rem-calc(13);
+    }
+}
+
+.box.contact {
+    background: $white url(../images/call.jpg) no-repeat right bottom;
+    a {
+        @include bold;
+        display: block;
+        color: darken($body-font-color, 10%);
+        font-size: rem-calc(16);
+        margin-bottom: 1em;
+        &:hover {color: $primary-color;}
+    }
+    p {
+        font-size: rem-calc(13);
+        margin-right: 5em;
+    }
+}
+
+.nav-view {
+    background: $white;
+    box-shadow: $basic-box-shadow;
+    margin-bottom: 1.5em;
+    ul {
+        margin: 0;
+        li {
+            list-style: none;
+            a {
+                @include bold;
+                display: block;
+                color: $body-font-color;
+                font-size: rem-calc(13);
+                padding: 8px 15px;
+                line-height: 2;
+                &:hover {
+                    border-right: 3px solid $green;
+                }
+            }
+            .active {
+                background: #1e84d3;
+                text-shadow: 0 1px 0 darken(#1e84d3, 10%);
+                color: $white;
+            }
+        }
+        ul li {
+            a {
+                @include normal;
+                color: lighten($body-font-color, 15%);
+                padding-left: 25px;
+            }
+            .active {
+                background: $white;
+                text-shadow: none;
+                color: $body-font-color;
+                border-right: 3px solid $green;
+            }
+        }
+    }
+}
+
+
+// Como funciona
+.como.vimeo {
+    margin-bottom: 2.5em;
+}
+
+.title-page.cargador, .title-page.transportista {
+    border-bottom: 1px solid $ccc;
+    padding-right: 8em;
+}
+
+.title-page.cargador {background: url(../images/cargador-como.jpg) no-repeat right top;}
+.title-page.transportista {background: url(../images/transportista-como.jpg) no-repeat right top;}
+
+.row.como-info {
+    margin-bottom: 2em;
+    h4 {margin-bottom: 1em;}
+    ul {
+        margin-left: 0;
+        li {
+            list-style: none;
+            font-size: rem-calc(14);
+            line-height: 1.6;
+            padding-left: 25px;
+            margin-bottom: 1em;
+            i {
+                position: absolute;
+                font-size: rem-calc(16);
+                left: 17px;
+                color: $primary-color;
+            }
+            i.number {
+                @include bold;
+                left: 13px;
+
+                border: 1px solid $primary-color;
+                font-size: rem-calc(13);
+                line-height: 1;
+                padding: 3px 6px;
+                border-radius: 200px;
+            }
+        }
+    }
+}
+.call-action {
+    margin-bottom: 4em;
+    h3 {
+        font-size: rem-calc(26);
+        line-height: 1.8;
+        margin-top: 0;
+    }
+    .button {
+        margin: 0.1em 0 0 0;
+    }
+}
+
+// Ad's
+.box.cotiza-ad {
+    color: lighten($primary-color, 5%);
+    background: lighten($body-bg, 5%);
+    h3 {
+        color: lighten($primary-color, 5%);
+        margin: -3px 0 0;
+    }
+    p { font-size: rem-calc(14);}
+    i {
+        font-size: rem-calc(70);
+        margin-top: -5px;
+    }
+    &:hover {
+        background: $white;
+        i, p, h3 {color: $primary-color;}
+    }
+}
+
+.box.register {
+    background: $white url(../images/map.jpg) no-repeat center top;
+    p {
+        color: $primary-color;
+        text-align: center;
+        margin-top: 0.5em
+    }
+    .button {
+    margin-bottom: 0;
+    @include basic-button(
+        $secondary-color,
+        $white,
+        15,
+        35
+        );
+    }
+}
+
+
+// Tranportistas
+.loop-list {
+    border-bottom: 1px solid $ccc;
+    padding: 0.5em 0 1em;
+    h5 {
+        font-size: rem-calc(18);
+        margin-bottom: -2px;
+    }
+    ul {
+        margin: 0;
+        li {
+            @include left;
+            list-style: none;
+            width: 33%;
+            span {
+                font-size: rem-calc(11);
+                text-transform: uppercase;
+                color: $lvl2;
+            }
+            p {
+                margin: -5px 0 0;
+                font-size: rem-calc(14);
+            }
+        }
+    }
+}
+
+
+// Accordion
+.accordion {
+    dd a {
+        font-weight: 300;
+        box-shadow: $basic-box-shadow;
+        &:hover {
+            background: $primary-color;
+            color: $white;
+            text-shadow: 0 1px 0 darken($primary-color, 10%);
+        }
+    }
+    dd .content {
+        padding: 1.5em 1em;
+        box-shadow: inset 0 1px 2px $shadow;
+        p {
+            font-size: rem-calc(14);
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+// Forms
+.datepicker-close {@include none;}
+#form {
+    background: $white;
+    box-shadow: $basic-box-shadow;
+    border-top: 3px solid $primary-color;
+    #content-view {
+        margin: 3em 0 5em;
+        .form-layout {
+            min-height: 500px;
+            .add-new-carga {
+                background: lighten($ccc, 14%);
+                font-size: rem-calc(13);
+                text-transform: uppercase;
+                color: $primary-color;
+                border: 1px solid $ccc;
+                text-align: center;
+                margin-top: -1.125em;
+                padding: 0.7em 0;
+                &:hover {
+                    cursor: pointer;
+                    background: lighten($ccc, 8%);
+                    border-color: 1px solid darken($ccc, 8%);
+                }
+            }
+            .row {margin-bottom: 0.5em;}
+            .step {
+                margin-left: -65px;
+                margin-bottom: 1em;
+                span {
+                    background: lighten($primary-color, 10%);
+                    box-shadow: $primary-color 0 2px 0;
+                    color: $white;
+                    padding: 5px 10px;
+                    font-size: rem-calc(14);
+                    border-radius: 5px;
+                    margin-right: 20px;
+                }
+                h5 {
+                    @include bold;
+                    font-size: rem-calc(18);
+                }
+                .subhearder {
+                    font-size: rem-calc(16);
+                    margin-left: 50px;
+                    margin-bottom: -0.5em;
+                }
+            }
+            fieldset {margin: 1.125em 0 0;}
+            legend {color: $header-font-color;}
+            .compact {
+                input {
+                    @include left;
+                    width: 70%;
+                }
+                select {
+                    @include left;
+                    width: 24%;
+                    margin-right: 5%;
+                }
+            }
+            .carga-box2, .carga-box3 {display: none;}
+            .radiobuttons {
+                margin: 0;
+                li {
+                    list-style: none;
+                    display: inline;
+                    a {
+                        margin-right: 10px;
+                        font-size: rem-calc(13);
+                        border: 1px solid $ccc;
+                        padding: 8px 12px;
+                        margin-bottom: 10px;
+                        border-radius: 3px;
+                        &:hover {
+                            color: $primary-color;
+                            border: 1px solid $primary-color;
+                            label {color: $white;}
+                        }
+                    }
+
+                }
+                .active {
+                    a {
+                        background: lighten($primary-color, 10%);
+                        border: 1px solid lighten($primary-color, 10%);
+                        box-shadow: 0 2px 0 $primary-color;
+                        color: $white;
+                        padding: 8px 12px 7px;
+                        &:hover {
+                            color: $white;
+                            border: 1px solid lighten($primary-color, 10%);
+                        }
+                    }
+                    label {color: $white;}
+                }
+            }
+            .radiobuttons.type {
+                margin-bottom: 0.8em;
+                li {
+                    cursor: pointer;
+                    input {display: none;}
+                }
+            }
+            .awnser {display: none;}
+        }
+        .why {
+            border-radius: 2px;
+            border: 1px solid $ccc;
+            h5 {
+                @include bold;
+                font-size: rem-calc(16);
+                border-bottom: 1px solid $ccc;
+                padding: 0.5em 1em;
+            }
+            ul {
+                margin: 0.8em 1em;
+                .impo {background: url(../images/impo.jpg) no-repeat left 4px;}
+                .expo {background: url(../images/expo.jpg) no-repeat left 4px;}
+                .carga {background: url(../images/carga.jpg) no-repeat left 4px;}
+                .vacio {background: url(../images/vacio.jpg) no-repeat left 4px;}
+                li {
+                    list-style: none;
+                    font-size: rem-calc(13);
+                    padding-left: 35px;
+                    margin-bottom: 0.5em;
+                    h6 {
+                        @include bold;
+                        font-size: rem-calc(14);
+                    }
+                    p {font-size: rem-calc(13);}
+                }
+            }
+        }
+        .why.sidebar {
+            margin-left: 1em;
+            margin-top: 0.5em;
+            li {
+                margin-left: 20px;
+                padding-left: 0;
+            }
+            i {
+                color: $green;
+                position: absolute;
+                margin-left: -20px;
+            }
+        }
+    }
+}
+
+#exito {
+    text-align: center;
+    .fi-check {
+        border-radius: 5px;
+        color: $white;
+        padding: 10px 20px;
+        background: $success-color;
+        text-shadow: 0 5px 0 darken($success-color, 20%);
+        font-size: rem-calc(40px);
+    }
+    ul {
+        li {
+            list-style: none;
+            margin-right: 15px;
+            display: inline;
+            font-size: rem-calc(16px);
+            i {
+                color: $primary-color;
+                margin-right: 10px;
+                font-size: rem-calc(18px);
+            }
+        }
+        .spacer {
+            height: 25px;
+            width: 1px;
+            background: #ccc;
+        }
+    }
+}

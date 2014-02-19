@@ -1,0 +1,189 @@
+<div id="content-page">
+    <div  id="form" class="row">
+        <div class="small-9 small-centered columns">
+            <div id="content-view">
+
+              <div class="title-page form clearfix">
+                  <div class="left">
+                    <h6>Solo un paso más</h6>
+                    <h3>Datos personales</h3>
+                  </div>
+
+              </div> <!-- {{! end title page}} -->
+
+              <div class="row form-layout">
+                  <div class="large-8 columns">
+
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5><span>1</span>Datos personales</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-6 columns">
+                        <label>Nombre</label>
+                        <input type="text" name="" value="" placeholder="">
+                    </div>
+                    <div class="large-6 columns">
+                        <label>Apellido</label>
+                        <input type="text" name="" value="" placeholder="">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-6 columns">
+                        <label>Cargo que desempeña</label>
+                        <input type="text" name="" value="" placeholder="">
+                    </div>
+                    <div class="large-6 columns"></div>
+                </div>
+
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5 class="subhearder">Datos de contacto</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-6 columns compact">
+                        <label>Telefono fijo</label>
+                        <select>
+                          <option value="0">02</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </select>
+                        <input type="text" name="" value="" placeholder="">
+                    </div>
+                    <div class="large-6 columns compact">
+                        <label>Telefono celular</label>
+                        <select>
+                          <option value="0">09</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </select>
+                        <input type="text" name="" value="" placeholder="">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-6 columns">
+                        <label>Correo electronico</label>
+                        <input type="text" name="" value="" placeholder="">
+                    </div>
+                    <div class="large-6 columns"></div>
+                </div>
+
+                <br>
+                <!-- REQUERIMIENTOS -->
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5><span>2</span>Datos de la empresa</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-6 columns">
+                        <label>Nombre de la empresa</label>
+                        <input class="" type="text" name="" value="" placeholder="">
+                    </div>
+                    <div class="large-6 columns">
+                        <label>Razon social</label>
+                        <input type="text" name="" value="" placeholder="">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-6 columns">
+                        <label>Rut</label>
+                        <input type="text" name="" value="" placeholder="">
+                    </div>
+                    <div class="large-6 columns compact">
+                        <label>Telefono</label>
+                        <select>
+                          <option value="0">02</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </select>
+                        <input type="text" name="" value="" placeholder="">
+                    </div>
+                </div>
+
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5 class="subhearder">Dirección de la empresa</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label>Region</label>
+                        <select>
+                          <option value="0">Region</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </select>
+                    </div>
+                    <div class="large-4 columns">
+                        <label>Ciudad</label>
+                        <select>
+                          <option value="0">Ciudad</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                        </select>
+                    </div>
+                    <div class="large-4 columns">
+                        <label>Dirección</label>
+                        <input type="text" name="" value="" placeholder="">
+                    </div>
+                </div>
+
+                <br>
+                <button class="button success radius large-12">
+                    Enviar cotización
+                </button>
+
+                  </div> <!-- {{!end form content}} -->
+                  <div class="large-4 columns">
+                      <div class="why sidebar">
+                          <h5>Beneficios de cotizar</h5>
+                          <ul>
+                              <li><i class="fi-check"></i>Trabaja con clientes confiables y recomendados</li>
+                              <li><i class="fi-check"></i>Nosotros te avisamos cada ves que tengas una oferta.</li>
+                              <li><i class="fi-check"></i>Aumenta el volumen de carga y retornos vacios.</li>
+                          </ul>
+                      </div>
+                  </div> <!-- {{! end why}} -->
+              </div> <!-- {{! end form-layout}} -->
+
+            </div><!-- {{! end #content-view}} -->
+        </div> <!-- {{! end centered}} -->
+    </div> <!-- {{! end #form}} -->
+</div> <!-- {{! end content page }} -->
+
+<script src="bower_components/foundation-datepicker-master/example/js/foundation-datepicker.js"></script>
+
+<script>
+    $(document).foundation();
+    $(document).ready(function() {
+        // Load datepicker
+        $('.datepicker-input').fdatepicker();
+        // Remuevo menu fixed
+        var i = 2;
+        $(".add-new-carga").click(function () {
+            if (i <= 3) {
+                $('.carga-box'+ (i++)).show();
+                console.log(i);
+                if (i == 4) {
+                    $(".add-new-carga").remove();
+                    console.log(i);
+                }
+            }
+        });
+
+    });
+</script>
