@@ -1,0 +1,90 @@
+<div id="content-page">
+    <div  class="row">
+
+    <div id="sidebar" class="large-3 medium-4 columns">
+        <div class="box filters">
+                <h4>Desde</h4>
+                <select>
+                    <option value="husker">Husker</option>
+                    <option value="starbuck">Starbuck</option>
+                    <option value="hotdog">Hot Dog</option>
+                    <option value="apollo">Apollo</option>
+                </select>
+                <h4>Hasta</h4>
+                <select>
+                    <option value="husker">Husker</option>
+                    <option value="starbuck">Starbuck</option>
+                    <option value="hotdog">Hot Dog</option>
+                    <option value="apollo">Apollo</option>
+                </select>
+                <h4>Tipo de carga</h4>
+                <input id="check1" type="checkbox" name="check" value="check1">
+                <label for="check1">Checkbox No. 1</label>
+                <br>
+                <input id="check2" type="checkbox" name="check" value="check2">
+                <label for="check2">Checkbox No. 2</label>
+                <br>
+                <input id="check3" type="checkbox" name="check" value="check3">
+                <label for="check3">Checkbox No. 1</label>
+                <br>
+                <input id="check4" type="checkbox" name="check" value="check4">
+                <label for="check4">Checkbox No. 1</label>
+        </div>
+
+        <div class="box register">
+            <div class="margin">
+                <p>Sumate a la red de transporte mas grande de Chile y ve como aumenta <strong>Tucarga</strong></p>
+                <p>{{#link-to "registro" classNames='button radius'}}Registrate{{/link-to}}</p>
+            </div>
+        </div>
+    </div> {{! end sidebar }}
+
+    <div id="content-view" class="large-9 medium-8 columns">
+        <div class="title-page clearfix">
+            <div class="left">
+                <h3>Directorio de transporte</h3>
+                <h5 class="subheader">Descubre nuevas empresas con las que puedes trabajar</h5>
+            </div>
+            {{#link-to "cotizar" classNames='button radius right'}}Cotizar{{/link-to}}
+        </div> {{! end title page}}
+
+        <div class="loop-transport">
+            {{#each transportista in controller}}
+                <div class="loop-list clearfix">
+                    <h5>{{transportista.name}}</h5>
+                    <ul class="">
+                        <li>
+                            <span>Cobertura</span></br>
+                            <p>{{transportista.zone}}</p>
+                        </li>
+                        <li>
+                            <span>Sucursales</span></br>
+                            <p>{{transportista.city}}</p>
+                        </li>
+                        <li>
+                            <span>Almacenaje</span></br>
+                            <p>{{transportista.suply}}</p>
+                        </li>
+                    </ul>
+                </div>
+            {{/each}}
+        </div> {{! end loop }}
+
+
+        <a id="ad-loop" class="" href="#/cotizar">
+            <div class="box cotiza-ad">
+                <div class="margin clearfix">
+                    <div class="left">
+                        <h3>Te ayudamos a elegir</h3>
+                        <p>En Tucarga estamos comprometidos en brindarte la mejor solución de transporte</p>
+                    </div>
+                    <i class="fi-play right"></i>
+                </div>
+            </div>
+        </a>
+
+    </div> {{! end content view }}
+
+    </div>
+</div> {{! end content page }}
+

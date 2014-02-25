@@ -3,9 +3,12 @@
         <div class="small-9 small-centered columns">
             <div id="content-view">
 
-              <div class="title-page">
-                  <h3>Te ayudamos a elegir</h3>
-                <h5 class="subheader">Hace una cotización nosotros nos encargamos del resto</h5>
+              <div class="title-page form clearfix">
+                  <div class="left">
+                    <h6>Estas cotizando</h6>
+                    <h3>Transporte para una importación</h3>
+                  </div>
+                  <a class="button radius right" href="#/cotizar">Volver a cotización</a>
               </div> <!-- {{! end title page}} -->
 
               <div class="row form-layout">
@@ -13,19 +16,7 @@
 
                 <div class="row step">
                     <div class="large-12 columns">
-                        <h5><span>1</span>Tipo de servicio</h5>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="large-12 columns">
-                        <label>Que tipo de operación quieres realizar</label>
-                        <ul class="radiobuttons type">
-                            <li class="active"><a href="#/cotizar/importacion">Importación</a></li>
-                            <li><a href="#/cotizar/exportacion">Exportación</a></li>
-                            <li><a href="#/cotizar/domestica">Carga domestica</a></li>
-                            <li><a href="#/cotizar/contenedor">Contenedor vacio</a></li>
-                        </ul>
+                        <h5><span>1</span>Ruta de carga</h5>
                     </div>
                 </div>
 
@@ -45,7 +36,7 @@
                           <option value="3">3</option>
                         </select>
                     </div>
-                    <div class="large-4 columns">
+                    <div class="large-2 columns">
                         <label>Puerto</label>
                         <select>
                           <option value="0">Puerto</option>
@@ -58,14 +49,10 @@
                         <label>nombre nave</label>
                         <input type="text" name="" value="" placeholder="">
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="large-3 columns">
-                        <label>Fecha</label>
+                    <div class="large-2 columns">
+                        <label>Cuando</label>
                         <input class="datepicker-input" type="text" name="" value="" placeholder="">
                     </div>
-                    <div class="large-9 columns"></div>
                 </div>
 
                 <div class="row step">
@@ -74,7 +61,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                  <div class="row">
                     <div class="large-4 columns">
                         <label>Region</label>
                         <select>
@@ -93,12 +80,19 @@
                           <option value="3">3</option>
                         </select>
                     </div>
-                    <div class="large-4 columns"></div>
+                    <div class="large-2 columns">
+                        <label>Cuando</label>
+                        <input class="datepicker-input" type="text" name="" value="" placeholder="">
+                    </div>
+                    <div class="large-2 columns">
+                        <label>Hora</label>
+                        <input class="" type="text" name="" value="" placeholder="24 hrs">
+                    </div>
                 </div>
 
                 <div class="row">
                     <div class="large-4 columns">
-                        <label>¿Quien carga?</label>
+                        <label>Quien descarga</label>
                         <select>
                           <option value="0">Transportista</option>
                           <option value="1">1</option>
@@ -106,17 +100,11 @@
                           <option value="3">3</option>
                         </select>
                     </div>
-                    <div class="large-3 columns">
-                        <label>Fecha</label>
-                        <input class="datepicker-input" type="text" name="" value="" placeholder="">
+                    <div class="large-4 columns">
+                        <label>Tiempo estimado de carga</label>
+                        <input class="" type="text" name="" value="" placeholder="horas" style="width: 50%;">
                     </div>
-                    <div class="large-3 columns">
-                        <label>Tiempo de carga</label>
-                        <input class="" type="text" name="" value="" placeholder="horas">
-                    </div>
-                    <div class="large-2 columns">
-                        <label>Horario</label>
-                        <input class="" type="text" name="" value="" placeholder="AM - PM">
+                    <div class="large-4 columns">
                     </div>
                 </div>
 
@@ -200,9 +188,91 @@
                     </fieldset>
                 </div> <!-- end caga box -->
 
+                <div class="carga-box2">
+                    <fieldset>
+                        <legend>Carga numero 1</legend>
+
+                        <div class="row">
+                            <div class="large-4 columns">
+                                <label>Tipo de carga</label>
+                                <select>
+                                  <option value="0">Tipo</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="large-4 columns">
+                                <label>Tipo de Contenedor</label>
+                                <select>
+                                  <option value="0">Tipo</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="large-2 columns">
+                                <label>Unidades</label>
+                                <input class="" type="text" name="" value="" placeholder="">
+                            </div>
+                            <div class="large-2 columns">
+                                <label>Peso</label>
+                                <input class="" type="text" name="" value="" placeholder="KG">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                <label>Descripción de la carga</label>
+                                <input type="text" name="" value="" placeholder="">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div> <!-- end caga box -->
+
+                <div class="carga-box3">
+                    <fieldset>
+                        <legend>Carga numero 1</legend>
+
+                        <div class="row">
+                            <div class="large-4 columns">
+                                <label>Tipo de carga</label>
+                                <select>
+                                  <option value="0">Tipo</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="large-4 columns">
+                                <label>Tipo de Contenedor</label>
+                                <select>
+                                  <option value="0">Tipo</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="large-2 columns">
+                                <label>Unidades</label>
+                                <input class="" type="text" name="" value="" placeholder="">
+                            </div>
+                            <div class="large-2 columns">
+                                <label>Peso</label>
+                                <input class="" type="text" name="" value="" placeholder="KG">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                <label>Descripción de la carga</label>
+                                <input type="text" name="" value="" placeholder="">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div> <!-- end caga box -->
+
                 <div class="row">
                     <div class="large-12 columns">
-                        <p class="add-new-carga">Agregar otro cargamento</p>
+                        <p class="add-new-carga">Agregar otra carga</p>
                     </div>
                 </div>
 
@@ -213,6 +283,28 @@
                         <h5><span>3</span>Requerimientos del servicio</h5>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label>Seguro</label>
+                        <input class="" type="text" name="" value="" placeholder="UF">
+                    </div>
+                    <div class="large-5 columns">
+                        <label>Condiciones y forma de pago</label>
+                        <input type="text" name="" value="" placeholder="30, 60 o 90 dias">
+                    </div>
+                    <div class="large-5 columns">
+                        <label>Almacenaje</label>
+                        <input type="text" name="" value="" placeholder="¿Necesita almacenaje?">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>Información adicional</label>
+                        <input type="text" name="" value="" placeholder="Necesita un peoneta, enrcarpado, etc…">
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="large-4 columns">
                         <label>Tipo de camión</label>
@@ -233,35 +325,20 @@
                         </select>
                     </div>
                     <div class="large-4 columns">
-                        <label>Seguro de carga</label>
-                        <input class="" type="text" name="" value="" placeholder="Cobertura en UF">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="large-6 columns">
-                        <label>¿Necesita almacenaje?</label>
-                        <input type="text" name="" value="" placeholder="">
-                    </div>
-                    <div class="large-6 columns">
-                        <label>Información adicional</label>
-                        <input type="text" name="" value="" placeholder="Necesita un peontea, enrcarpado, etc…">
                     </div>
                 </div>
 
                 <div class="row step">
                     <div class="large-12 columns">
-                        <h5 class="subhearder">Correo y Forma de pago</h5>
+                        <h5 class="subhearder">Datos de contacto</h5>
                     </div>
                 </div>
                 <div class="row">
                     <div class="large-6 columns">
-                        <label>Condiciones y forma de pago</label>
-                        <input type="text" name="" value="" placeholder="30, 60 o 90 dias">
-                    </div>
-                    <div class="large-6 columns">
                         <label>Correo electronico</label>
                         <input type="text" name="" value="" placeholder="">
                     </div>
+                    <div class="large-6 columns"></div>
                 </div>
 
                 <div class="row step">
@@ -278,6 +355,7 @@
                     <div class="large-4 columns"></div>
                 </div>
 
+                <br>
                 <button class="button success radius large-12">
                     Enviar cotización
                 </button>
@@ -305,6 +383,19 @@
 <script>
     $(document).foundation();
     $(document).ready(function() {
+        // Load datepicker
         $('.datepicker-input').fdatepicker();
+        // Remuevo menu fixed
+        var i = 2;
+        $(".add-new-carga").click(function () {
+            if (i <= 3) {
+                $('.carga-box'+ (i++)).show();
+                console.log(i);
+                if (i == 4) {
+                    $(".add-new-carga").remove();
+                    console.log(i);
+                }
+            }
+        });
     });
 </script>

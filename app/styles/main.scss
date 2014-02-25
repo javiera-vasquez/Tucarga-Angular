@@ -743,3 +743,55 @@ footer {
         }
     }
 }
+
+.cotizar-loop {
+    margin-bottom: 1.5em;
+    text-align: center;
+    .box {padding: 1.5em 1.5em 2em;}
+    h4 {
+        @include bold;
+        font-size: rem-calc(18);
+        &:hover {color: $primary-color;}
+    }
+    img {margin-bottom: 0.5em;}
+    p {
+        font-size: rem-calc(14px);
+        margin-bottom: 1.5em;
+    }
+    .go {
+        font-size: rem-calc(13);
+        line-height: 1;
+        padding: 0.6em 1.5em;
+        border-radius: 2px;
+        border: 1px solid $primary-color;
+        &:hover {
+            background: $primary-color;
+            color: $white;
+        }
+    }
+}
+
+.sub-header {
+    border-bottom: 1px solid $ccc;
+    text-align: center;
+    margin-bottom: 3em;
+    div {margin-bottom: -8px;}
+    span {
+        text-transform: uppercase;
+        padding: 0 10px;
+        background: $white;
+        color: lighten($body-font-color, 20%);
+        padding: 0 10px;
+        font-size: rem-calc(13px);
+        margin-bottom: -10px;
+    }
+}
+
+
+
+
+
+
+
+
+
