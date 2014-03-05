@@ -1,15 +1,30 @@
 <div>
 
-    <ul>
-        <li>asdf</li>
-        <li ng-repeat="awnser in question">{{ awnser.question }}</li>
-    </ul>
+    <form ng-submit="processForm()">
+        <!-- NAME -->
+        <div id="name-group" class="form-group">
+            <label>Name</label>
+            <input type="text" name="" ng-model="formData.question">
+            <span class="help-block"></span>
+        </div>
+
+        <!-- SUPERHERO NAME -->
+        <div id="superhero-group" class="form-group">
+            <label>Superhero Alias</label>
+            <input type="text" name="" ng-model="formData.pub_date">
+            <span class="help-block"></span>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <button type="submit" class="btn">Submit!</button>
+    </form>
 
 </div>
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<pre>
+    {{ formData }}
+</pre>
+
+
+
+<script>$(document).foundation();</script>

@@ -39,7 +39,7 @@ angular.module('tucargaApp', [
     })
     .when('/cotizar/importacion', {
       templateUrl: 'views/cotizar/importacion.html',
-      controller: 'ImpoController'
+      controller: 'FreightController'
     })
     .when('/cotizar/exportacion', {
       templateUrl: 'views/cotizar/exportacion.html',

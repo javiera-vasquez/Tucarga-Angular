@@ -11,6 +11,8 @@
                   <a class="button radius right" href="#/cotizar">Volver a cotización</a>
               </div> <!-- {{! end title page}} -->
 
+              <form ng-submit="freightPost()">
+
               <div class="row form-layout">
                   <div class="large-8 columns">
 
@@ -47,7 +49,7 @@
                     </div>
                     <div class="large-4 columns">
                         <label>nombre nave</label>
-                        <input type="text" name="" value="" placeholder="">
+                        <input type="text" name=""  placeholder="" ng-model="nave">
                     </div>
                     <div class="large-2 columns">
                         <label>Cuando</label>
@@ -359,6 +361,8 @@
                 <button class="button success radius large-12">
                     Enviar cotización
                 </button>
+
+              </form> <!-- End  ng-freighPost -->
 
                   </div> <!-- {{!end form content}} -->
                   <div class="large-4 columns">
