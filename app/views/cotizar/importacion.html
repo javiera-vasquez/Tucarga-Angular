@@ -22,6 +22,13 @@
                     </div>
                 </div>
 
+                <select id="obj_type" ng-model="formData.obj_type">
+                    <option value="0" >Importación</option>
+                    <option value="1">Exportación</option>
+                    <option value="2">Domestica</option>
+                    <option value="3">Contenedor</option>
+                </select>
+
                 <div class="row step">
                     <div class="large-12 columns">
                         <h5 class="subhearder">Puerto de origen</h5>
@@ -49,11 +56,11 @@
                     </div>
                     <div class="large-4 columns">
                         <label>nombre nave</label>
-                        <input type="text" name=""  placeholder="" ng-model="nave">
+                        <input type="text" name=""  placeholder="" ng-model="imeData.day">
                     </div>
                     <div class="large-2 columns">
                         <label>Cuando</label>
-                        <input class="datepicker-input" type="text" name="" value="" placeholder="">
+                        <input class="" type="text" ng-model="imeData.mo" placeholder="">
                     </div>
                 </div>
 
@@ -383,6 +390,7 @@
 </div> <!-- {{! end content page }} -->
 
 <script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
 
 <script>
     $(document).foundation();

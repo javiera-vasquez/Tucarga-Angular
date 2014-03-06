@@ -6,33 +6,22 @@ angular.module('tucargaApp')
     // Array of the content of the form
     $scope.formData = {};
 
-    // $http.get('http://api.tucarga.info/direcotry/polls/')
-    //   .success(function(data) {
-    //     console.log('nice');
-    //   });
-
     // Post to server
     $scope.processForm = function() {
-        $http.post('http://127.0.0.1:8000/directory/freightfirststep/')
+        $http({
+            method  : 'POST',
+            url     : 'http://127.0.0.1:8000/directory/freightfirststep/',
+            data    : $scope.formData,  // pass in data as strings
+            headers: {'Content-Type': 'application/json'}
+          })
 
         .success(function(data) {
             console.log(data);
-
-            if (!data.success) {
-                // if not successful, bind errors to error variables
-                $scope.errorName = data.errors.name;
-                $scope.errorSuperhero = data.errors.superheroAlias;
-            } else {
-                // if successful, bind success message to message
-                $scope.message = data.message;
-            }
-        })
-
+          })
         .error(function(data) {
             console.log(data);
-        });
-
-    };
+          });
+      };
 
   });
 
