@@ -34,10 +34,10 @@
         <div class="box register">
             <div class="margin">
                 <p>Sumate a la red de transporte mas grande de Chile y ve como aumenta <strong>Tucarga</strong></p>
-                <p>{{#link-to "registro" classNames='button radius'}}Registrate{{/link-to}}</p>
+                <p><a href="#/registro" class="button radius">Registrate</a></p>
             </div>
         </div>
-    </div> {{! end sidebar }}
+    </div> <!-- {{! end sidebar }} -->
 
     <div id="content-view" class="large-9 medium-8 columns">
         <div class="title-page clearfix">
@@ -45,30 +45,30 @@
                 <h3>Directorio de transporte</h3>
                 <h5 class="subheader">Descubre nuevas empresas con las que puedes trabajar</h5>
             </div>
-            {{#link-to "cotizar" classNames='button radius right'}}Cotizar{{/link-to}}
-        </div> {{! end title page}}
+            <a href="#/cotizar" class="button radius right">Cotizar</a>
+        </div> <!-- {{! end title page}} -->
 
         <div class="loop-transport">
-            {{#each transportista in controller}}
+
                 <div class="loop-list clearfix">
-                    <h5>{{transportista.name}}</h5>
+                    <h5></h5>
                     <ul class="">
                         <li>
                             <span>Cobertura</span></br>
-                            <p>{{transportista.zone}}</p>
+                            <p></p>
                         </li>
                         <li>
                             <span>Sucursales</span></br>
-                            <p>{{transportista.city}}</p>
+                            <p></p>
                         </li>
                         <li>
                             <span>Almacenaje</span></br>
-                            <p>{{transportista.suply}}</p>
+                            <p></p>
                         </li>
                     </ul>
                 </div>
-            {{/each}}
-        </div> {{! end loop }}
+
+        </div> <!-- {{! end loop }} -->
 
 
         <a id="ad-loop" class="" href="#/cotizar">
@@ -83,9 +83,9 @@
             </div>
         </a>
 
-    </div> {{! end content view }}
+    </div> <!-- {{! end content view }} -->
 
     </div>
-</div> {{! end content page }}
+</div> <!-- {{! end content page }} -->
 
 <script>$(document).foundation();</script>

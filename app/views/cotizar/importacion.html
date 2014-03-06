@@ -382,14 +382,14 @@
     </div> <!-- {{! end #form}} -->
 </div> <!-- {{! end content page }} -->
 
-<script src="bower_components/foundation-datepicker-master/example/js/foundation-datepicker.js"></script>
+<script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 
 <script>
     $(document).foundation();
     $(document).ready(function() {
-        // Load datepicker
-        $('.datepicker-input').fdatepicker();
-        // Remuevo menu fixed
+        // Cargo datepicker
+        $('.datepicker-input').datepicker();
+        // if/else de numero de cargas
         var i = 2;
         $(".add-new-carga").click(function () {
             if (i <= 3) {
