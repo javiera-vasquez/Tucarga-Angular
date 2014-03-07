@@ -16,18 +16,19 @@
               <div class="row form-layout">
                   <div class="large-8 columns">
 
+                <label>Tipo cotización</label>
+                <select class="" ng-model="formData.obj_type">
+                  <option value="impo" >Importación</option>
+                  <option value="expo">Exportación</option>
+                  <option value="dome">Domestico</option>
+                  <option value="empt">Vacío</option>
+                </select>
+
                 <div class="row step">
                     <div class="large-12 columns">
                         <h5><span>1</span>Ruta de carga</h5>
                     </div>
                 </div>
-
-                <select id="obj_type" ng-model="formData.obj_type">
-                    <option value="0" >Importación</option>
-                    <option value="1">Exportación</option>
-                    <option value="2">Domestica</option>
-                    <option value="3">Contenedor</option>
-                </select>
 
                 <div class="row step">
                     <div class="large-12 columns">
@@ -38,29 +39,37 @@
                 <div class="row">
                     <div class="large-4 columns">
                         <label>Region</label>
-                        <select>
-                          <option value="0">Region</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
+                        <select id="id_company_address_region" ng-model="formData.company_address_region">
+                          <option value="" selected="selected">--------</option>
+                          <option value="14">Metropolitana de Santiago</option>
+                          <option value="16">Arica y Parinacota</option>
+                          <option value="2">Tarapacá</option>
+                          <option value="3">Antofagasta</option>
+                          <option value="4">Atacama</option>
+                          <option value="5">Coquimbo</option>
+                          <option value="6">Valparaíso</option>
+                          <option value="7">Libertador General Bernardo O'Higgins</option>
+                          <option value="8">Maule</option>
+                          <option value="9">Biobío</option>
+                          <option value="10">La Araucanía</option>
+                          <option value="15">Los Ríos</option>
+                          <option value="11">Los Lagos</option>
+                          <option value="12">Aisén del General Carlos Ibañez del Camp</option>
+                          <option value="13">Magallanes y de la Antártica Chilena</option>
                         </select>
                     </div>
                     <div class="large-2 columns">
                         <label>Puerto</label>
-                        <select>
-                          <option value="0">Puerto</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                        </select>
+                        <input type="text" name="Puerto"  placeholder="" ng-model="formData.freightwaypoint_origin_origin_destination_port">
                     </div>
                     <div class="large-4 columns">
                         <label>nombre nave</label>
-                        <input type="text" name=""  placeholder="" ng-model="imeData.day">
+                        <input type="text" name="nombre nave"  placeholder="" ng-model="formData.freightwaypoint_origin_ship_name">
                     </div>
                     <div class="large-2 columns">
                         <label>Cuando</label>
-                        <input class="" type="text" ng-model="imeData.mo" placeholder="">
+                        <input class="datepicker-input" type="text" name="Cuando" ng-model="originDate" placeholder="">
+                        {{ originDate + 'T' + '00:00' }}
                     </div>
                 </div>
 
@@ -73,7 +82,7 @@
                   <div class="row">
                     <div class="large-4 columns">
                         <label>Region</label>
-                        <select>
+                        <select >
                           <option value="0">Region</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -303,7 +312,7 @@
                     </div>
                     <div class="large-5 columns">
                         <label>Almacenaje</label>
-                        <input type="text" name="" value="" placeholder="¿Necesita almacenaje?">
+                        <input type="text" name="" ng-model="formData.needs_storage" placeholder="¿Necesita almacenaje?">
                     </div>
                 </div>
 
@@ -390,13 +399,17 @@
 </div> <!-- {{! end content page }} -->
 
 <script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-
+<script src="bower_components/bootstrap-datepicker/js/locales/bootstrap-datepicker.es.js"></script>
 
 <script>
     $(document).foundation();
     $(document).ready(function() {
         // Cargo datepicker
-        $('.datepicker-input').datepicker();
+        $('.datepicker-input').datepicker({
+          format: "dd/mm/yyyy",
+          weekStart: 1,
+          language: "es",
+        });
         // if/else de numero de cargas
         var i = 2;
         $(".add-new-carga").click(function () {

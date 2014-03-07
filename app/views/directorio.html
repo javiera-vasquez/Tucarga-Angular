@@ -48,14 +48,14 @@
             <a href="#/cotizar" class="button radius right">Cotizar</a>
         </div> <!-- {{! end title page}} -->
 
-        <div class="loop-transport">
+        <div class="loop-transport" ng-repeat="transportista in directory">
 
                 <div class="loop-list clearfix">
-                    <h5></h5>
+                    <h5>{{ transportista.name }}</h5>
                     <ul class="">
                         <li>
                             <span>Cobertura</span></br>
-                            <p></p>
+                            <p>{{ transportista.coverage }}</p>
                         </li>
                         <li>
                             <span>Sucursales</span></br>
@@ -63,7 +63,7 @@
                         </li>
                         <li>
                             <span>Almacenaje</span></br>
-                            <p></p>
+                            <p>{{ transportista.storage }}</p>
                         </li>
                     </ul>
                 </div>
