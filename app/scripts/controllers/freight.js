@@ -3,10 +3,13 @@
 angular.module('tucargaApp')
   .controller('FreightController', function ($scope, $http) {
 
-    // var date = $scope.originDate + 'T' + '00:00';
+     // $scope.dateTransform = function() {
+     //    $scope.originDate + 'T' + '00:00';
+     //  }
 
     // Array of the content of the form
     $scope.formData = {};
+
 
     // Post to server
     $scope.freightPost = function() {
