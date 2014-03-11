@@ -10,7 +10,6 @@ angular.module('tucargaApp')
     // Array of the content of the form
     $scope.formData = {};
 
-
     // Post to server
     $scope.freightPost = function() {
         $http({
@@ -24,7 +23,7 @@ angular.module('tucargaApp')
             console.log(data);
           })
         .error(function(data) {
-            console.log(data);
+            console.log('404' + data);
           });
       };
 
