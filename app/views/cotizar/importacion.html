@@ -66,10 +66,12 @@
                         <label>nombre nave</label>
                         <input type="text" name="nombre nave"  placeholder="" ng-model="formData.freightwaypoint_origin_ship_name">
                     </div>
-                    <div class="large-2 columns">
+                    <div class="large-4 columns">
                         <label>Cuando</label>
+                        <input class="" type="text" name="Cuando" ng-model="originHour" placeholder="">
                         <input class="datepicker-input" type="text" name="Cuando" ng-model="originDate" placeholder="">
-                        {{ originDate + 'T' + '00:00' }}
+                        <input class="ut" type="text" name="Cuando" ng-model="dateTransform" placeholder="">
+                        {{ dateTransform() }}
                     </div>
                 </div>
 
@@ -1108,8 +1110,8 @@
 
               </form> <!-- End  ng-freighPost -->
 
-<input type="email" ng-model="userEmail" name="userEmail" required unique-email/>
-<span ng-show="myFormName.userEmail.$error.uniqueEmail">Email is not unique.</span>
+
+
 
                   </div> <!-- {{!end form content}} -->
                   <div class="large-4 columns">
@@ -1128,6 +1130,17 @@
         </div> <!-- {{! end centered}} -->
     </div> <!-- {{! end #form}} -->
 </div> <!-- {{! end content page }} -->
+
+
+
+<form name="mod_user" novalidate>
+    <input type="email" name="email" ng-model="user.email" placeholder="E-Mail" required email-available/>
+    <div class="user-help" ng-show="mod_user.email.$dirty && mod_user.email.$invalid">Invalid:
+        <span ng-show="mod_user.email.$error.required">Please enter your email.</span>
+        <span ng-show="mod_user.email.$error.email">This is not a valid email.</span>
+        <span ng-show="mod_user.email.$error.emailAvailable">This email address is already taken.</span>
+    </div>
+</form>
 
 <script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script src="bower_components/bootstrap-datepicker/js/locales/bootstrap-datepicker.es.js"></script>

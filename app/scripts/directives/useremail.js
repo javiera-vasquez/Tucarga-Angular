@@ -1,28 +1,45 @@
 'use strict';
 
 angular.module('tucargaApp')
-.directive('uniqueEmail', function($http) {
-  var toId;
-  return {
-    restrict: 'A',
-    require: 'ngModel',
-    link: function(scope, elem, attr, ctrl) {
-      //when the scope changes, check the email.
-      scope.$watch(attr.ngModel, function(value) {
-        // if there was a previous attempt, stop it.
-        if(toId) clearTimeout(toId);
 
-        // start a new attempt with a delay to keep it from
-        // getting too "chatty".
-        toId = setTimeout(function(){
-          // call to some API that returns { isValid: true } or { isValid: false }
-          $http.get('http://127.0.0.1:8000/directory/user/' + value).success(function(data) {
+.directive('emailAvailable', function($http, $timeout) { // available
+    return {
+        require: 'ngModel',
+        link: function(scope, elem, attr, ctrl) {
+            // push the validator on so it runs last.
+            ctrl.$parsers.push(function(viewValue) {
+                // set it to true here, otherwise it will not
+                // clear out when previous validators fail.
+                ctrl.$setValidity('emailAvailable', true);
+                if(ctrl.$valid) {
+                  // set it to false here, because if we need to check
+                  // the validity of the email, it's invalid until the
+                  // AJAX responds.
+                  ctrl.$setValidity('checkingEmail', false);
 
-              //set the validity of the field
-              ctrl.$setValidity('uniqueEmail', data.isValid);
-          });
-        }, 200);
-      })
-    }
-  }
+                  // now do your thing, chicken wing.
+                  if(viewValue !== "" && typeof viewValue !== "undefined") {
+                      $http.get('http://127.0.0.1:8000/directory/user/' + viewValue)
+                          .success(function(data, status, headers, config) {
+                              console.log('win');
+                              ctrl.$setValidity('emailAvailable', true);
+                              ctrl.$setValidity('checkingEmail', true);
+                          })
+                          .error(function(data, status, headers, config) {
+                              console.log('fail')
+                              ctrl.$setValidity('emailAvailable', false);
+                              ctrl.$setValidity('checkingEmail', true);
+                          });
+                  } else {
+                      ctrl.$setValidity('emailAvailable', false);
+                      ctrl.$setValidity('checkingEmail', true);
+                  }
+                }
+                return viewValue;
+            });
+
+        }
+    };
 });
+
+
