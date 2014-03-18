@@ -25,6 +25,13 @@ angular.module('tucargaApp')
 
   });
 
+    // watch a dom function
+    // $scope.$watch(function() {
+    //     return $scope.totalDate()
+    // }, function(newValue, oldValue) {
+    //     $scope.originTotalDate = $scope.totalDate();
+    // });
+
   // .controller('PollsController', function ($http) {
   //   var app = this;
   //   $http.get('http://tctaa-avaras.dotcloud.com/polls/')
