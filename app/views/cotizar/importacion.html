@@ -31,23 +31,9 @@
                 <div class="row">
                     <div class="large-4 columns">
                         <label>Region</label>
-                        <select ng-model="formData.freightwaypoint_origin_region">
-                          <option value="" selected="selected">Seleccionar región</option>
-                          <option value="14">Metropolitana de Santiago</option>
-                          <option value="16">Arica y Parinacota</option>
-                          <option value="2">Tarapacá</option>
-                          <option value="3">Antofagasta</option>
-                          <option value="4">Atacama</option>
-                          <option value="5">Coquimbo</option>
-                          <option value="6">Valparaíso</option>
-                          <option value="7">Libertador General Bernardo O'Higgins</option>
-                          <option value="8">Maule</option>
-                          <option value="9">Biobío</option>
-                          <option value="10">La Araucanía</option>
-                          <option value="15">Los Ríos</option>
-                          <option value="11">Los Lagos</option>
-                          <option value="12">Aisén del General Carlos Ibañez del Camp</option>
-                          <option value="13">Magallanes y de la Antártica Chilena</option>
+                        <select
+                          ng-model="formData.freightwaypoint_origin_region"
+                          ng-options="region.id as region.name for region in returnRegion">
                         </select>
                     </div>
                     <div class="large-2 columns">
@@ -73,23 +59,10 @@
                   <div class="row">
                     <div class="large-4 columns">
                         <label>Region</label>
-                        <select ng-model="destinationRegion" ng-change="destinationCommune()">
-                          <option value="" selected="selected">Seleccionar</option>
-                          <option value="14">Metropolitana de Santiago</option>
-                          <option value="16">Arica y Parinacota</option>
-                          <option value="2">Tarapacá</option>
-                          <option value="3">Antofagasta</option>
-                          <option value="4">Atacama</option>
-                          <option value="5">Coquimbo</option>
-                          <option value="6">Valparaíso</option>
-                          <option value="7">Libertador General Bernardo O'Higgins</option>
-                          <option value="8">Maule</option>
-                          <option value="9">Biobío</option>
-                          <option value="10">La Araucanía</option>
-                          <option value="15">Los Ríos</option>
-                          <option value="11">Los Lagos</option>
-                          <option value="12">Aisén del General Carlos Ibañez del Camp</option>
-                          <option value="13">Magallanes y de la Antártica Chilena</option>
+                        <select
+                          ng-model="destinationCommuneRegion"
+                          ng-change="destinationCommune()"
+                          ng-options="region.id as region.name for region in returnRegion">
                         </select>
                     </div>
                     <div class="large-4 columns">
@@ -156,23 +129,10 @@
                 <div class="row">
                     <div class="large-4 columns">
                         <label>Region</label>
-                        <select ng-model="returnRegion" ng-change="returnCommune()">
-                          <option value="" selected="selected">Seleccionar</option>
-                          <option value="14">Metropolitana de Santiago</option>
-                          <option value="16">Arica y Parinacota</option>
-                          <option value="2">Tarapacá</option>
-                          <option value="3">Antofagasta</option>
-                          <option value="4">Atacama</option>
-                          <option value="5">Coquimbo</option>
-                          <option value="6">Valparaíso</option>
-                          <option value="7">Libertador General Bernardo O'Higgins</option>
-                          <option value="8">Maule</option>
-                          <option value="9">Biobío</option>
-                          <option value="10">La Araucanía</option>
-                          <option value="15">Los Ríos</option>
-                          <option value="11">Los Lagos</option>
-                          <option value="12">Aisén del General Carlos Ibañez del Camp</option>
-                          <option value="13">Magallanes y de la Antártica Chilena</option>
+                        <select
+                          ng-model="returnCommuneRegion"
+                          ng-change="returnCommune()"
+                          ng-options="region.id as region.name for region in returnRegion">
                         </select>
                     </div>
                     <div class="large-4 columns">
@@ -200,31 +160,21 @@
                         <div class="row">
                             <div class="large-4 columns">
                                 <label>Tipo de carga</label>
-                                <select id="id_freightdetail_obj_type" name="freightdetail_obj_type">
-                                  <option value="" selected="selected">Seleccionar</option>
-                                  <option value="1">Contenedor</option>
-                                  <option value="2">Refrigerada/Multitemperatura</option>
-                                  <option value="3">A granel</option>
-                                  <option value="4">Líquida</option>
-                                  <option value="5">Peligrosa</option>
-                                  <option value="6">Pallets</option>
-                                  <option value="7">General</option>
-                                  <option value="8">Contenedor vacío</option>
-                                  <option value="9">De projecto/Sobredimencionada</option>
+                                <select
+                                  ng-model="formData.freightdetail_obj_type"
+                                  ng-options="freighttype.id as freighttype.name for freighttype in returnFreightType">
                                 </select>
                             </div>
                             <div class="large-4 columns">
                                 <label>Tipo de Contenedor</label>
-                                <select>
-                                  <option value="0">Tipo</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
+                                <select
+                                  ng-model="freightdetail_container_type"
+                                  ng-options="containertype.id as containertype.name for containertype in returncContainerType">
                                 </select>
                             </div>
                             <div class="large-2 columns">
                                 <label>Unidades</label>
-                                <input class="" type="text" name="" ng-mode="formData.freightdetail_units" placeholder="">
+                                <input class="" type="text" name="" ng-model="formData.freightdetail_units" placeholder="">
                             </div>
                             <div class="large-2 columns">
                                 <label>Peso</label>
@@ -360,20 +310,16 @@
                 <div class="row">
                     <div class="large-4 columns">
                         <label>Tipo de camión</label>
-                        <select>
-                          <option value="0">Tipo</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
+                        <select
+                          ng-model="formData.truck_type"
+                          ng-options="trucktype.id as trucktype.name for trucktype in returnTruckType">
                         </select>
                     </div>
                     <div class="large-4 columns">
                         <label>Equipamiento</label>
-                        <select id="id_equipment" name="equipment" ng-model="formData.equipment">
-                          <option value="1">baranda</option>
-                          <option value="2">encarpado</option>
-                          <option value="3">equipo frío</option>
-                          <option value="4">grúa horquilla</option>
+                        <select
+                          ng-model="formData.equipment"
+                          ng-options="equipment.id as equipment.name for equipment in returnEquipment">
                         </select>
                     </div>
                     <div class="large-4 columns">
@@ -400,9 +346,9 @@
                 </div>
                 <div class="row">
                     <div class="large-8 columns">
-                        <input type="checkbox" id="2" name="asdf" value="asdf"> <label for="2">Busco transporte por temporada</label><br />
-                        <input type="checkbox" id="3" name="asdf" value="asdf"> <label for="3">Busco proveedores con los que trabajar</label><br />
-                        <input type="checkbox" id="4" name="asdf" value="asdf"> <label for="4">Busco conocer tarifas de mercado</label><br />
+                        <input type="checkbox" id="2" ng-model="otherOne" value="Busco transporte por temporada"> <label for="2">Busco transporte por temporada</label><br />
+                        <input type="checkbox" id="3" ng-model="otherTwo" value="Busco proveedores con los que trabajar"> <label for="3">Busco proveedores con los que trabajar</label><br />
+                        <input type="checkbox" id="4" ng-model="otherThree" value="Busco conocer tarifas de mercado"> <label for="4">Busco conocer tarifas de mercado</label><br />
                     </div>
                     <div class="large-4 columns"></div>
                 </div>
@@ -413,9 +359,6 @@
                 </button>
 
               </form> <!-- End  ng-freighPost -->
-
-
-
 
                   </div> <!-- {{!end form content}} -->
                   <div class="large-4 columns">
@@ -434,8 +377,6 @@
         </div> <!-- {{! end centered}} -->
     </div> <!-- {{! end #form}} -->
 </div> <!-- {{! end content page }} -->
-
-
 
 <form name="mod_user" novalidate>
     <input type="email" name="email" ng-model="user.email" placeholder="E-Mail" required email-available/>
