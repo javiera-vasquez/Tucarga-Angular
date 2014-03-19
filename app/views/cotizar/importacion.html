@@ -353,12 +353,176 @@
                     <div class="large-4 columns"></div>
                 </div>
 
+                <div id="add-person" class="none">
+                <br>
+                <!-- DATOS PERSONALES -->
+                  <div class="row step">
+                      <div class="large-12 columns">
+                          <h5><span>4</span>Información de contacto</h5>
+                      </div>
+                  </div>
+
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5 class="subhearder">Datos personales</h5>
+                    </div>
+                </div>
+
+                  <div class="row">
+                      <div class="large-4 columns">
+                          <label>Nombre</label>
+                          <input type="text" name="" placeholder="" ng-model="formData.contact_first_name">
+                      </div>
+                      <div class="large-4 columns">
+                          <label>Apellido</label>
+                          <input type="text" name="" placeholder="" ng-model="formData.contact_last_name">
+                      </div>
+                      <div class="large-4 columns">
+                          <label>Cargo que desempeña</label>
+                          <input type="text" name="" placeholder="" ng-model="formData.userdirectory_position">
+                      </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="large-5 columns compact">
+                          <label>Telefono fijo</label>
+                          <select ng-model="userMobilePrefix">
+                            <option value="02">02</option>
+                            <option value="32">32</option>
+                            <option value="33">33</option>
+                            <option value="34">34</option>
+                            <option value="35">35</option>
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                            <option value="43">43</option>
+                            <option value="45">45</option>
+                            <option value="51">51</option>
+                            <option value="52">52</option>
+                            <option value="53">53</option>
+                            <option value="55">55</option>
+                            <option value="57">57</option>
+                            <option value="58">58</option>
+                            <option value="61">61</option>
+                            <option value="63">63</option>
+                            <option value="64">64</option>
+                            <option value="65">65</option>
+                            <option value="67">67</option>
+                            <option value="71">71</option>
+                            <option value="72">72</option>
+                            <option value="73">73</option>
+                            <option value="75">75</option>
+                          </select>
+                          <input type="text" name="" placeholder="" ng-model="userMobileRest">
+                      </div>
+                      <div class="large-5 columns compact">
+                          <label>Telefono celular</label>
+                          <select ng-model="userPhonePrefix">
+                            <option value="09">09</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                          </select>
+                          <input type="text" name="" placeholder="" ng-model="userPhoneRest">
+                      </div>
+                      <div class="large-2 columns"></div>
+                  </div>
+                  <br>
+                <!-- DATOS EMPRESA -->
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5 class="subhearder">Contacto empresa</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label>Nombre empresa</label>
+                        <input class="" type="text" name="" placeholder="" ng-model="formData.company_name">
+                    </div>
+                    <div class="large-4 columns">
+                        <label>Razon social</label>
+                        <input type="text" name="" placeholder="" ng-model="formData.company_business_name">
+                    </div>
+                    <div class="large-4 columns">
+                        <label>Rut</label>
+                        <input type="text" name="" placeholder="" ng-model="formData.company_business_number">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-5 columns compact">
+                        <label>Telefono</label>
+                        <select ng-model="businessNumberPrefix">
+                          <option value="02">02</option>
+                          <option value="32">32</option>
+                          <option value="33">33</option>
+                          <option value="34">34</option>
+                          <option value="35">35</option>
+                          <option value="41">41</option>
+                          <option value="42">42</option>
+                          <option value="43">43</option>
+                          <option value="45">45</option>
+                          <option value="51">51</option>
+                          <option value="52">52</option>
+                          <option value="53">53</option>
+                          <option value="55">55</option>
+                          <option value="57">57</option>
+                          <option value="58">58</option>
+                          <option value="61">61</option>
+                          <option value="63">63</option>
+                          <option value="64">64</option>
+                          <option value="65">65</option>
+                          <option value="67">67</option>
+                          <option value="71">71</option>
+                          <option value="72">72</option>
+                          <option value="73">73</option>
+                          <option value="75">75</option>
+                        </select>
+                        <input type="text" name="" placeholder="" ng-model="businessNumberRest">
+                    </div>
+                    <div class="large-7 columns"></div>
+                </div>
+
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5 class="subhearder">Dirección empresa</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label>Region</label>
+                        <select
+                          ng-model="formData.company_address_region"
+                          ng-options="region.id as region.name for region in returnRegion">
+                        </select>
+                    </div>
+                    <div class="large-8 columns"></div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label>Ciudad</label>
+                        <input type="text" name="" placeholder="" ng-model="formDat.company_address_city">
+                    </div>
+                    <div class="large-4 columns">
+                        <label>Dirección</label>
+                        <input type="text" name="" placeholder="" ng-model="formData.company_address_street">
+                    </div>
+                    <div class="large-2 columns">
+                        <label>Numero</label>
+                        <input type="text" name="" placeholder="" ng-model="formData.company_address_street">
+                    </div>
+                    <div class="large-2 columns"></div>
+                </div>
+
+                  <br>
+                </div> <!-- end add-person -->
+
                 <br>
                 <button class="button success radius large-12">
                     Enviar cotización
                 </button>
-
-<span>asdf</span>
 
               </form> <!-- End  ng-freighPost -->
 

@@ -22,11 +22,13 @@ angular.module('tucargaApp')
                       $http.get('http://127.0.0.1:8000/directory/user/' + viewValue)
                           .success(function(data, status, headers, config) {
                               console.log('win');
+                              $('#add-person').addClass('none');
                               ctrl.$setValidity('emailAvailable', true);
                               ctrl.$setValidity('checkingEmail', true);
                           })
                           .error(function(data, status, headers, config) {
-                              console.log('fail')
+                              console.log('fail');
+                              $('#add-person').removeClass('none');
                               ctrl.$setValidity('emailAvailable', false);
                               ctrl.$setValidity('checkingEmail', true);
                           });

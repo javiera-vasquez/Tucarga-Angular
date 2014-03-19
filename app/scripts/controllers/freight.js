@@ -110,6 +110,8 @@ angular.module('tucargaApp')
         return $scope.otherOne + ',' + $scope.otherTwo + ',' + $scope.otherThree;
     };
 
+
+
     // Post to server
     $scope.freightPost = function() {
         // Array of the content of the form
