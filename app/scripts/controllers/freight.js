@@ -19,7 +19,7 @@ angular.module('tucargaApp')
     $scope.destinationCommune = function() {
         $http({
             method : 'GET',
-            url : 'http://127.0.0.1:8000/directory/commune/' + $scope.destinationCommuneRegion,
+            url : 'http://127.0.0.1:8000/directory/commune/' + $scope.destinationCommuneRegion + '/',
             headers: {'Content-Type': 'application/json'}
         })
         .success(function(data) {
@@ -33,7 +33,7 @@ angular.module('tucargaApp')
     $scope.returnCommune = function() {
         $http({
             method : 'GET',
-            url : 'http://127.0.0.1:8000/directory/commune/' + $scope.returnCommuneRegion,
+            url : 'http://127.0.0.1:8000/directory/commune/' + $scope.returnCommuneRegion + '/',
             headers: {'Content-Type': 'application/json'}
         })
         .success(function(data) {
