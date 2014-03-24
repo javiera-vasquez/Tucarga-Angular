@@ -32,7 +32,9 @@ angular.module('tucargaApp', [
       templateUrl: 'views/cotizar/usuario.html',
       controller: 'UsuarioController'
     })
-    .when('/cotizar/exito', {templateUrl: 'views/exito.html'})
+    .when('/cotizar/exito', {
+      templateUrl: 'views/exito.html'}
+    )
     // Cotizar
     .when('/cotizar', {
       templateUrl: 'views/cotizar.html'

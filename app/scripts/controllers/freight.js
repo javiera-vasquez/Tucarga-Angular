@@ -128,7 +128,7 @@ angular.module('tucargaApp')
           })
         .success(function(data) {
             console.log('win' + data);
-            $location.url('/')
+            $location.url('/cotizar/exito')
 
           })
         .error(function(data) {
