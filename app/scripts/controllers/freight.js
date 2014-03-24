@@ -108,6 +108,8 @@ angular.module('tucargaApp')
         return $scope.otherOne + ',' + $scope.otherTwo + ',' + $scope.otherThree;
     };
 
+    $scope.formData = {};
+
     // Post to server
     $scope.freightPost = function() {
         // Tipo de cotizacion
@@ -126,6 +128,8 @@ angular.module('tucargaApp')
           })
         .success(function(data) {
             console.log('win' + data);
+            $location.url('/')
+
           })
         .error(function(data) {
             console.log('fail' + data);
