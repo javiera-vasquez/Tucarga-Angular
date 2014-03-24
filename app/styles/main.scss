@@ -552,13 +552,18 @@ footer {
             text-shadow: 0 1px 0 darken($primary-color, 10%);
         }
     }
+    dd.active a {
+        background: $primary-color;
+        color: $white;
+        text-shadow: 0 1px 0 darken($primary-color, 10%);
+    }
     dd .content {
         padding: 1.5em 1em;
         box-shadow: inset 0 1px 2px $shadow;
         p {
             font-size: rem-calc(14);
             line-height: 1.8;
-            margin-bottom: 0;
+            &:last-child {margin-bottom: 0;}
         }
     }
 }
