@@ -91,10 +91,7 @@ angular.module('tucargaApp')
         console.log(data + "fail");
     });
 
-    // Tipo de cotizacion
-    $scope.obj_type = "impo";
-
-    // Funcion para calcular una fecha
+    // Funciones para calcular las fechas
     $scope.originHour = "T00:00";
     $scope.originDate = "";
 
@@ -103,24 +100,24 @@ angular.module('tucargaApp')
     };
 
     $scope.destinationTotalDate = function() {
-        return $scope.destinationDate + $scope.destinationHour;
+        return $scope.destinationDate + 'T' + $scope.destinationHour;
     };
 
-    $scope.other = function() {
+    // Funcion para parametros de cotizacion
+    $scope.otherInfo = function() {
         return $scope.otherOne + ',' + $scope.otherTwo + ',' + $scope.otherThree;
     };
 
-
-
     // Post to server
     $scope.freightPost = function() {
-        // Array of the content of the form
-        $scope.formData = {
-            obj_type: $scope.obj_type,
-            freightwaypoint_origin_from_date: $scope.originTotalDate(),
-            freightwaypoint_destination_from_date: $scope.destinationTotalDate(),
-            other: $scope.other(),
-        };
+        // Tipo de cotizacion
+        $scope.formData.obj_type = "impo";
+        // Funciones de fechas
+        $scope.formData.freightwaypoint_origin_from_date = $scope.originTotalDate();
+        $scope.formData.freightwaypoint_destination_from_date =  $scope.destinationTotalDate();
+        // Parametros de una cotizacion
+        $scope.formData.other = $scope.otherInfo();
+        // send the form
         $http({
             method : 'POST',
             url : 'http://127.0.0.1:8000/directory/freightfirststep/',
