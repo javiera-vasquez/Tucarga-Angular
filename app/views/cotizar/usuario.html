@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="large-6 columns">
                         <label>Nombre</label>
-                        <input type="text" name="" value="" placeholder="">
+                        <input type="text" name="" ng-model="formData.freightwaypoint_origin_origin_destination_port" placeholder="">
                     </div>
                     <div class="large-6 columns">
                         <label>Apellido</label>
@@ -171,7 +171,7 @@
     $(document).foundation();
     $(document).ready(function() {
         // Load datepicker
-        $('.datepicker-input').fdatepicker();
+        $('.datepicker-input').datepicker();
         // Remuevo menu fixed
         var i = 2;
         $(".add-new-carga").click(function () {

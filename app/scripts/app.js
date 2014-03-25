@@ -30,7 +30,7 @@ angular.module('tucargaApp', [
     // Registro cargador
     .when('/cotizar/usuario', {
       templateUrl: 'views/cotizar/usuario.html',
-      controller: 'UsuarioController'
+      controller: 'FreightController'
     })
     .when('/cotizar/exito', {
       templateUrl: 'views/exito.html'}

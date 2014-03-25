@@ -23,6 +23,7 @@ angular.module('tucargaApp')
                           .success(function(data, status, headers, config) {
                               console.log('win');
                               $('#add-person').addClass('none');
+                              $('#add-person input, #add-person select').prop('disabled', true);
                               ctrl.$setValidity('emailAvailable', true);
                               ctrl.$setValidity('checkingEmail', true);
                           })
