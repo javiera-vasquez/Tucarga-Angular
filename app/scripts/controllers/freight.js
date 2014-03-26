@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('tucargaApp')
-  .controller('FreightController', function ($scope, $http) {
+  .controller('FreightController', function ($scope, $http, $location) {
 
     // Pregunto por las regiones
     $http({
@@ -108,6 +108,8 @@ angular.module('tucargaApp')
         return $scope.otherOne + ',' + $scope.otherTwo + ',' + $scope.otherThree;
     };
 
+    // Funciones para crear telefonos
+
     $scope.formData = {};
 
     // Post to server
@@ -127,12 +129,12 @@ angular.module('tucargaApp')
             headers : {'Content-Type': 'application/json'}
           })
         .success(function(data) {
-            console.log('win' + data);
+            //console.log('win' + data);
             $location.url('/cotizar/exito')
 
           })
         .error(function(data) {
-            console.log('fail' + data);
+            // console.log('fail' + data);
           });
       };
 

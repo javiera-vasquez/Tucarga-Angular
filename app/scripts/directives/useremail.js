@@ -30,6 +30,7 @@ angular.module('tucargaApp')
                           .error(function(data, status, headers, config) {
                               console.log('fail');
                               $('#add-person').removeClass('none');
+                              $('#add-person input, #add-person select').prop('disabled', false);
                               ctrl.$setValidity('emailAvailable', false);
                               ctrl.$setValidity('checkingEmail', true);
                           });
