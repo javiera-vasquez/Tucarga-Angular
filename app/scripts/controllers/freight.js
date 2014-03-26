@@ -136,6 +136,10 @@ angular.module('tucargaApp')
         $scope.formData.freightwaypoint_destination_from_date =  $scope.destinationTotalDate();
         // Parametros de una cotizacion
         $scope.formData.other = $scope.otherInfo();
+        //Telefonos empresa y usuario
+        $scope.formData.company_phone =  businessPhone();
+        $scope.formData.userdirectory_mobile = userMobile();
+        $scope.formData.userdirectory_phone = userPhone();
         // send the form
         $http({
             method : 'POST',
