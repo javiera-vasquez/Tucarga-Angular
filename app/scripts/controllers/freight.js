@@ -109,8 +109,23 @@ angular.module('tucargaApp')
     };
 
     // Funciones para crear telefonos
+    $scope.userPhone = function() {
+        return $scope.userPhonePrefix + $scope.userPhoneNumber;
+    };
 
+    $scope.userMobile = function() {
+        return $scope.userMobilePrefix + $scope.userMobileNumber;
+    };
+
+    $scope.businessPhone = function() {
+        return $scope.businessPhonePrefix + $scope.businessPhoneNumber;
+    };
+
+    // Arreglo para enviar el formulario de cotizacion
     $scope.formData = {};
+
+    // Set validation to false
+    $scope.submitted = false;
 
     // Post to server
     $scope.freightPost = function() {

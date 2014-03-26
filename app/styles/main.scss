@@ -794,7 +794,8 @@ footer {
 }
 
 // Form validation
-// .ng-invalid {@extend .error;}
+.ng-invalid.ng-pristine {border-color: $ccc;}
+.ng-invalid {border-color: #f04124;}
 
 
 

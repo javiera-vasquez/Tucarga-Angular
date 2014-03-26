@@ -381,22 +381,22 @@
                   <div class="row">
                       <div class="large-4 columns">
                           <label>Nombre</label>
-                          <input type="text" name="" placeholder="" ng-model="formData.contact_first_name" required>
+                          <input type="text" maxlength="50" placeholder="" ng-model="formData.contact_first_name" ng-maxlength=50 required>
                       </div>
                       <div class="large-4 columns">
                           <label>Apellido</label>
-                          <input type="text" name="" placeholder="" ng-model="formData.contact_last_name" required>
+                          <input type="text" maxlength="50" placeholder="" ng-model="formData.contact_last_name"  ng-maxlength=50 required>
                       </div>
                       <div class="large-4 columns">
                           <label>Cargo que desempeña</label>
-                          <input type="text" name="" placeholder="" ng-model="formData.userdirectory_position">
+                          <input type="text" maxlength="50" placeholder="" ng-model="formData.userdirectory_position" ng-maxlength=50>
                       </div>
                   </div>
 
                   <div class="row">
                       <div class="large-5 columns compact">
                           <label>Telefono fijo</label>
-                          <select ng-model="userMobilePrefix" required>
+                          <select ng-model="userPhonePrefix" required>
                             <option value="02">02</option>
                             <option value="32">32</option>
                             <option value="33">33</option>
@@ -422,18 +422,18 @@
                             <option value="73">73</option>
                             <option value="75">75</option>
                           </select>
-                          <input type="text" name="" placeholder="" ng-model="userMobileRest" required>
+                          <input type="text" name="" placeholder="" ng-model="userPhoneNumber" required>
                       </div>
                       <div class="large-5 columns compact">
                           <label>Telefono celular</label>
-                          <select ng-model="userPhonePrefix">
+                          <select ng-model="userMobilePrefix">
                             <option value="09">09</option>
                             <option value="05">05</option>
                             <option value="06">06</option>
                             <option value="07">07</option>
                             <option value="08">08</option>
                           </select>
-                          <input type="text" name="" placeholder="" ng-model="userPhoneRest">
+                          <input type="text" name="" placeholder="" ng-model="userMobileNumber">
                       </div>
                       <div class="large-2 columns"></div>
                   </div>
@@ -447,22 +447,22 @@
                 <div class="row">
                     <div class="large-4 columns">
                         <label>Nombre empresa</label>
-                        <input class="" type="text" name="" placeholder="" ng-model="formData.company_name" required>
+                        <input class="" type="text" maxlength="100" placeholder="" ng-model="formData.company_name" ng-maxlength=100 required>
                     </div>
                     <div class="large-4 columns">
                         <label>Razon social</label>
-                        <input type="text" name="" placeholder="" ng-model="formData.company_business_name" required>
+                        <input type="text" maxlength="50" placeholder="" ng-model="formData.company_business_name" ng-maxlength=50 required>
                     </div>
                     <div class="large-4 columns">
                         <label>Rut</label>
-                        <input type="text" name="" placeholder="" ng-model="formData.company_business_number" required>
+                        <input type="text" maxlength="12" placeholder="sin puntos y con guion" ng-model="formData.company_business_number" ng-maxlength=12 g-pattern="\b\d{1,8}\-[K|k|0-9]" required>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="large-5 columns compact">
                         <label>Telefono</label>
-                        <select ng-model="businessNumberPrefix" required>
+                        <select ng-model="businessPhonePrefix" required>
                           <option value="02">02</option>
                           <option value="32">32</option>
                           <option value="33">33</option>
@@ -488,7 +488,7 @@
                           <option value="73">73</option>
                           <option value="75">75</option>
                         </select>
-                        <input type="text" name="" placeholder="" ng-model="businessNumberRest" required>
+                        <input type="text" name="" placeholder="" ng-model="businessPhoneNumber" required>
                     </div>
                     <div class="large-7 columns"></div>
                 </div>
@@ -514,15 +514,15 @@
                 <div class="row">
                     <div class="large-4 columns">
                         <label>Ciudad</label>
-                        <input type="text" name="" placeholder="" ng-model="formData.company_address_city" required>
+                        <input type="text" maxlength="50" placeholder="" ng-model="formData.company_address_city" ng-maxlength=50 required>
                     </div>
                     <div class="large-4 columns">
                         <label>Dirección</label>
-                        <input type="text" name="" placeholder="" ng-model="formData.company_address_street" required>
+                        <input type="text" maxlength="50" placeholder="" ng-model="formData.company_address_street" required ng-maxlength=50>
                     </div>
                     <div class="large-2 columns">
                         <label>Numero</label>
-                        <input type="text" name="" placeholder="" ng-model="formData.company_address_number" required>
+                        <input type="text" maxlength="50" placeholder="" ng-model="formData.company_address_number" ng-maxlength=50 required>
                     </div>
                     <div class="large-2 columns"></div>
                 </div>
