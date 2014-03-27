@@ -126,6 +126,7 @@ angular.module('tucargaApp')
 
     // Set validation to false
     $scope.submitted = false;
+    // $scope.impo_form.submitted = true;
 
     // Post to server
     $scope.freightPost = function() {
@@ -137,24 +138,32 @@ angular.module('tucargaApp')
         // Parametros de una cotizacion
         $scope.formData.other = $scope.otherInfo();
         //Telefonos empresa y usuario
-        $scope.formData.company_phone =  businessPhone();
-        $scope.formData.userdirectory_mobile = userMobile();
-        $scope.formData.userdirectory_phone = userPhone();
-        // send the form
-        $http({
-            method : 'POST',
-            url : 'http://127.0.0.1:8000/directory/freightfirststep/',
-            data : $scope.formData, // pass in data as strings
-            headers : {'Content-Type': 'application/json'}
-          })
-        .success(function(data) {
-            //console.log('win' + data);
-            $location.url('/cotizar/exito')
+        $scope.formData.company_phone =  $scope.businessPhone();
+        $scope.formData.userdirectory_mobile = $scope.userMobile();
+        $scope.formData.userdirectory_phone = $scope.userPhone();
 
-          })
-        .error(function(data) {
-            // console.log('fail' + data);
-          });
+        // Submit validation
+        if($scope.impo_form.$valid) {
+            // send the form
+            $http({
+                method : 'POST',
+                url : 'http://127.0.0.1:8000/directory/freightfirststep/',
+                data : $scope.formData, // pass in data as strings
+                headers : {'Content-Type': 'application/json'}
+              })
+            .success(function(data) {
+                //console.log('win' + data);
+                $location.url('/cotizar/exito')
+
+              })
+            .error(function(data) {
+                // console.log('fail' + data);
+              });
+        }else {
+            $scope.impo_form.submitted = true;
+            console.log("no valid");
+        };
+
       };
 
   });
