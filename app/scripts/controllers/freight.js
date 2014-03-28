@@ -106,6 +106,7 @@ angular.module('tucargaApp')
     // Funcion para parametros de cotizacion
     $scope.otherInfo = function() {
         return $scope.otherOne + ',' + $scope.otherTwo + ',' + $scope.otherThree;
+        if ($scope.otherOne = true) {$scope.otherOne = "asdf"};
     };
 
     // Funciones para crear telefonos
