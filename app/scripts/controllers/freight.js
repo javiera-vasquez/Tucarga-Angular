@@ -122,6 +122,12 @@ angular.module('tucargaApp')
         return $scope.businessPhonePrefix + $scope.businessPhoneNumber;
     };
 
+    $scope.add_needs_storage = function() {
+        if($scope.needs_storage_true == true) {
+            return 'Si, ' + $scope.needs_storage_string;
+        } else{};
+    }
+
     // Arreglo para enviar el formulario de cotizacion
     $scope.formData = {};
 
@@ -137,6 +143,7 @@ angular.module('tucargaApp')
         $scope.formData.freightwaypoint_origin_from_date = $scope.originTotalDate();
         $scope.formData.freightwaypoint_destination_from_date =  $scope.destinationTotalDate();
         // Parametros de una cotizacion
+        $scope.formData.needs_storage = $scope.add_needs_storage();
         $scope.formData.other = $scope.otherInfo();
         //Telefonos empresa y usuario
         $scope.formData.company_phone =  $scope.businessPhone();
