@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('tucargaApp')
-  .controller('FreightController', function ($scope, $http, $location) {
+  .controller('ImpoController', function ($scope, $http, $location) {
 
     // Pregunto por las regiones
     $http({
@@ -126,7 +126,12 @@ angular.module('tucargaApp')
         if($scope.needs_storage_true == true) {
             return 'Si, ' + $scope.needs_storage_string;
         } else{};
-    }
+    };
+
+    // Generar Rut
+    $scope.rut = function() {
+        $scope.numero_rut + $scope.verificador_rut;
+    };
 
     // Arreglo para enviar el formulario de cotizacion
     $scope.formData = {};
@@ -149,7 +154,8 @@ angular.module('tucargaApp')
         $scope.formData.company_phone =  $scope.businessPhone();
         $scope.formData.userdirectory_mobile = $scope.userMobile();
         $scope.formData.userdirectory_phone = $scope.userPhone();
-
+        // Rut usuario
+        $scope.formData.company_business_number = $scope.rut();
         // Submit validation
         if($scope.impo_form.$valid) {
             // send the form

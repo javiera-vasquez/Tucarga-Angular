@@ -22,26 +22,23 @@ angular.module('tucargaApp', [
       controller: 'DirectorioController'
     })
     // Registro transportista
-    .when('/registro', {
-      templateUrl: 'views/registro.html',
-      controller: 'RegistroController'
-    })
+    // .when('/registro', {
+    //   templateUrl: 'views/registro.html',
+    //   controller: 'RegistroController'
+    // })
     .when('/exito', {templateUrl: 'views/exito.html'})
+    .when('/cotizar/exito', {templateUrl: 'views/exito.html'})
     // Registro cargador
     .when('/cotizar/usuario', {
-      templateUrl: 'views/cotizar/usuario.html',
-      controller: 'FreightController'
+      templateUrl: 'views/cotizar/usuario.html'
     })
-    .when('/cotizar/exito', {
-      templateUrl: 'views/exito.html'}
-    )
     // Cotizar
     .when('/cotizar', {
       templateUrl: 'views/cotizar.html'
     })
     .when('/cotizar/importacion', {
       templateUrl: 'views/cotizar/importacion.html',
-      controller: 'FreightController'
+      controller: 'ImpoController'
     })
     .when('/cotizar/exportacion', {
       templateUrl: 'views/cotizar/exportacion.html',
@@ -56,14 +53,14 @@ angular.module('tucargaApp', [
       controller: 'ContenedorController'
     })
     // Test de API
-    .when('/polls', {
-      templateUrl: 'views/polls.html',
-      controller: 'PollsController'
-    })
-    .when('/choices', {
-      templateUrl: 'views/choices.html',
-      controller: 'ChoicesController'
-    })
+    // .when('/polls', {
+    //   templateUrl: 'views/polls.html',
+    //   controller: 'PollsController'
+    // })
+    // .when('/choices', {
+    //   templateUrl: 'views/choices.html',
+    //   controller: 'ChoicesController'
+    // })
     .otherwise({
       redirectTo: '/'
     });

@@ -555,30 +555,34 @@
                     <div class="large-4 columns">
                         <label>Nombre empresa</label>
                         <input class="" type="text" name="nombre_empresa" maxlength="100" placeholder="" ng-model="formData.company_name" ng-maxlength=100 required>
-                          <div class="error-container" ng-show="impo_form.nombre_empresa.$dirty && impo_form.nombre_empresa.$invalid">
+                          <div class="error-container" ng-show="(impo_form.nombre_empresa.$dirty && impo_form.nombre_empresa.$invalid) || impo_form.submitted">
                             <small class="error" ng-show="impo_form.nombre_empresa.$error.required">Campo obligatorio</small>
                           </div>
                     </div>
                     <div class="large-4 columns">
                         <label>Razon social</label>
                         <input type="text" name="razon_social" maxlength="50" placeholder="" ng-model="formData.company_business_name" ng-maxlength=50 required>
-                          <div class="error-container" ng-show="impo_form.razon_social.$dirty && impo_form.razon_social.$invalid">
+                          <div class="error-container" ng-show="(impo_form.razon_social.$dirty && impo_form.razon_social.$invalid) || impo_form.submitted">
                             <small class="error" ng-show="impo_form.razon_social.$error.required">Campo obligatorio</small>
                           </div>
                     </div>
                     <div class="large-4 columns">
                         <label>Rut</label>
-                        <input type="text" maxlength="12" placeholder="sin puntos y con guion" ng-model="formData.company_business_number" ng-maxlength=12 g-pattern="\b\d{1,8}\-[K|k|0-9]" required>
-                          <div class="error-container" ng-show="impo_form.razon_social.$dirty && impo_form.razon_social.$invalid">
-                            <small class="error" ng-show="impo_form.razon_social.$error.required">Campo obligatorio</small>
-                          </div>
+                        <input type="text" name="rut_number" class="left" style="width: 80%; margin-right:5%;" maxlength="10" placeholder="" ng-model="numero_rut" ng-minlength=10 ng-maxlength=10 g-pattern="\b\d{1,8}\" required>
+                        <input type="text" name="rut_prefix" class="left" style="width: 15%;" maxlength="1" placeholder="" ng-model="verificador_rut" ng-minlength=1 ng-maxlength=1 g-pattern="[K|k|0-9]" required>
+                        <div class="error-container" ng-show="(impo_form.rut_number.$dirty && impo_form.rut_number.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.rut_number.$error.required">Falta rut</small>
+                        </div>
+                        <div class="error-container" ng-show="(impo_form.rut_prefix.$dirty && impo_form.rut_prefix.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.rut_prefix.$error.required">Falta codigo verificador</small>
+                        </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="large-5 columns compact">
                         <label>Telefono</label>
-                        <select ng-model="businessPhonePrefix" required>
+                        <select name="phone_work_prefix" ng-model="businessPhonePrefix" required>
                           <option value="02">02</option>
                           <option value="32">32</option>
                           <option value="33">33</option>
@@ -605,8 +609,11 @@
                           <option value="75">75</option>
                         </select>
                         <input type="text" name="phone_work" placeholder="" ng-model="businessPhoneNumber" required>
-                        <div class="error-container" ng-show="impo_form.phone_work.$dirty && impo_form.phone_work.$invalid">
-                          <small class="error" ng-show="impo_form.phone_work.$error.required">Campo obligatorio</small>
+                        <div class="error-container" ng-show="(impo_form.phone_work.$dirty && impo_form.phone_work.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.phone_work.$error.required">Telefono obligatorio</small>
+                        </div>
+                        <div class="error-container" ng-show="(impo_form.phone_work_prefix.$dirty && impo_form.phone_work_prefix.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.phone_work_prefix.$error.required">Codigo de área obligatorio</small>
                         </div>
                     </div>
                     <div class="large-7 columns"></div>
@@ -627,7 +634,7 @@
                           ng-model="formData.company_address_region"
                           ng-options="region.id as region.name for region in returnRegion">
                         </select>
-                        <div class="error-container" ng-show="impo_form.region_work.$dirty && impo_form.region_work.$invalid">
+                        <div class="error-container" ng-show="(impo_form.region_work.$dirty && impo_form.region_work.$invalid) || impo_form.submitted">
                           <small class="error" ng-show="impo_form.region_work.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
@@ -638,21 +645,21 @@
                     <div class="large-4 columns">
                         <label>Ciudad</label>
                         <input type="text" name="city_work" maxlength="50" placeholder="" ng-model="formData.company_address_city" ng-maxlength=50 required>
-                        <div class="error-container" ng-show="impo_form.city_work.$dirty && impo_form.city_work.$invalid">
+                        <div class="error-container" ng-show="(impo_form.city_work.$dirty && impo_form.city_work.$invalid) || impo_form.submitted">
                           <small class="error" ng-show="impo_form.city_work.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-4 columns">
                         <label>Dirección</label>
                         <input type="text" name="address_work" maxlength="50" placeholder="" ng-model="formData.company_address_street" required ng-maxlength=50>
-                        <div class="error-container" ng-show="impo_form.address_work.$dirty && impo_form.address_work.$invalid">
+                        <div class="error-container" ng-show="(impo_form.address_work.$dirty && impo_form.address_work.$invalid) || impo_form.submitted">
                           <small class="error" ng-show="impo_form.address_work.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-2 columns">
                         <label>Numero</label>
                         <input type="text" name="number_work" maxlength="50" placeholder="" ng-model="formData.company_address_number" ng-maxlength=50 required>
-                        <div class="error-container" ng-show="impo_form.number_work.$dirty && impo_form.number_work.$invalid">
+                        <div class="error-container" ng-show="(impo_form.number_work.$dirty && impo_form.number_work.$invalid) || impo_form.submitted">
                           <small class="error" ng-show="impo_form.number_work.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
