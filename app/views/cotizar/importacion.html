@@ -448,8 +448,8 @@
                   <div class="row">
                       <div class="large-6 columns">
                           <label>Correo electronico</label>
-                          <input type="email" name="email" ng-model="formData.contact_email" placeholder="" required email-available/>
-                          <div class="error-container" ng-show="impo_form.email.$dirty && impo_form.email.$invalid">
+                          <input type="email" name="email" ng-model="formData.contact_email" placeholder="" email-available/>
+                          <div class="error-container" ng-show="impo_form.email.$dirty && impo_form.email.$invalid)">
                               <span class="error" ng-show="impo_form.email.$error.required">Campo obligatorio</span>
                               <span class="error" ng-show="impo_form.email.$error.email">El correo ingresado no es valido</span>
                               <span class="error" ng-show="impo_form.email.$error.emailAvailable">El usuario no existe, favor agregar datos de usuario</span>
