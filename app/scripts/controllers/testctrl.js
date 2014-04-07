@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('tucargaApp')
-  .controller('ImpoController', function ($scope, $http, $location) {
+  .controller('FormController', function ($scope, $http, $location) {
 
     // Pregunto por las regiones
     $http({
@@ -96,11 +96,11 @@ angular.module('tucargaApp')
     $scope.originDate = "";
 
     $scope.originTotalDate = function() {
-        return $scope.destinationDate + 'T' + $scope.destinationHour;
+        return $scope.originDate + $scope.originHour;
     };
 
     $scope.destinationTotalDate = function() {
-        return $scope.originDate + $scope.originHour;
+        return $scope.destinationDate + 'T' + $scope.destinationHour;
     };
 
     // Funcion para parametros de cotizacion
@@ -143,7 +143,7 @@ angular.module('tucargaApp')
     // Post to server
     $scope.freightPost = function() {
         // Tipo de cotizacion
-        $scope.formData.obj_type = "expo";
+        $scope.formData.obj_type = "impo";
         // Funciones de fechas
         $scope.formData.freightwaypoint_origin_from_date = $scope.originTotalDate();
         $scope.formData.freightwaypoint_destination_from_date =  $scope.destinationTotalDate();

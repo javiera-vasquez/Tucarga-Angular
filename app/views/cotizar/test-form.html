@@ -1,0 +1,732 @@
+<div id="content-page">
+    <div  id="form" class="row">
+        <div class="small-9 small-centered columns">
+            <div id="content-view">
+
+              <div class="title-page form clearfix">
+                  <div class="left">
+                    <h6>Estas cotizando</h6>
+                    <h3>Transporte para una importación</h3>
+                  </div>
+                  <a class="button radius right" href="#/cotizar">Volver a cotización</a>
+              </div> <!-- {{! end title page}} -->
+
+              <form name="impo_form" novalidate ng-submit="freightPost()">
+
+              <div class="row form-layout">
+                  <div class="large-8 columns">
+
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5><span>1</span>Ruta de carga</h5>
+                    </div>
+                </div>
+
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5 class="subhearder">Puerto de origen</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label>Region</label>
+                        <select
+                          name="region_origen_puerto"
+                          ng-model="formData.freightwaypoint_origin_region"
+                          ng-options="region.id as region.name for region in returnRegion"
+                          required>
+                        </select>
+                        <div class="error-container" ng-show="(impo_form.region_origen_puerto.$dirty && impo_form.region_origen_puerto.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.region_origen_puerto.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                    <div class="large-2 columns">
+                        <label>Puerto</label>
+                        <input type="text" name="puerto"  placeholder="" maxlength="50" ng-model="formData.freightwaypoint_origin_origin_destination_port" ng-minlength=3 ng-maxlength=50 required>
+                        <div class="error-container" ng-show="(impo_form.puerto.$dirty && impo_form.puerto.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.puerto.$error.required">Campo obligatorio</small>
+                          <small class="error" ng-show="impo_form.puerto.$error.minlength">El numero minimo de caracteres es 3</small>
+                        </div>
+                    </div>
+
+                    <div class="large-4 columns">
+                        <label>nombre nave</label>
+                        <input type="text" name="nombre_nave"  placeholder="" maxlength="50" ng-model="formData.freightwaypoint_origin_ship_name" ng-minlength=3 ng-maxlength=50 required>
+                        <div class="error-container" ng-show="(impo_form.nombre_nave.$dirty && impo_form.nombre_nave.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.nombre_nave.$error.required">Campo obligatorio</small>
+                          <small class="error" ng-show="impo_form.nombre_nave.$error.minlength">El numero minimo de caracteres es 3</small>
+                        </div>
+                    </div>
+                    <div class="large-2 columns">
+                        <label>Fecha</label>
+                        <input class="datepicker-input" name="cuando_origen" type="text" ng-model="originDate" placeholder="" required>
+                        <div class="error-container" ng-show="(impo_form.cuando_origen.$dirty && impo_form.cuando_origen.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.cuando_origen.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5 class="subhearder">Entrega en planta del cliente</h5>
+                    </div>
+                </div>
+
+                  <div class="row">
+                    <div class="large-4 columns">
+                        <label>Region</label>
+                        <select
+                          name="region_origen"
+                          ng-model="destinationCommuneRegion"
+                          ng-change="destinationCommune()"
+                          ng-options="region.id as region.name for region in returnRegion"
+                          required>
+                        </select>
+                        <div class="error-container" ng-show="(impo_form.region_origen.$dirty && impo_form.region_origen.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.region_origen.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                    <div class="large-4 columns">
+                        <label>Comuna</label>
+                          <select
+                            name="comuna_origen"
+                            ng-model="formData.freightwaypoint_destination_commune"
+                            ng-options="commune.id as commune.name for commune in destinationSelectCommune"
+                            required>
+                            </select>
+                          <div class="error-container" ng-show="(impo_form.comuna_origen.$dirty && impo_form.comuna_origen.$invalid) || impo_form.submitted">
+                            <small class="error" ng-show="impo_form.comuna_origen.$error.required">Campo obligatorio</small>
+                          </div>
+                    </div>
+                    <div class="large-2 columns">
+                        <label>Fecha</label>
+                        <input class="datepicker-input" type="text" name="cuando_origen"  placeholder="" ng-model="destinationDate" required>
+                        <div class="error-container" ng-show="(impo_form.cuando_origen.$dirty && impo_form.cuando_origen.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.cuando_origen.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                    <div class="large-2 columns">
+                        <label>Hora</label>
+                        <select name="hora_origen" ng-model="destinationHour" required>
+                          <option value="01:00">01:00</option>
+                          <option value="02:00">02:00</option>
+                          <option value="03:00">03:00</option>
+                          <option value="04:00">04:00</option>
+                          <option value="05:00">05:00</option>
+                          <option value="06:00">06:00</option>
+                          <option value="07:00">07:00</option>
+                          <option value="08:00">08:00</option>
+                          <option value="09:00">09:00</option>
+                          <option value="10:00">10:00</option>
+                          <option value="11:00">11:00</option>
+                          <option value="12:00">12:00</option>
+                          <option value="13:00">13:00</option>
+                          <option value="14:00">14:00</option>
+                          <option value="15:00">15:00</option>
+                          <option value="16:00">16:00</option>
+                          <option value="17:00">17:00</option>
+                          <option value="18:00">18:00</option>
+                          <option value="19:00">18:00</option>
+                          <option value="20:00">20:00</option>
+                          <option value="21:00">21:00</option>
+                          <option value="22:00">22:00</option>
+                          <option value="23:00">23:00</option>
+                          <option value="24:00">24:00</option>
+                        </select>
+                        <div class="error-container" ng-show="(impo_form.hora_origen.$dirty && impo_form.hora_origen.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.hora_origen.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label>Quien descarga</label>
+                        <select name="quien_carga" ng-model="formData.freightwaypoint_destination_who_load_unload" required>
+                          <option value="Transportista" selected="selected">Transportista</option>
+                          <option value="Cargador">Cargador</option>
+                        </select>
+                        <div class="error-container" ng-show="(impo_form.quien_carga.$dirty && impo_form.quien_carga.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.quien_carga.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                    <div class="large-6 columns">
+                        <label>Tiempo estimado de descarga</label>
+                        <select name="hora_origen" ng-model="formData.freightwaypoint_destination_load_unload_time" style="width: 40%;">
+                          <option value="1 hora">1 hora</option>
+                          <option value="2 horas">2 horas</option>
+                          <option value="3 horas">3 horas</option>
+                          <option value="4 horas">4 horas</option>
+                          <option value="5 horas">5 horas</option>
+                          <option value="mas de 6 horas">mas de 6 horas</option>
+                        </select>
+                    </div>
+                    <div class="large-2 columns">
+                    </div>
+                </div>
+
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5 class="subhearder">Devolución del contenedor</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label>Region</label>
+                        <select
+                          name="region_destino"
+                          ng-model="returnCommuneRegion"
+                          ng-change="returnCommune()"
+                          ng-options="region.id as region.name for region in returnRegion"
+                          required>
+                        </select>
+                        <div class="error-container" ng-show="(impo_form.region_destino.$dirty && impo_form.region_destino.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.region_destino.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                    <div class="large-4 columns">
+                        <label>Comuna</label>
+                          <select
+                            name="comuna_destino"
+                            ng-model="formData.freightlocation_return_commune"
+                            ng-options="commune.id as commune.name for commune in returnSelectCommune"
+                            required>
+                          </select>
+                        <div class="error-container" ng-show="(impo_form.comuna_destino.$dirty && impo_form.comuna_destino.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.comuna_destino.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                    <div class="large-4 columns">
+                        <label>Nombre deposito</label>
+                        <input type="text" name="nombre_deposito" placeholder="Nombre o dirección" maxlength="50" ng-model="formData.freightlocation_return_deposit_name" ng-minlength=3 ng-maxlength=50 required>
+                        <div class="error-container" ng-show="(impo_form.nombre_deposito.$dirty && impo_form.nombre_deposito.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.nombre_deposito.$error.required">Campo obligatorio</small>
+                          <small class="error" ng-show="impo_form.nombre_deposito.$error.minlength">El numero minimo de caracteres es 3</small>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <!-- PARTE CARGA -->
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5><span>2</span>Descripción de carga</h5>
+                    </div>
+                </div>
+
+                <div class="carga-box">
+                    <fieldset>
+                        <legend>Carga numero 1</legend>
+
+                        <div class="row">
+                            <div class="large-4 columns">
+                                <label>Tipo de carga</label>
+                                <select
+                                  name="tipo_carga"
+                                  ng-model="formData.freightdetail_obj_type"
+                                  ng-options="freighttype.id as freighttype.name for freighttype in returnFreightType"
+                                  required>
+                                </select>
+                                <div class="error-container" ng-show="(impo_form.tipo_carga.$dirty && impo_form.tipo_carga.$invalid) || impo_form.submitted">
+                                  <small class="error" ng-show="impo_form.tipo_carga.$error.required">Campo obligatorio</small>
+                                </div>
+                            </div>
+                            <div class="large-4 columns">
+                                <label>Tipo de Contenedor</label>
+                                <select
+                                  name="tipo_contenedor"
+                                  ng-model="formData.freightdetail_container_type"
+                                  ng-options="containertype.id as containertype.name for containertype in returncContainerType"
+                                  required>
+                                </select>
+                                <div class="error-container" ng-show="(impo_form.tipo_contenedor.$dirty && impo_form.tipo_contenedor.$invalid) || impo_form.submitted">
+                                  <small class="error" ng-show="impo_form.tipo_contenedor.$error.required">Campo obligatorio</small>
+                                </div>
+                            </div>
+                            <div class="large-2 columns">
+                                <label>Peso en KG</label>
+                                <input class="" name="peso_1" type="text" maxlength="50" ng-model="formData.freightdetail_units" placeholder="" ng-minlength=1 ng-maxlength=5 required>
+                                <div class="error-container" ng-show="(impo_form.peso_1.$dirty && impo_form.peso_1.$invalid) || impo_form.submitted">
+                                  <small class="error" ng-show="impo_form.peso_1.$error.required">Campo obligatorio</small>
+                                </div>
+                            </div>
+                            <div class="large-2 columns">
+                                <label>Unidades</label>
+                                <input class="" name="unidades_1" type="text" maxlength="50" ng-model="formData.freightdetail_weight" placeholder="" ng-minlength=1 ng-maxlength=5 required>
+                                <div class="error-container" ng-show="(impo_form.unidades_1.$dirty && impo_form.unidades_1.$invalid) || impo_form.submitted">
+                                  <small class="error" ng-show="impo_form.unidades_1.$error.required">Campo obligatorio</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                <label>Descripción de la carga</label>
+                                <input type="text" name="descripcion_carga" maxlength="100" ng-model="formData.freightdetail_description" placeholder="¿Que estas transportando?" ng-maxlength=100 required>
+                                <div class="error-contcondicionesainer" ng-show="(impo_form.descripcion_carga.$dirty && impo_form.descripcion_carga.$invalid) || impo_form.submitted">
+                                  <small class="error" ng-show="impo_form.descripcion_carga.$error.required">Campo obligatorio</small>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div> <!-- end caga box -->
+
+                <div class="carga-box2">
+                    <fieldset>
+                        <legend>Carga numero 2</legend>
+
+                        <div class="row">
+                            <div class="large-4 columns">
+                                <label>Tipo de carga</label>
+                                <select>
+                                  <option value="0">Tipo</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="large-4 columns">
+                                <label>Tipo de Contenedor</label>
+                                <select>
+                                  <option value="0">Tipo</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="large-2 columns">
+                                <label>Unidades</label>
+                                <input class="" type="text" name="" value="" placeholder="">
+                            </div>
+                            <div class="large-2 columns">
+                                <label>Peso</label>
+                                <input class="" type="text" name="" value="" placeholder="KG">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                <label>Descripción de la carga</label>
+                                <input type="text" name="" value="" placeholder="">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div> <!-- end caga box -->
+
+                <div class="carga-box3">
+                    <fieldset>
+                        <legend>Carga numero 3</legend>
+
+                        <div class="row">
+                            <div class="large-4 columns">
+                                <label>Tipo de carga</label>
+                                <select>
+                                  <option value="0">Tipo</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="large-4 columns">
+                                <label>Tipo de Contenedor</label>
+                                <select>
+                                  <option value="0">Tipo</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                </select>
+                            </div>
+                            <div class="large-2 columns">
+                                <label>Unidades</label>
+                                <input class="" type="text" name="" value="" placeholder="">
+                            </div>
+                            <div class="large-2 columns">
+                                <label>Peso</label>
+                                <input class="" type="text" name="" value="" placeholder="KG">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="large-12 columns">
+                                <label>Descripción de la carga</label>
+                                <input type="text" name="" value="" placeholder="">
+                            </div>
+                        </div>
+                    </fieldset>
+                </div> <!-- end caga box -->
+
+                <div class="row">
+                    <div class="large-12 columns">
+                        <p class="add-new-carga">Agregar otra carga</p>
+                    </div>
+                </div>
+
+                <br>
+                <!-- REQUERIMIENTOS -->
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5><span>3</span>Requerimientos del servicio</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-2 columns">
+                        <label>Seguro</label>
+                        <input class="" type="text" name="" ng-model="formData.insurance" placeholder="UF" ng-minlength=1 ng-maxlength=50>
+                    </div>
+                    <div class="large-5 columns">
+                        <label>Condiciones y forma de pago</label>
+                        <input type="text" name="condiciones" ng-model="formData.service_conditions" placeholder="30, 60 o 90 dias" ng-maxlength=50 required>
+                        <div class="error-container" ng-show="(impo_form.condiciones.$dirty && impo_form.condiciones.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.condiciones.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                    <div class="large-5 columns">
+                        <label>Almacenaje</label>
+                        <input type="text" name="" ng-model="formData.needs_storage" placeholder="¿Necesita almacenaje?" ng-maxlength=50>
+                    </div>
+                </div>
+
+                <div class="row">
+                  <div class="large-6 columns">
+                    <label>¿Necesita almacenaje?</label>
+                    <input type="radio" id="si_almacenaje" name="almacenaje" value="si" placeholder=""><label for="si_almacenaje">Si</label>
+                    <input type="radio" ng-model="needs_storage_true" id="no_almacenaje" name="almacenaje" value="no" placeholder=""><label for="no_almacenaje">No</label>
+                    <div class="show_amalcenaje none">
+                      <input type="text" name="" ng-model="needs_storage_string" placeholder="¿Necesita almacenaje?" ng-maxlength=45>
+                    </div>
+                  </div>
+                  <div class="large-6 columns"></div>
+                </div>
+
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>Información adicional</label>
+                        <input type="text" name="" ng-model="formData.comments" placeholder="Necesita un peoneta, enrcarpado, etc…">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label>Tipo de camión</label>
+                        <select
+                          ng-model="formData.truck_type"
+                          ng-options="trucktype.id as trucktype.name for trucktype in returnTruckType">
+                        </select>
+                    </div>
+                    <div class="large-4 columns">
+                        <label>Equipamiento</label>
+                        <select
+                          ng-model="formData.equipment"
+                          ng-options="equipment.id as equipment.name for equipment in returnEquipment">
+                        </select>
+                    </div>
+                    <div class="large-4 columns">
+                    </div>
+                </div>
+
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5 class="subhearder">Motivo de la cotización</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-8 columns">
+                        <input type="checkbox" id="2" ng-model="otherOne" value="Busco transporte por temporada"> <label for="2">Busco transporte por temporada</label><br />
+                        <input type="checkbox" id="3" ng-model="otherTwo" value="Busco proveedores con los que trabajar"> <label for="3">Busco proveedores con los que trabajar</label><br />
+                        <input type="checkbox" id="4" ng-model="otherThree" value="Busco conocer tarifas de mercado"> <label for="4">Busco conocer tarifas de mercado</label><br />
+                    </div>
+                    <div class="large-4 columns"></div>
+                </div>
+                <br>
+
+                <!-- DATOS PERSONALES -->
+                <div class="asdf">
+                  <div class="row step">
+                      <div class="large-12 columns">
+                          <h5><span>4</span>Información de contacto</h5>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="large-6 columns">
+                          <label>Correo electronico</label>
+                          <input type="email" name="email" ng-model="formData.contact_email" placeholder="" required email-available/>
+                          <div class="error-container" ng-show="impo_form.email.$dirty && impo_form.email.$invalid">
+                              <span class="error" ng-show="impo_form.email.$error.required">Campo obligatorio</span>
+                              <span class="error" ng-show="impo_form.email.$error.email">El correo ingresado no es valido</span>
+                              <span class="error" ng-show="impo_form.email.$error.emailAvailable">El usuario no existe, favor agregar datos de usuario</span>
+                          </div>
+                      </div>
+                      <div class="large-6 columns"></div>
+                  </div>
+                </div>
+
+                <div id="add-person" class="none">
+
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5 class="subhearder">Datos personales</h5>
+                    </div>
+                </div>
+
+                  <div class="row">
+                      <div class="large-4 columns">
+                          <label>Nombre</label>
+                          <input type="text" name="nombre_user" maxlength="50" placeholder="" ng-model="formData.contact_first_name" ng-maxlength=50 required>
+                          <div class="error-container" ng-show="(impo_form.nombre_user.$dirty && impo_form.nombre_user.$invalid) || impo_form.submitted">
+                            <small class="error" ng-show="impo_form.nombre_user.$error.required">Campo obligatorio</small>
+                          </div>
+                      </div>
+                      <div class="large-4 columns">
+                          <label>Apellido</label>
+                          <input type="text" name="apellido_user" maxlength="50" placeholder="" ng-model="formData.contact_last_name"  ng-maxlength=50 required>
+                          <div class="error-container" ng-show="(impo_form.apellido_user.$dirty && impo_form.apellido_user.$invalid) || impo_form.submitted">
+                            <small class="error" ng-show="impo_form.apellido_user.$error.required">Campo obligatorio</small>
+                          </div>
+                      </div>
+                      <div class="large-4 columns">
+                          <label>Cargo que desempeña</label>
+                          <input type="text" maxlength="50" placeholder="" ng-model="formData.userdirectory_position" ng-maxlength=50>
+                      </div>
+                  </div>
+
+                  <div class="row">
+                      <div class="large-5 columns compact">
+                          <label>Telefono fijo</label>
+                          <select ng-model="userPhonePrefix" name="phone_user_prefix" required>
+                            <option value="02">02</option>
+                            <option value="32">32</option>
+                            <option value="33">33</option>
+                            <option value="34">34</option>
+                            <option value="35">35</option>
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                            <option value="43">43</option>
+                            <option value="45">45</option>
+                            <option value="51">51</option>
+                            <option value="52">52</option>
+                            <option value="53">53</option>
+                            <option value="55">55</option>
+                            <option value="57">57</option>
+                            <option value="58">58</option>
+                            <option value="61">61</option>
+                            <option value="63">63</option>
+                            <option value="64">64</option>
+                            <option value="65">65</option>
+                            <option value="67">67</option>
+                            <option value="71">71</option>
+                            <option value="72">72</option>
+                            <option value="73">73</option>
+                            <option value="75">75</option>
+                          </select>
+                          <input type="text" name="phone_user" placeholder="" ng-model="userPhoneNumber" maxlength="8" ng-maxlength=8 ng-minlength=6 required>
+                          <div class="error-container" ng-show="(impo_form.phone_user_prefix.$dirty && impo_form.phone_user_prefix.$invalid) || impo_form.submitted">
+                            <small class="error" ng-show="impo_form.phone_user_prefix.$error.required">Codigo de área obligatorio</small>
+                          </div>
+                          <div class="error-container" ng-show="(impo_form.phone_user.$dirty && impo_form.phone_user.$invalid) || impo_form.submitted">
+                            <small class="error" ng-show="impo_form.phone_user.$error.required">Telefono obligatorio</small>
+                          </div>
+                      </div>
+                      <div class="large-5 columns compact">
+                          <label>Telefono celular</label>
+                          <select ng-model="userMobilePrefix" name="cel_user_prefix" required>
+                            <option value="09">09</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                          </select>
+                          <input type="text" name="cel_user_number" placeholder="" ng-model="userMobileNumber" maxlength="8" ng-maxlength=8 ng-minlength=6 required>
+                          <div class="error-container" ng-show="(impo_form.cel_user_prefix.$dirty && impo_form.cel_user_prefix.$invalid) || impo_form.submitted">
+                            <small class="error" ng-show="impo_form.cel_user_prefix.$error.required">Codigo de área obligatorio</small>
+                          </div>
+                          <div class="error-container" ng-show="(impo_form.cel_user_number.$dirty && impo_form.cel_user_number.$invalid) || impo_form.submitted">
+                            <small class="error" ng-show="impo_form.cel_user_number.$error.required">Telefono obligatorio</small>
+                          </div>
+                      </div>
+                      <div class="large-2 columns"></div>
+                  </div>
+                  <br>
+                <!-- DATOS EMPRESA -->
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5 class="subhearder">Contacto empresa</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label>Nombre empresa</label>
+                        <input class="" type="text" name="nombre_empresa" maxlength="100" placeholder="" ng-model="formData.company_name" ng-maxlength=100 required>
+                          <div class="error-container" ng-show="(impo_form.nombre_empresa.$dirty && impo_form.nombre_empresa.$invalid) || impo_form.submitted">
+                            <small class="error" ng-show="impo_form.nombre_empresa.$error.required">Campo obligatorio</small>
+                          </div>
+                    </div>
+                    <div class="large-4 columns">
+                        <label>Razon social</label>
+                        <input type="text" name="razon_social" maxlength="50" placeholder="" ng-model="formData.company_business_name" ng-maxlength=50 required>
+                          <div class="error-container" ng-show="(impo_form.razon_social.$dirty && impo_form.razon_social.$invalid) || impo_form.submitted">
+                            <small class="error" ng-show="impo_form.razon_social.$error.required">Campo obligatorio</small>
+                          </div>
+                    </div>
+                    <div class="large-4 columns">
+                        <label>Rut</label>
+                        <input type="text" name="rut_number" class="left" style="width: 80%; margin-right:5%;" maxlength="10" placeholder="" ng-model="numero_rut" ng-minlength=10 ng-maxlength=10 g-pattern="\b\d{1,8}\" required>
+                        <input type="text" name="rut_prefix" class="left" style="width: 15%;" maxlength="1" placeholder="" ng-model="verificador_rut" ng-minlength=1 ng-maxlength=1 g-pattern="[K|k|0-9]" required>
+                        <div class="error-container" ng-show="(impo_form.rut_number.$dirty && impo_form.rut_number.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.rut_number.$error.required">Falta rut</small>
+                        </div>
+                        <div class="error-container" ng-show="(impo_form.rut_prefix.$dirty && impo_form.rut_prefix.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.rut_prefix.$error.required">Falta codigo verificador</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-5 columns compact">
+                        <label>Telefono</label>
+                        <select name="phone_work_prefix" ng-model="businessPhonePrefix" required>
+                          <option value="02">02</option>
+                          <option value="32">32</option>
+                          <option value="33">33</option>
+                          <option value="34">34</option>
+                          <option value="35">35</option>
+                          <option value="41">41</option>
+                          <option value="42">42</option>
+                          <option value="43">43</option>
+                          <option value="45">45</option>
+                          <option value="51">51</option>
+                          <option value="52">52</option>
+                          <option value="53">53</option>
+                          <option value="55">55</option>
+                          <option value="57">57</option>
+                          <option value="58">58</option>
+                          <option value="61">61</option>
+                          <option value="63">63</option>
+                          <option value="64">64</option>
+                          <option value="65">65</option>
+                          <option value="67">67</option>
+                          <option value="71">71</option>
+                          <option value="72">72</option>
+                          <option value="73">73</option>
+                          <option value="75">75</option>
+                        </select>
+                        <input type="text" name="phone_work" placeholder="" ng-model="businessPhoneNumber" required>
+                        <div class="error-container" ng-show="(impo_form.phone_work.$dirty && impo_form.phone_work.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.phone_work.$error.required">Telefono obligatorio</small>
+                        </div>
+                        <div class="error-container" ng-show="(impo_form.phone_work_prefix.$dirty && impo_form.phone_work_prefix.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.phone_work_prefix.$error.required">Codigo de área obligatorio</small>
+                        </div>
+                    </div>
+                    <div class="large-7 columns"></div>
+                </div>
+
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5 class="subhearder">Dirección empresa</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label>Region</label>
+                        <select
+                          name="region_work"
+                          required
+                          ng-model="formData.company_address_region"
+                          ng-options="region.id as region.name for region in returnRegion">
+                        </select>
+                        <div class="error-container" ng-show="(impo_form.region_work.$dirty && impo_form.region_work.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.region_work.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                    <div class="large-8 columns"></div>
+                </div>
+
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label>Ciudad</label>
+                        <input type="text" name="city_work" maxlength="50" placeholder="" ng-model="formData.company_address_city" ng-maxlength=50 required>
+                        <div class="error-container" ng-show="(impo_form.city_work.$dirty && impo_form.city_work.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.city_work.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                    <div class="large-4 columns">
+                        <label>Dirección</label>
+                        <input type="text" name="address_work" maxlength="50" placeholder="" ng-model="formData.company_address_street" required ng-maxlength=50>
+                        <div class="error-container" ng-show="(impo_form.address_work.$dirty && impo_form.address_work.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.address_work.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                    <div class="large-2 columns">
+                        <label>Numero</label>
+                        <input type="text" name="number_work" maxlength="50" placeholder="" ng-model="formData.company_address_number" ng-maxlength=50 required>
+                        <div class="error-container" ng-show="(impo_form.number_work.$dirty && impo_form.number_work.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.number_work.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                    <div class="large-2 columns"></div>
+                </div>
+
+                  <br>
+                </div> <!-- end add-person -->
+
+                <br>
+                <button class="button success radius large-12">
+                    Enviar cotización
+                </button>
+
+              </form> <!-- End  freighPost -->
+
+                  </div> <!-- {{!end form content}} -->
+                  <div class="large-4 columns">
+                      <div class="why sidebar">
+                          <h5>Beneficios de cotizar</h5>
+                          <ul>
+                              <li><i class="fi-check"></i>Trabaja con clientes confiables y recomendados</li>
+                              <li><i class="fi-check"></i>Nosotros te avisamos cada ves que tengas una oferta.</li>
+                              <li><i class="fi-check"></i>Aumenta el volumen de carga y retornos vacios.</li>
+                          </ul>
+                      </div>
+                  </div> <!-- {{! end why}} -->
+              </div> <!-- {{! end form-layout}} -->
+
+            </div><!-- {{! end #content-view}} -->
+        </div> <!-- {{! end centered}} -->
+    </div> <!-- {{! end #form}} -->
+</div> <!-- {{! end content page }} -->
+
+<script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script src="bower_components/bootstrap-datepicker/js/locales/bootstrap-datepicker.es.js"></script>
+
+<script>
+    $(document).foundation();
+    $(document).ready(function() {
+        // select the corret type
+        // Cargo datepicker
+        $('.datepicker-input').datepicker({
+          format: "yyyy-mm-dd",
+          weekStart: 1,
+          language: "es",
+        });
+        // Show input almacenaje
+        $('#si_almacenaje').on("click", function(){
+          $('.show_amalcenaje').removeClass('none');
+          $('.show_amalcenaje').addClass('show');
+        });
+        $('#no_almacenaje').on("click", function(){
+          $('.show_amalcenaje').removeClass('show');
+          $('.show_amalcenaje').addClass('none');
+        });
+        // if/else de numero de cargas
+        var i = 2;
+        $(".add-new-carga").click(function () {
+            if (i <= 3) {
+                $('.carga-box'+ (i++)).show();
+                console.log(i);
+                if (i == 4) {
+                    $(".add-new-carga").remove();
+                    console.log(i);
+                }
+            }
+        });
+    });
+</script>

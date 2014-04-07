@@ -52,6 +52,11 @@ angular.module('tucargaApp', [
       templateUrl: 'views/cotizar/contenedor.html',
       controller: 'ContenedorController'
     })
+    // Test valid form
+    .when('/cotizar/form', {
+      templateUrl: 'views/cotizar/test-form.html',
+      controller: 'FormController'
+    })
     // Test de API
     // .when('/polls', {
     //   templateUrl: 'views/polls.html',
