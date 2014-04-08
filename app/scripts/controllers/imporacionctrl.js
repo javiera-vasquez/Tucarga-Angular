@@ -11,9 +11,7 @@ angular.module('tucargaApp')
     })
     .success(function(data) {
         $scope.returnRegion = data;
-    }).error(function(data) {
-        console.log(data + "fail");
-    });
+    }).error(function(data) {});
 
     // Pregunto por la comuna segun region de destino
     $scope.destinationCommune = function() {
@@ -24,9 +22,7 @@ angular.module('tucargaApp')
         })
         .success(function(data) {
             $scope.destinationSelectCommune = data;
-        }).error(function(data) {
-            console.log(data + "fail");
-        });
+        }).error(function(data) {});
     };
 
     // Pregunto por la comuna segun region de retorno
@@ -38,9 +34,7 @@ angular.module('tucargaApp')
         })
         .success(function(data) {
             $scope.returnSelectCommune = data;
-        }).error(function(data) {
-            console.log(data + "fail");
-        });
+        }).error(function(data) {});
     };
 
     // Pregunto por el tipo de carga
@@ -51,9 +45,7 @@ angular.module('tucargaApp')
     })
     .success(function(data) {
         $scope.returnFreightType = data;
-    }).error(function(data) {
-        console.log(data + "fail");
-    });
+    }).error(function(data) {});
 
     // Pregunto por el tipo de contenedor
     $http({
@@ -63,9 +55,7 @@ angular.module('tucargaApp')
     })
     .success(function(data) {
         $scope.returncContainerType = data;
-    }).error(function(data) {
-        console.log(data + "fail");
-    });
+    }).error(function(data) {});
 
     // Pregunto por el tipo de camion
     $http({
@@ -75,9 +65,7 @@ angular.module('tucargaApp')
     })
     .success(function(data) {
         $scope.returnTruckType = data;
-    }).error(function(data) {
-        console.log(data + "fail");
-    });
+    }).error(function(data) {});
 
     // Pregunto por el tipo de equipamiento
     $http({
@@ -87,9 +75,7 @@ angular.module('tucargaApp')
     })
     .success(function(data) {
         $scope.returnEquipment = data;
-    }).error(function(data) {
-        console.log(data + "fail");
-    });
+    }).error(function(data) {});
 
     // Funciones para calcular las fechas
     $scope.originHour = "T00:00";
@@ -122,28 +108,44 @@ angular.module('tucargaApp')
         return $scope.businessPhonePrefix + $scope.businessPhoneNumber;
     };
 
+    // Necesito almacenamiento
     $scope.add_needs_storage = function() {
-        if($scope.needs_storage_true == true) {
-            return 'Si, ' + $scope.needs_storage_string;
-        } else{};
+        return 'Si, ' + $scope.needs_storage_string;
     };
 
-    // Generar Rut
     $scope.rut = function() {
         $scope.numero_rut + $scope.verificador_rut;
     };
 
-    // Arreglo para enviar el formulario de cotizacion
+    // Array of the element to send
     $scope.formData = {};
 
     // Set validation to false
     $scope.submitted = false;
-    // $scope.impo_form.submitted = true;
+
+    // Validation of the mail
+    $scope.email = function() {
+        $http({
+            method : 'GET',
+            url : 'http://127.0.0.1:8000/directory/user/' + $scope.formData.contact_email,
+            headers: {'Content-Type': 'application/json'}
+        })
+        .success(function(data) {
+           console.log("win");
+           $('#add-person').addClass('none');
+            $scope.isUserValid = function() {return false;}
+        }).error(function(data) {
+            console.log("fail");
+            $('#add-person').removeClass('none');
+            $scope.isUserValid = function() {return true;}
+        });
+    };
 
     // Post to server
     $scope.freightPost = function() {
         // Tipo de cotizacion
         $scope.formData.obj_type = "impo";
+        $scope.formData.detail = "null";
         // Funciones de fechas
         $scope.formData.freightwaypoint_origin_from_date = $scope.originTotalDate();
         $scope.formData.freightwaypoint_destination_from_date =  $scope.destinationTotalDate();
@@ -166,9 +168,8 @@ angular.module('tucargaApp')
                 headers : {'Content-Type': 'application/json'}
               })
             .success(function(data) {
-                //console.log('win' + data);
                 $location.url('/cotizar/exito')
-
+                //console.log('win' + data);
               })
             .error(function(data) {
                 // console.log('fail' + data);

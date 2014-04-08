@@ -22,15 +22,15 @@ angular.module('tucargaApp')
                       $http.get('http://127.0.0.1:8000/directory/user/' + viewValue)
                           .success(function(data, status, headers, config) {
                               console.log('win');
-                              $('#add-person').addClass('none');
-                              $('#add-person input, #add-person select').prop('disabled', true);
+                              // $('#add-person').addClass('none');
+                              // $('#add-person input, #add-person select').prop('disabled', true);
                               ctrl.$setValidity('emailAvailable', true);
                               ctrl.$setValidity('checkingEmail', true);
                           })
                           .error(function(data, status, headers, config) {
                               console.log('fail');
-                              $('#add-person').removeClass('none');
-                              $('#add-person input, #add-person select').prop('disabled', false);
+                              // $('#add-person').removeClass('none');
+                              // $('#add-person input, #add-person select').prop('disabled', false);
                               ctrl.$setValidity('emailAvailable', false);
                               ctrl.$setValidity('checkingEmail', true);
                           });
@@ -45,6 +45,7 @@ angular.module('tucargaApp')
         }
     };
 });
+
 
 // .directive('uniqueEmail', function($http) {
 //   var toId;

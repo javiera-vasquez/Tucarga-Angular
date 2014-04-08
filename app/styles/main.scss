@@ -797,6 +797,8 @@ footer {
 .ng-invalid.ng-pristine {border-color: $ccc;}
 .ng-invalid {border-color: #f04124;}
 
+.status_user.error.none {display: none;}
+.status_user.error {display: block;}
 
 
 

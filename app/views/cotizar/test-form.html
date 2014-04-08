@@ -43,6 +43,34 @@
                     <div class="large-4 columns"></div>
                 </div>
 
+                <div class="row">
+                  <div class="large-6 columns" >
+                    <label>¿Necesita almacenaje?</label>
+                    <input type="radio" id="si_almacenaje" name="almacenaje" value="si" placeholder="" ng-change="add_needs_storage()" ng-model="a">
+                    <label for="si_almacenaje">Si</label>
+                    <input type="radio" id="no_almacenaje" name="almacenaje" value="no" placeholder="">
+                    <label for="no_almacenaje">No</label>
+                    <div class="show_amalcenaje none">
+                      <input type="text" name="" ng-model="needs_storage_string" placeholder="¿Necesita almacenaje?" ng-maxlength=45>
+                    </div>
+                  </div>
+                  <div class="large-6 columns"></div>
+                </div>
+
+                <div class="row step">
+                    <div class="large-12 columns">
+                        <h5 class="subhearder">Motivo de la cotización</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-8 columns">
+                        <input type="checkbox" id="2" ng-model="otherOne" ng-true-value="Busco transporte por temporada"> <label for="2">Busco transporte por temporada</label><br />
+                        <input type="checkbox" id="3" ng-model="otherTwo" ng-true-value="Busco proveedores con los que trabajar"> <label for="3">Busco proveedores con los que trabajar</label><br />
+                        <input type="checkbox" id="4" ng-model="otherThree" ng-true-value="Busco conocer tarifas de mercado"> <label for="4">Busco conocer tarifas de mercado</label><br />
+                    </div>
+                    <div class="large-4 columns"></div>
+                    {{otherInfo()}}
+                </div>
 
                 <!-- DATOS PERSONALES -->
                 <div class="asdf">
@@ -54,18 +82,18 @@
                   <div class="row">
                       <div class="large-6 columns">
                           <label>Correo electronico</label>
-                          <input type="email" name="email" ng-model="formData.contact_email" placeholder="" required />
-                          <div class="error-container" ng-show="impo_form.email.$dirty && impo_form.email.$invalid">
+                          <input type="email" name="email" ng-model="formData.contact_email" ng-change="email()" placeholder="" required/>
+                          <div class="error-container" ng-show="(impo_form.email.$dirty && impo_form.email.$invalid) || impo_form.submitted">
                               <span class="error" ng-show="impo_form.email.$error.required">Campo obligatorio</span>
                               <span class="error" ng-show="impo_form.email.$error.email">El correo ingresado no es valido</span>
-                              <span class="error" ng-show="impo_form.email.$error.emailAvailable">El usuario no existe, favor agregar datos de usuario</span>
                           </div>
+                          <span class="error none status_user">El usuario no existe, favor agregar datos de usuario</span>
                       </div>
                       <div class="large-6 columns"></div>
                   </div>
                 </div>
 
-                <div id="add-person" class="">
+                <div id="add-person" class="none">
 
                 <div class="row step">
                     <div class="large-12 columns">
@@ -76,7 +104,7 @@
                   <div class="row">
                       <div class="large-4 columns">
                           <label>Nombre</label>
-                          <input type="text" name="nombre_user" maxlength="50" placeholder="" ng-model="formData.contact_first_name" ng-maxlength=50 required>
+                          <input type="text" name="nombre_user" maxlength="50" placeholder="" ng-model="formData.contact_first_name" ng-maxlength=50 ng-required="isUserValid()">
                           <div class="error-container" ng-show="(impo_form.nombre_user.$dirty && impo_form.nombre_user.$invalid) || impo_form.submitted">
                             <small class="error" ng-show="impo_form.nombre_user.$error.required">Campo obligatorio</small>
                           </div>
