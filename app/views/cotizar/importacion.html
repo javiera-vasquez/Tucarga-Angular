@@ -108,7 +108,7 @@
                     </div>
                     <div class="large-2 columns">
                         <label>Hora</label>
-                        <select name="hora_origen" ng-model="destinationHour" required>
+                        <select name="horaOrigen" ng-model="destinationHour" required>
                           <option value="01:00">01:00</option>
                           <option value="02:00">02:00</option>
                           <option value="03:00">03:00</option>
@@ -134,8 +134,8 @@
                           <option value="23:00">23:00</option>
                           <option value="24:00">24:00</option>
                         </select>
-                        <div class="error-container" ng-show="(impo_form.hora_origen.$dirty && impo_form.hora_origen.$invalid) || impo_form.submitted">
-                          <small class="error" >Campo obligatorio</small>
+                        <div class="error-container" ng-show="(impo_form.horaOrigen.$dirty && impo_form.horaOrigen.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.horaOrigen.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                 </div>
@@ -153,7 +153,7 @@
                     </div>
                     <div class="large-6 columns">
                         <label>Tiempo estimado de descarga</label>
-                        <select name="hora_origen" ng-model="formData.freightwaypoint_destination_load_unload_time" style="width: 40%;">
+                        <select name="tiempoEstimado" ng-model="formData.freightwaypoint_destination_load_unload_time" style="width: 40%;" required>
                           <option value="1 hora">1 hora</option>
                           <option value="2 horas">2 horas</option>
                           <option value="3 horas">3 horas</option>
@@ -161,6 +161,9 @@
                           <option value="5 horas">5 horas</option>
                           <option value="mas de 6 horas">mas de 6 horas</option>
                         </select>
+                        <div class="error-container" ng-show="(impo_form.tiempoEstimado.$dirty && impo_form.tiempoEstimado.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.tiempoEstimado.$error.required">Campo obligatorio</small>
+                        </div>
                     </div>
                     <div class="large-2 columns">
                     </div>
@@ -368,18 +371,38 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="large-2 columns">
-                        <label>Seguro</label>
-                        <input class="" type="text" name="" ng-model="formData.insurance" placeholder="UF" ng-minlength=1 ng-maxlength=50>
-                    </div>
-                    <div class="large-5 columns">
-                        <label>Condiciones y forma de pago</label>
-                        <input type="text" name="condiciones" ng-model="formData.service_conditions" placeholder="30, 60 o 90 dias" ng-maxlength=50 required>
-                        <div class="error-container" ng-show="(impo_form.condiciones.$dirty && impo_form.condiciones.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.condiciones.$error.required">Campo obligatorio</small>
+                    <div class="large-4 columns">
+                        <label>Forma de pago</label>
+                        <select name="tiempoPago" class="" ng-model="tiempoPago" required>
+                          <option value="Al Contado">Al Contado</option>
+                          <option value="Menos de 15 días">Menos de 15 días</option>
+                          <option value="15 días">15 días</option>
+                          <option value="30 días">30 días</option>
+                          <option value="45 días">45 días</option>
+                          <option value="60 días">60 días</option>
+                          <option value="90 días">90 días</option>
+                          <option value="Más de 90 días">Más de 90 días</option>
+                        </select>
+                        <div class="error-container" ng-show="(impo_form.tiempoPago.$dirty && impo_form.tiempoPago.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.tiempoPago.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
-                    <div class="large-5 columns">
+                    <div class="large-4 columns">
+                      <label>Desde</label>
+                      <select name="pagoDesde" class="" ng-model="pagoDesde" required>
+                        <option value="Emisión de factura">Emisión de factura</option>
+                        <option value="Despacho de factura">Despacho de factura</option>
+                        <option value="Recepción de factura">Recepción de factura</option>
+                        <option value="Orden de servicio">Orden de servicio</option>
+                        <option value="Sin especificar">Sin especificar</option>
+                      </select>
+                        <div class="error-container" ng-show="(impo_form.pagoDesde.$dirty && impo_form.pagoDesde.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.pagoDesde.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                    <div class="large-4 columns">
+                        <label>Seguro de carga</label>
+                        <input class="" type="text" name="" ng-model="formData.insurance" placeholder="Valor en UF" ng-minlength=1 ng-maxlength=50 style="width: 70%;">
                     </div>
                 </div>
 
@@ -568,7 +591,7 @@
                     </div>
                     <div class="large-4 columns">
                         <label>Rut</label>
-                        <input type="text" name="rut_number" class="left" style="width: 80%; margin-right:5%;" maxlength="10" placeholder="" ng-model="numero_rut" ng-minlength=10 ng-maxlength=10 g-pattern="\b\d{1,8}\" ng-required="isUserValid()">
+                        <input type="text" name="rut_number" class="left" style="width: 80%; margin-right:5%;" maxlength="8" placeholder="" ng-model="numero_rut" ng-minlength="8" ng-maxlength="8" ng-pattern="\b\d{1,8}\" ng-required="isUserValid()">
                         <input type="text" name="rut_prefix" class="left" style="width: 15%;" maxlength="1" placeholder="" ng-model="verificador_rut" ng-minlength=1 ng-maxlength=1 g-pattern="[K|k|0-9]" ng-required="isUserValid()">
                         <div class="error-container" ng-show="(impo_form.rut_number.$dirty && impo_form.rut_number.$invalid) || impo_form.submitted">
                           <small class="error" ng-show="impo_form.rut_number.$error.required">Falta rut</small>

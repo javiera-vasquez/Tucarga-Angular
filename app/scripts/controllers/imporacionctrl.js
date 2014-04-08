@@ -108,6 +108,11 @@ angular.module('tucargaApp')
         return $scope.businessPhonePrefix + $scope.businessPhoneNumber;
     };
 
+    // Condiciones de pago
+    $scope.conditions = function() {
+        return $scope.tiempoPago + ', ' + $scope.pagoDesde;
+    }
+
     // Necesito almacenamiento
     $scope.add_needs_storage = function() {
         return 'Si, ' + $scope.needs_storage_string;
@@ -152,6 +157,7 @@ angular.module('tucargaApp')
         // Parametros de una cotizacion
         $scope.formData.needs_storage = $scope.add_needs_storage();
         $scope.formData.other = $scope.otherInfo();
+        $scope.formData.service_conditions = $scope.conditions();
         //Telefonos empresa y usuario
         $scope.formData.company_phone =  $scope.businessPhone();
         $scope.formData.userdirectory_mobile = $scope.userMobile();
