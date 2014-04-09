@@ -118,9 +118,9 @@ angular.module('tucargaApp')
         return 'Si, ' + $scope.needs_storage_string;
     };
 
-    $scope.rut = function() {
-        $scope.numero_rut + $scope.verificador_rut;
-    };
+    // $scope.rut = function() {
+    //     $scope.numero_rut + $scope.verificador_rut;
+    // };
 
     // Array of the element to send
     $scope.formData = {};
@@ -136,12 +136,14 @@ angular.module('tucargaApp')
             headers: {'Content-Type': 'application/json'}
         })
         .success(function(data) {
-           console.log("win");
+           // console.log("win");
            $('#add-person').addClass('none');
+           $('.status_user').addClass('none');
             $scope.isUserValid = function() {return false;}
         }).error(function(data) {
-            console.log("fail");
+            // console.log("fail");
             $('#add-person').removeClass('none');
+            $('.status_user').removeClass('none');
             $scope.isUserValid = function() {return true;}
         });
     };
@@ -150,7 +152,7 @@ angular.module('tucargaApp')
     $scope.freightPost = function() {
         // Tipo de cotizacion
         $scope.formData.obj_type = "impo";
-        $scope.formData.detail = "null";
+        // $scope.formData.detail = "null";
         // Funciones de fechas
         $scope.formData.freightwaypoint_origin_from_date = $scope.originTotalDate();
         $scope.formData.freightwaypoint_destination_from_date =  $scope.destinationTotalDate();
@@ -163,7 +165,7 @@ angular.module('tucargaApp')
         $scope.formData.userdirectory_mobile = $scope.userMobile();
         $scope.formData.userdirectory_phone = $scope.userPhone();
         // Rut usuario
-        $scope.formData.company_business_number = $scope.rut();
+        // $scope.formData.company_business_number = $scope.rut();
         // Submit validation
         if($scope.impo_form.$valid) {
             // send the form
@@ -182,7 +184,7 @@ angular.module('tucargaApp')
               });
         }else {
             $scope.impo_form.submitted = true;
-            console.log("no valid");
+            // console.log("no valid");
         };
 
       };

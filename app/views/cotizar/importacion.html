@@ -469,20 +469,20 @@
                       </div>
                   </div>
                   <div class="row">
-                      <div class="large-6 columns">
+                      <div class="large-12 columns">
                           <label>Correo electronico</label>
-                          <input type="email" name="email" ng-model="formData.contact_email" ng-change="email()" placeholder="" required/>
+                          <input type="email" name="email" ng-model="formData.contact_email" ng-change="email()" placeholder="" style="width: 50%;" required/>
                           <div class="error-container" ng-show="(impo_form.email.$dirty && impo_form.email.$invalid) || impo_form.submitted">
                               <span class="error" ng-show="impo_form.email.$error.required">Campo obligatorio</span>
                               <span class="error" ng-show="impo_form.email.$error.email">El correo ingresado no es valido</span>
                           </div>
                           <span class="error none status_user">El usuario no existe, favor agregar datos de usuario</span>
                       </div>
-                      <div class="large-6 columns"></div>
+                      <!-- <div class="large-6 columns"></div> -->
                   </div>
                 </div>
 
-                <div id="add-person" class="">
+                <div id="add-person" class="none">
 
                 <div class="row step">
                     <div class="large-12 columns">
@@ -591,13 +591,9 @@
                     </div>
                     <div class="large-4 columns">
                         <label>Rut</label>
-                        <input type="text" name="rut_number" class="left" style="width: 80%; margin-right:5%;" maxlength="8" placeholder="" ng-model="numero_rut" ng-minlength="8" ng-maxlength="8" ng-pattern="\b\d{1,8}\" ng-required="isUserValid()">
-                        <input type="text" name="rut_prefix" class="left" style="width: 15%;" maxlength="1" placeholder="" ng-model="verificador_rut" ng-minlength=1 ng-maxlength=1 g-pattern="[K|k|0-9]" ng-required="isUserValid()">
+                        <input type="text" name="rut_number" class="" style="" maxlength="10" placeholder="Sin puntos y guión" ng-model="formData.company_business_number" ng-minlength=10 ng-maxlength=10 g-pattern="\b\d{1,8}\[K|k|0-9]" ng-required="isUserValid()">
                         <div class="error-container" ng-show="(impo_form.rut_number.$dirty && impo_form.rut_number.$invalid) || impo_form.submitted">
                           <small class="error" ng-show="impo_form.rut_number.$error.required">Falta rut</small>
-                        </div>
-                        <div class="error-container" ng-show="(impo_form.rut_prefix.$dirty && impo_form.rut_prefix.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.rut_prefix.$error.required">Falta codigo verificador</small>
                         </div>
                     </div>
                 </div>
