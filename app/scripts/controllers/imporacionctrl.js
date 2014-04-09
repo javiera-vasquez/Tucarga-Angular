@@ -3,17 +3,17 @@
 angular.module('tucargaApp')
   .controller('ImpoController', function ($scope, $http, $location) {
 
-    // Pregunto por las regiones
+    // Pregunto por las regiones = selectRegion
     $http({
         method : 'GET',
         url : 'http://127.0.0.1:8000/directory/region/',
         headers: {'Content-Type': 'application/json'}
     })
     .success(function(data) {
-        $scope.returnRegion = data;
+        $scope.selectRegion = data;
     }).error(function(data) {});
 
-    // Pregunto por la comuna segun region de destino
+    // Comuna segun region de destino
     $scope.destinationCommune = function() {
         $http({
             method : 'GET',
@@ -166,7 +166,7 @@ angular.module('tucargaApp')
         // Rut usuario
         // $scope.formData.company_business_number = $scope.rut();
         // Submit validation
-        if($scope.impo_form.$valid) {
+        if($scope.cargaForm.$valid) {
             // send the form
             $http({
                 method : 'POST',

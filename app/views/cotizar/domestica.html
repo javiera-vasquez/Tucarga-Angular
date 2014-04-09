@@ -27,50 +27,99 @@
                     </div>
                 </div>
 
-                <div class="row">
+                  <div class="row">
                     <div class="large-4 columns">
                         <label>Region</label>
-                        <select>
-                          <option value="0">Region</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
+                        <select
+                          name="region_origen"
+                          ng-model="destinationCommuneRegion"
+                          ng-change="destinationCommune()"
+                          ng-options="region.id as region.name for region in returnRegion"
+                          required>
                         </select>
+                        <div class="error-container" ng-show="(impo_form.region_origen.$dirty && impo_form.region_origen.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.region_origen.$error.required">Campo obligatorio</small>
+                        </div>
                     </div>
                     <div class="large-4 columns">
                         <label>Comuna</label>
-                        <select>
-                          <option value="0">Comuna</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                        </select>
+                          <select
+                            name="comuna_origen"
+                            ng-model="formData.freightwaypoint_origin_commune"
+                            ng-options="commune.id as commune.name for commune in destinationSelectCommune"
+                            required>
+                            </select>
+                          <div class="error-container" ng-show="(impo_form.comuna_origen.$dirty && impo_form.comuna_origen.$invalid) || impo_form.submitted">
+                            <small class="error" ng-show="impo_form.comuna_origen.$error.required">Campo obligatorio</small>
+                          </div>
                     </div>
                     <div class="large-2 columns">
-                        <label>Cuando</label>
-                        <input class="datepicker-input" type="text" name="" value="" placeholder="">
+                        <label>Fecha</label>
+                        <input class="datepicker-input" type="text" name="cuando_origen"  placeholder="" ng-model="destinationDate" required>
+                        <div class="error-container" ng-show="(impo_form.cuando_origen.$dirty && impo_form.cuando_origen.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.cuando_origen.$error.required">Campo obligatorio</small>
+                        </div>
                     </div>
                     <div class="large-2 columns">
                         <label>Hora</label>
-                        <input class="" type="text" name="" value="" placeholder="24 hrs">
+                        <select name="horaOrigen" ng-model="destinationHour" required>
+                          <option value="01:00">01:00</option>
+                          <option value="02:00">02:00</option>
+                          <option value="03:00">03:00</option>
+                          <option value="04:00">04:00</option>
+                          <option value="05:00">05:00</option>
+                          <option value="06:00">06:00</option>
+                          <option value="07:00">07:00</option>
+                          <option value="08:00">08:00</option>
+                          <option value="09:00">09:00</option>
+                          <option value="10:00">10:00</option>
+                          <option value="11:00">11:00</option>
+                          <option value="12:00">12:00</option>
+                          <option value="13:00">13:00</option>
+                          <option value="14:00">14:00</option>
+                          <option value="15:00">15:00</option>
+                          <option value="16:00">16:00</option>
+                          <option value="17:00">17:00</option>
+                          <option value="18:00">18:00</option>
+                          <option value="19:00">18:00</option>
+                          <option value="20:00">20:00</option>
+                          <option value="21:00">21:00</option>
+                          <option value="22:00">22:00</option>
+                          <option value="23:00">23:00</option>
+                          <option value="24:00">24:00</option>
+                        </select>
+                        <div class="error-container" ng-show="(impo_form.horaOrigen.$dirty && impo_form.horaOrigen.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.horaOrigen.$error.required">Campo obligatorio</small>
+                        </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="large-4 columns">
                         <label>Quien carga</label>
-                        <select>
-                          <option value="0">Transportista</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
+                        <select name="quien_carga_origin" ng-model="formData.freightwaypoint_origin_who_load_unload" required>
+                          <option value="Transportista" selected="selected">Transportista</option>
+                          <option value="Cargador">Cargador</option>
                         </select>
+                        <div class="error-container" ng-show="(impo_form.quien_carga_origin.$dirty && impo_form.quien_carga_origin.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.quien_carga_origin.$error.required">Campo obligatorio</small>
+                        </div>
                     </div>
-                    <div class="large-4 columns">
+                    <div class="large-6 columns">
                         <label>Tiempo estimado de carga</label>
-                        <input class="" type="text" name="" value="" placeholder="horas" style="width: 50%;">
+                        <select name="tiempoEstimado" ng-model="formData.freightwaypoint_origin_load_unload_time" style="width: 40%;" required>
+                          <option value="1 hora">1 hora</option>
+                          <option value="2 horas">2 horas</option>
+                          <option value="3 horas">3 horas</option>
+                          <option value="4 horas">4 horas</option>
+                          <option value="5 horas">5 horas</option>
+                          <option value="mas de 6 horas">mas de 6 horas</option>
+                        </select>
+                        <div class="error-container" ng-show="(impo_form.tiempoEstimado.$dirty && impo_form.tiempoEstimado.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.tiempoEstimado.$error.required">Campo obligatorio</small>
+                        </div>
                     </div>
-                    <div class="large-4 columns">
+                    <div class="large-2 columns">
                     </div>
                 </div>
 
@@ -83,47 +132,68 @@
                 <div class="row">
                     <div class="large-4 columns">
                         <label>Region</label>
-                        <select>
-                          <option value="0">Region</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
+                        <select
+                          name="region_origen_puerto"
+                          ng-model="formData.freightwaypoint_destination_region"
+                          ng-options="region.id as region.name for region in returnRegion"
+                          required>
                         </select>
+                        <div class="error-container" ng-show="(impo_form.region_origen_puerto.$dirty && impo_form.region_origen_puerto.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.region_origen_puerto.$error.required">Campo obligatorio</small>
+                        </div>
                     </div>
+                    <div class="large-2 columns">
+                        <label>Puerto</label>
+                        <input type="text" name="puerto"  placeholder="" maxlength="50" ng-model="formData.freightwaypoint_destination_origin_destination_port" ng-minlength=3 ng-maxlength=50 required>
+                        <div class="error-container" ng-show="(impo_form.puerto.$dirty && impo_form.puerto.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.puerto.$error.required">Campo obligatorio</small>
+                          <small class="error" ng-show="impo_form.puerto.$error.minlength">El numero minimo de caracteres es 3</small>
+                        </div>
+                    </div>
+
                     <div class="large-4 columns">
-                        <label>Comuna</label>
-                        <select>
-                          <option value="0">Comuna</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                        </select>
+                        <label>nombre nave</label>
+                        <input type="text" name="nombre_nave"  placeholder="" maxlength="50" ng-model="formData.freightwaypoint_destination_ship_name" ng-minlength=3 ng-maxlength=50 required>
+                        <div class="error-container" ng-show="(impo_form.nombre_nave.$dirty && impo_form.nombre_nave.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.nombre_nave.$error.required">Campo obligatorio</small>
+                          <small class="error" ng-show="impo_form.nombre_nave.$error.minlength">El numero minimo de caracteres es 3</small>
+                        </div>
                     </div>
                     <div class="large-2 columns">
-                        <label>Cuando</label>
-                        <input class="datepicker-input" type="text" name="" value="" placeholder="">
-                    </div>
-                    <div class="large-2 columns">
-                        <label>Hora</label>
-                        <input class="" type="text" name="" value="" placeholder="24 hrs">
+                        <label>Fecha</label>
+                        <input class="datepicker-input" name="cuando_destino" type="text" ng-model="originDate" placeholder="" required>
+                        <div class="error-container" ng-show="(impo_form.cuando_destino.$dirty && impo_form.cuando_destino.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.cuando_destino.$error.required">Campo obligatorio</small>
+                        </div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="large-4 columns">
-                        <label>Quien carga</label>
-                        <select>
-                          <option value="0">Transportista</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
+                        <label>Quien descarga</label>
+                        <select name="quien_carga_destino" ng-model="formData.freightwaypoint_destination_who_load_unload" required>
+                          <option value="Transportista" selected="selected">Transportista</option>
+                          <option value="Cargador">Cargador</option>
                         </select>
+                        <div class="error-container" ng-show="(impo_form.quien_carga_destino.$dirty && impo_form.quien_carga_destino.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.quien_carga_destino.$error.required">Campo obligatorio</small>
+                        </div>
                     </div>
-                    <div class="large-4 columns">
-                        <label>Tiempo estimado de carga</label>
-                        <input class="" type="text" name="" value="" placeholder="horas" style="width: 50%;">
+                    <div class="large-6 columns">
+                        <label>Tiempo estimado de descarga</label>
+                        <select name="tiempoEstimado" ng-model="formData.freightwaypoint_destination_load_unload_time" style="width: 40%;" required>
+                          <option value="1 hora">1 hora</option>
+                          <option value="2 horas">2 horas</option>
+                          <option value="3 horas">3 horas</option>
+                          <option value="4 horas">4 horas</option>
+                          <option value="5 horas">5 horas</option>
+                          <option value="mas de 6 horas">mas de 6 horas</option>
+                        </select>
+                        <div class="error-container" ng-show="(impo_form.tiempoEstimado.$dirty && impo_form.tiempoEstimado.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.tiempoEstimado.$error.required">Campo obligatorio</small>
+                        </div>
                     </div>
-                    <div class="large-4 columns">
+                    <div class="large-2 columns">
                     </div>
                 </div>
 
@@ -285,11 +355,27 @@
     </div> <!-- {{! end #form}} -->
 </div> <!-- {{! end content page }} -->
 
-<script src="bower_components/foundation-datepicker-master/example/js/foundation-datepicker.js"></script>
+<script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script src="bower_components/bootstrap-datepicker/js/locales/bootstrap-datepicker.es.js"></script>
 
 <script>
     $(document).foundation();
     $(document).ready(function() {
-        $('.datepicker-input').fdatepicker();
+        // select the corret type
+        // Cargo datepicker
+        $('.datepicker-input').datepicker({
+          format: "yyyy-mm-dd",
+          weekStart: 1,
+          language: "es",
+        });
+        // Show input almacenaje
+        $('#si_almacenaje').on("click", function(){
+          $('.show_amalcenaje').removeClass('none');
+          $('.show_amalcenaje').addClass('show');
+        });
+        $('#no_almacenaje').on("click", function(){
+          $('.show_amalcenaje').removeClass('show');
+          $('.show_amalcenaje').addClass('none');
+        });
     });
 </script>
