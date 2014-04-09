@@ -78,8 +78,8 @@ angular.module('tucargaApp')
     }).error(function(data) {});
 
     // Funciones para calcular las fechas
-    $scope.originHour = "T00:00";
-    $scope.originDate = "";
+    $scope.originHour = 'T00:00';
+    $scope.originDate = '';
 
     $scope.originTotalDate = function() {
         return $scope.originDate + $scope.originHour;
@@ -92,7 +92,6 @@ angular.module('tucargaApp')
     // Funcion para parametros de cotizacion
     $scope.otherInfo = function() {
         return $scope.otherOne + ',' + $scope.otherTwo + ',' + $scope.otherThree;
-        if ($scope.otherOne = true) {$scope.otherOne = "asdf"};
     };
 
     // Funciones para crear telefonos
@@ -111,10 +110,10 @@ angular.module('tucargaApp')
     // Condiciones de pago
     $scope.conditions = function() {
         return $scope.tiempoPago + ', ' + $scope.pagoDesde;
-    }
+    };
 
     // Necesito almacenamiento
-    $scope.add_needs_storage = function() {
+    $scope.addNeedStorage = function() {
         return 'Si, ' + $scope.needs_storage_string;
     };
 
@@ -151,13 +150,13 @@ angular.module('tucargaApp')
     // Post to server
     $scope.freightPost = function() {
         // Tipo de cotizacion
-        $scope.formData.obj_type = "impo";
+        $scope.formData.obj_type = 'impo';
         // $scope.formData.detail = "null";
         // Funciones de fechas
         $scope.formData.freightwaypoint_origin_from_date = $scope.originTotalDate();
         $scope.formData.freightwaypoint_destination_from_date =  $scope.destinationTotalDate();
         // Parametros de una cotizacion
-        $scope.formData.needs_storage = $scope.add_needs_storage();
+        $scope.formData.needs_storage = $scope.addNeedStorage();
         $scope.formData.other = $scope.otherInfo();
         $scope.formData.service_conditions = $scope.conditions();
         //Telefonos empresa y usuario
