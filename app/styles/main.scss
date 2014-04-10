@@ -71,7 +71,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 #header {
     box-shadow: $basic-box-shadow;
     .name {
-        img {margin: 18px 10px 0 15px;}
+        img {margin: 14px 10px 0 15px;}
     }
     .top-bar-section {
         a.active {
@@ -89,7 +89,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
             background: url(../images/cel.jpg) left no-repeat;
             padding-left: 35px;
             margin-right: 50px;
-            margin-top: 21px;
+            margin-top: 16px;
             font-size: rem-calc(13);
             line-height: 1;
             span {
@@ -108,7 +108,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
             );
             padding-top: 10px;
             padding-bottom: 10px;
-            margin-top: 10px;
+            margin-top: 6px;
             right: 20px;
         }
     }
@@ -123,13 +123,20 @@ footer {
     ul {
         li {
             list-style: none;
-            line-height: 1;
+            line-height: 1.3;
             font-size: rem-calc(13);
             a {
                 color: $body-font-color;
                 &:hover {color: $primary-color;}
+                text-decoration: underline;;
             }
         }
+    }
+    .inline li {
+        display: inline;
+        font-size: rem-calc(14);
+        margin-right: 25px;
+        a {text-decoration: none;;}
     }
     .right-text {
         text-align: right;
@@ -149,13 +156,13 @@ footer {
             h2 {
                 @include bold;
                 text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-                font-size: rem-calc(30);
+                font-size: rem-calc(35);
                 margin: 0.3em 0 0.5em;
             }
             p {
                 text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
-                font-size: rem-calc(14);
-                line-height: rem-calc(25);
+                font-size: rem-calc(16);
+                line-height: rem-calc(24);
                 margin-bottom: 0;
             }
         }
@@ -174,7 +181,7 @@ footer {
                         @include basic-button(
                             $white,
                             $primary-color,
-                            14,
+                            15,
                             22
                         );
                         padding: em-calc(15) em-calc(15);
@@ -194,8 +201,10 @@ footer {
     padding: 3em 0;
 }
 
-#como-index, #testimonios-index {box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);}
-#ayuda-index {background: $grey; }
+#como-index {box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);}
+#ayuda-index, #testimonios-index {
+    background: $grey;
+}
 
 .title-section {
     text-align: center;
@@ -232,7 +241,8 @@ footer {
     }
     p {
         text-align: center;
-        font-size: rem-calc(14);
+        font-size: rem-calc(15);
+        line-height: rem-calc(22);
     }
 }
 
@@ -241,8 +251,8 @@ footer {
     .box {
         padding: 0;
         .cargador, .transportista {
-            min-height: 245px;
-            padding: 1em 1em 0.1em;
+            max-height: 250px;
+            padding: 1.25em 1.25em 0.1em;
         }
         .cargador {background:  url(../images/cargador-2.jpg) right bottom no-repeat;}
         .transportista {background:  url(../images/transportista-2.jpg) right bottom no-repeat;}
@@ -260,9 +270,13 @@ footer {
                 font-size: rem-calc(14);
                 line-height: 1.6;
                 margin-bottom: 10px;
+                .button {
+                    font-size: rem-calc(13px);
+                    padding: 1em 1.25em;
+                }
                 i {
                     position: absolute;
-                    left: 28px;
+                    left: 34px;
                     color: $green;
                 }
             }
@@ -271,21 +285,26 @@ footer {
 }
 
 #testimonios-index {
-    .orbit-timer, .orbit-slide-number {@include none;}
-    .orbit-container {min-height: 100px;}
+    .background {
+        background: $white;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .orbit-timer, .orbit-slide-number, .orbit-bullets-container {@include none;}
+    .orbit-container {min-height: 200px;}
     .margin {margin: 0 3em;}
     img {
         display: block;
         margin: auto;
     }
     blockquote {
-        margin: 1em 0;
+        font-size: rem-calc(15);
         border-left: none;
         padding: 0;
     }
 }
 
 #ayuda-index {
+    padding-bottom: 6em;
     ul {
         list-style:none;
         margin:0;
@@ -295,7 +314,7 @@ footer {
             display: inline-block;
             list-style: none;
             line-height: 1;
-            margin: 1em 0.5em;
+            margin: 1em 0.25em;
             a {
                 font-size: rem-cacl(13);
                 line-height: 1;
