@@ -90,7 +90,7 @@
                         <label>Comuna</label>
                           <select
                             name="freightwaypoint_origin_region"
-                            ng-model="formData.freightwaypoint_origin_region"
+                            ng-model="formData.freightwaypoint_origin_commune"
                             ng-options="commune.id as commune.name for commune in returnCommuneB"
                             required>
                             </select>
@@ -676,7 +676,7 @@
                           name="region_work"
                           ng-required="isUserValid()"
                           ng-model="formData.company_address_region"
-                          ng-options="region.id as region.name for region in returnRegion">
+                          ng-options="region.id as region.name for region in selectRegion">
                         </select>
                         <div class="error-container" ng-show="(cargaForm.region_work.$dirty && cargaForm.region_work.$invalid) || cargaForm.submitted">
                           <small class="error" ng-show="cargaForm.region_work.$error.required">Campo obligatorio</small>
