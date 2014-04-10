@@ -238,7 +238,7 @@
                           name="withdraw_deposit"
                           placeholder="Nombre o dirección"
                           maxlength="50"
-                          ng-model="formData.freightlocation_withdraw_deposit_name"
+                          ng-model="formData.freightlocation_return_deposit_name"
                           ng-minlength=3
                           ng-maxlength=50
                           required>
@@ -288,14 +288,14 @@
                             </div>
                             <div class="large-2 columns">
                                 <label>Peso en KG</label>
-                                <input class="" name="peso_1" type="text" maxlength="50" ng-model="formData.freightdetail_units" placeholder="" ng-minlength=1 ng-maxlength=5 required>
+                                <input class="" name="peso_1" type="text" maxlength="50" ng-model="formData.freightdetail_weight" placeholder="" ng-minlength=1 ng-maxlength=5 required>
                                 <div class="error-container" ng-show="(cargaForm.peso_1.$dirty && cargaForm.peso_1.$invalid) || cargaForm.submitted">
                                   <small class="error" ng-show="cargaForm.peso_1.$error.required">Campo obligatorio</small>
                                 </div>
                             </div>
                             <div class="large-2 columns">
                                 <label>Unidades</label>
-                                <input class="" name="unidades_1" type="text" maxlength="50" ng-model="formData.freightdetail_weight" placeholder="" ng-minlength=1 ng-maxlength=5 required>
+                                <input class="" name="unidades_1" type="text" maxlength="50" ng-model="formData.freightdetail_units" placeholder="" ng-minlength=1 ng-maxlength=5 required>
                                 <div class="error-container" ng-show="(cargaForm.unidades_1.$dirty && cargaForm.unidades_1.$invalid) || cargaForm.submitted">
                                   <small class="error" ng-show="cargaForm.unidades_1.$error.required">Campo obligatorio</small>
                                 </div>
@@ -308,88 +308,6 @@
                                 <div class="error-contcondicionesainer" ng-show="(cargaForm.descripcion_carga.$dirty && cargaForm.descripcion_carga.$invalid) || cargaForm.submitted">
                                   <small class="error" ng-show="cargaForm.descripcion_carga.$error.required">Campo obligatorio</small>
                                 </div>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div> <!-- end caga box -->
-
-                <div class="carga-box2">
-                    <fieldset>
-                        <legend>Carga numero 2</legend>
-
-                        <div class="row">
-                            <div class="large-4 columns">
-                                <label>Tipo de carga</label>
-                                <select>
-                                  <option value="0">Tipo</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                                </select>
-                            </div>
-                            <div class="large-4 columns">
-                                <label>Tipo de Contenedor</label>
-                                <select>
-                                  <option value="0">Tipo</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                                </select>
-                            </div>
-                            <div class="large-2 columns">
-                                <label>Unidades</label>
-                                <input class="" type="text" name="" value="" placeholder="">
-                            </div>
-                            <div class="large-2 columns">
-                                <label>Peso</label>
-                                <input class="" type="text" name="" value="" placeholder="KG">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="large-12 columns">
-                                <label>Descripción de la carga</label>
-                                <input type="text" name="" value="" placeholder="">
-                            </div>
-                        </div>
-                    </fieldset>
-                </div> <!-- end caga box -->
-
-                <div class="carga-box3">
-                    <fieldset>
-                        <legend>Carga numero 3</legend>
-
-                        <div class="row">
-                            <div class="large-4 columns">
-                                <label>Tipo de carga</label>
-                                <select>
-                                  <option value="0">Tipo</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                                </select>
-                            </div>
-                            <div class="large-4 columns">
-                                <label>Tipo de Contenedor</label>
-                                <select>
-                                  <option value="0">Tipo</option>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                                </select>
-                            </div>
-                            <div class="large-2 columns">
-                                <label>Unidades</label>
-                                <input class="" type="text" name="" value="" placeholder="">
-                            </div>
-                            <div class="large-2 columns">
-                                <label>Peso</label>
-                                <input class="" type="text" name="" value="" placeholder="KG">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="large-12 columns">
-                                <label>Descripción de la carga</label>
-                                <input type="text" name="" value="" placeholder="">
                             </div>
                         </div>
                     </fieldset>

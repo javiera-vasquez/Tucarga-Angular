@@ -78,10 +78,9 @@ angular.module('tucargaApp')
     };
 
     // Funciones para calcular las fechas
-    $scope.freightwaypoint_origin_date_Hour = 'T00:00';
-
+    $scope.freightwaypoint_origin_date_hour = 'T00:00';
     $scope.total_freightwaypoint_origin_date = function() {
-        return $scope.freightwaypoint_origin_date_day + $scope.freightwaypoint_origin_date_Hour;
+        return $scope.freightwaypoint_origin_date_day + $scope.freightwaypoint_origin_date_hour;
     };
 
     $scope.total_freightwaypoint_destination_from_date = function() {
@@ -151,7 +150,7 @@ angular.module('tucargaApp')
         // Tipo de cotizacion
         $scope.formData.obj_type = 'impo';
         // Funciones de fechas
-        $scope.formData.freightwaypoint_origin_date= $scope.total_freightwaypoint_origin_date();
+        $scope.formData.freightwaypoint_origin_date = $scope.total_freightwaypoint_origin_date();
         $scope.formData.freightwaypoint_destination_from_date =  $scope.total_freightwaypoint_destination_from_date();
         // Parametros de una cotizacion
         $scope.formData.needs_storage = $scope.addNeedStorage();

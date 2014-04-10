@@ -3,39 +3,15 @@
 angular.module('tucargaApp')
   .controller('ContenedorController', function ($scope, $http, $location) {
 
-    // Pregunto por las regiones
+    // Pregunto por las regiones = selectRegion
     $http({
         method : 'GET',
         url : 'http://127.0.0.1:8000/directory/region/',
         headers: {'Content-Type': 'application/json'}
     })
     .success(function(data) {
-        $scope.returnRegion = data;
+        $scope.selectRegion = data;
     }).error(function(data) {});
-
-    // Pregunto por la comuna segun region de destino
-    $scope.destinationCommune = function() {
-        $http({
-            method : 'GET',
-            url : 'http://127.0.0.1:8000/directory/commune/' + $scope.destinationCommuneRegion + '/',
-            headers: {'Content-Type': 'application/json'}
-        })
-        .success(function(data) {
-            $scope.destinationSelectCommune = data;
-        }).error(function(data) {});
-    };
-
-    // Pregunto por la comuna segun region de retorno
-    $scope.returnCommune = function() {
-        $http({
-            method : 'GET',
-            url : 'http://127.0.0.1:8000/directory/commune/' + $scope.returnCommuneRegion + '/',
-            headers: {'Content-Type': 'application/json'}
-        })
-        .success(function(data) {
-            $scope.returnSelectCommune = data;
-        }).error(function(data) {});
-    };
 
     // Pregunto por el tipo de carga
     $http({
@@ -77,22 +53,44 @@ angular.module('tucargaApp')
         $scope.returnEquipment = data;
     }).error(function(data) {});
 
-    // Funciones para calcular las fechas
-    $scope.originHour = "T00:00";
-    $scope.originDate = "";
-
-    $scope.originTotalDate = function() {
-        return $scope.originDate + $scope.originHour;
+    // Retiro de contenedor
+    $scope.withdrawCommune = function() {
+        $http({
+            method : 'GET',
+            url : 'http://127.0.0.1:8000/directory/commune/' + $scope.withdrawRegion + '/',
+            headers: {'Content-Type': 'application/json'}
+        })
+        .success(function(data) {
+            $scope.returnCommuneA = data;
+        }).error(function(data) {});
     };
 
-    $scope.destinationTotalDate = function() {
-        return $scope.destinationDate + 'T' + $scope.destinationHour;
+    // Devolucion contenedor
+    $scope.freightlocation_region = function() {
+        $http({
+            method : 'GET',
+            url : 'http://127.0.0.1:8000/directory/commune/' + $scope.freightlocationRegion + '/',
+            headers: {'Content-Type': 'application/json'}
+        })
+        .success(function(data) {
+            $scope.returnCommuneB = data;
+        }).error(function(data) {});
+    };
+
+    // Origen contenedor // Fecha
+    $scope.freightlocation_withdraw_from_date_hour = 'T00:00';
+    $scope.total_freightlocation_withdraw_from_date = function() {
+        return $scope.freightlocation_withdraw_from_date_day + $scope.freightlocation_withdraw_from_date_hour;
+    };
+    // Destino contenedor cliente // Fecha
+    $scope.freightlocation_return_to_date_hour = 'T00:00';
+    $scope.total_freightlocation_return_to_date = function() {
+        return $scope.freightlocation_return_to_date_day + $scope.freightlocation_return_to_date_hour;
     };
 
     // Funcion para parametros de cotizacion
     $scope.otherInfo = function() {
         return $scope.otherOne + ',' + $scope.otherTwo + ',' + $scope.otherThree;
-        if ($scope.otherOne = true) {$scope.otherOne = "asdf"};
     };
 
     // Funciones para crear telefonos
@@ -111,10 +109,10 @@ angular.module('tucargaApp')
     // Condiciones de pago
     $scope.conditions = function() {
         return $scope.tiempoPago + ', ' + $scope.pagoDesde;
-    }
+    };
 
     // Necesito almacenamiento
-    $scope.add_needs_storage = function() {
+    $scope.addNeedStorage = function() {
         return 'Si, ' + $scope.needs_storage_string;
     };
 
@@ -151,13 +149,13 @@ angular.module('tucargaApp')
     // Post to server
     $scope.freightPost = function() {
         // Tipo de cotizacion
-        $scope.formData.obj_type = "impo";
-        // $scope.formData.detail = "null";
+        $scope.formData.obj_type = 'empt';
+        $scope.formData.freightdetail_obj_type = '7';
         // Funciones de fechas
-        $scope.formData.freightwaypoint_origin_from_date = $scope.originTotalDate();
-        $scope.formData.freightwaypoint_destination_from_date =  $scope.destinationTotalDate();
+        $scope.formData.freightlocation_withdraw_from_date= $scope.total_freightlocation_withdraw_from_date();
+        $scope.formData.freightlocation_return_to_date =  $scope.total_freightlocation_return_to_date();
         // Parametros de una cotizacion
-        $scope.formData.needs_storage = $scope.add_needs_storage();
+        $scope.formData.needs_storage = $scope.addNeedStorage();
         $scope.formData.other = $scope.otherInfo();
         $scope.formData.service_conditions = $scope.conditions();
         //Telefonos empresa y usuario
@@ -167,7 +165,7 @@ angular.module('tucargaApp')
         // Rut usuario
         // $scope.formData.company_business_number = $scope.rut();
         // Submit validation
-        if($scope.impo_form.$valid) {
+        if($scope.cargaForm.$valid) {
             // send the form
             $http({
                 method : 'POST',
@@ -178,14 +176,15 @@ angular.module('tucargaApp')
             .success(function(data) {
                 $location.url('/cotizar/exito')
                 //console.log('win' + data);
-              });
+              })
             .error(function(data) {
                 // console.log('fail' + data);
               });
         }else {
-            $scope.impo_form.submitted = true;
+            $scope.cargaForm.submitted = true;
             // console.log("no valid");
         };
+
       };
 
   });
