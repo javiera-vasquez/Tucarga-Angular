@@ -68,7 +68,7 @@ Detalle de empresa
                         <select
                           name="freightwaypoint_origin_region"
                           ng-model="formData.freightwaypoint_origin_region"
-                          ng-change="withdrawCommune()"
+                          ng-change="freightwaypointOriginRegion()"
                           ng-options="region.id as region.name for region in selectRegion"
                           required>
                         </select>
@@ -79,13 +79,13 @@ Detalle de empresa
                     <div class="large-4 columns">
                         <label>Comuna</label>
                           <select
-                            name="withdraw_commune"
-                            ng-model="formData.freightlocation_withdraw_commune"
-                            ng-options="commune.id as commune.name for commune in withdraw_commune"
+                            name="freightwaypoint_origin_region"
+                            ng-model="formData.freightwaypoint_origin_region"
+                            ng-options="commune.id as commune.name for commune in freightwaypointOriginRegion"
                             required>
                             </select>
-                          <div class="error-container" ng-show="(impo_form.withdraw_commune.$dirty && impo_form.withdraw_commune.$invalid) || impo_form.submitted">
-                            <small class="error" ng-show="impo_form.withdraw_commune.$error.required">Campo obligatorio</small>
+                          <div class="error-container" ng-show="(impo_form.freightwaypoint_origin_region.$dirty && impo_form.freightwaypoint_origin_region.$invalid) || impo_form.submitted">
+                            <small class="error" ng-show="impo_form.freightwaypoint_origin_region.$error.required">Campo obligatorio</small>
                           </div>
                     </div>
                     <div class="large-2 columns">
@@ -235,6 +235,109 @@ Detalle de empresa
 
 
                 <!-- Destino Carga // Planta -->
+                  <div class="row">
+                    <div class="large-4 columns">
+                         <label>Region</label>
+                        <select
+                          name="freightwaypoint_destination_region"
+                          ng-model="freightwaypoint_destination_region"
+                          ng-change="withdrawCommune()"
+                          ng-options="region.id as region.name for region in selectRegion"
+                          required>
+                        </select>
+                        <div class="error-container" ng-show="(impo_form.freightwaypoint_destination_region.$dirty && impo_form.freightwaypoint_destination_region_region.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.freightwaypoint_destination_region.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                    <div class="large-4 columns">
+                        <label>Comuna</label>
+                          <select
+                            name="destination_commune"
+                            ng-model="formData.freightwaypoint_destination_commune"
+                            ng-options="commune.id as commune.name for commune in destination_commune"
+                            required>
+                            </select>
+                          <div class="error-container" ng-show="(impo_form.destination_commune.$dirty && impo_form.destination_commune.$invalid) || impo_form.submitted">
+                            <small class="error" ng-show="impo_form.destination_commune.$error.required">Campo obligatorio</small>
+                          </div>
+                    </div>
+                    <div class="large-2 columns">
+                        <label>Fecha</label>
+                        <input
+                          class="datepicker-input"
+                          type="text"
+                          name="freightwaypoint_destination_from_date_day"
+                          placeholder=""
+                          ng-model="freightwaypoint_destination_from_date_day"
+                          required>
+                        <div class="error-container" ng-show="(impo_form.freightwaypoint_destination_from_date_day.$dirty && impo_form.freightwaypoint_destination_from_date_day.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.freightwaypoint_destination_from_date_day.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                    <div class="large-2 columns">
+                        <label>Hora</label>
+                        <select name="freightwaypoint_destination_from_date_hour" ng-model="freightwaypoint_destination_from_date_hour" required>
+                          <option value="01:00">01:00</option>
+                          <option value="02:00">02:00</option>
+                          <option value="03:00">03:00</option>
+                          <option value="04:00">04:00</option>
+                          <option value="05:00">05:00</option>
+                          <option value="06:00">06:00</option>
+                          <option value="07:00">07:00</option>
+                          <option value="08:00">08:00</option>
+                          <option value="09:00">09:00</option>
+                          <option value="10:00">10:00</option>
+                          <option value="11:00">11:00</option>
+                          <option value="12:00">12:00</option>
+                          <option value="13:00">13:00</option>
+                          <option value="14:00">14:00</option>
+                          <option value="15:00">15:00</option>
+                          <option value="16:00">16:00</option>
+                          <option value="17:00">17:00</option>
+                          <option value="18:00">18:00</option>
+                          <option value="19:00">18:00</option>
+                          <option value="20:00">20:00</option>
+                          <option value="21:00">21:00</option>
+                          <option value="22:00">22:00</option>
+                          <option value="23:00">23:00</option>
+                          <option value="24:00">24:00</option>
+                        </select>
+                        <div class="error-container" ng-show="(impo_form.freightwaypoint_destination_from_date_hour.$dirty && impo_form.freightwaypoint_destination_from_date_hour.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.freightwaypoint_destination_from_date_hour.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-4 columns">
+                        <label>Quien carga</label>
+                        <select
+                          name="freightwaypoint_destination_who_load_unload"
+                          ng-model="formData.freightwaypoint_destination_who_load_unload"
+                          required>
+                          <option value="Transportista" selected="selected">Transportista</option>
+                          <option value="Cargador">Cargador</option>
+                        </select>
+                        <div class="error-container" ng-show="(impo_form.freightwaypoint_destination_who_load_unload.$dirty && impo_form.freightwaypoint_destination_who_load_unload.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.freightwaypoint_destination_who_load_unload.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                    <div class="large-6 columns">
+                        <label>Tiempo estimado de descarga</label>
+                        <select name="freightwaypoint_destination_load_unload_time" ng-model="formData.freightwaypoint_destination_load_unload_time" style="width: 40%;" required>
+                          <option value="1 hora">1 hora</option>
+                          <option value="2 horas">2 horas</option>
+                          <option value="3 horas">3 horas</option>
+                          <option value="4 horas">4 horas</option>
+                          <option value="5 horas">5 horas</option>
+                          <option value="mas de 6 horas">mas de 6 horas</option>
+                        </select>
+                        <div class="error-container" ng-show="(impo_form.freightwaypoint_destination_load_unload_time.$dirty && impo_form.freightwaypoint_destination_load_unload_time.$invalid) || impo_form.submitted">
+                          <small class="error" ng-show="impo_form.freightwaypoint_destination_load_unload_time.$error.required">Campo obligatorio</small>
+                        </div>
+                    </div>
+                    <div class="large-2 columns">
+                    </div>
+                </div>
                 <!-- #end Destino Carga // Planta #end -->
 
 
@@ -269,7 +372,6 @@ Detalle de empresa
                           <small class="error" ng-show="impo_form.freightwaypoint_destination_origin_destination_port.$error.minlength">El numero minimo de caracteres es 3</small>
                         </div>
                     </div>
-
                     <div class="large-4 columns">
                         <label>nombre nave</label>
                         <input

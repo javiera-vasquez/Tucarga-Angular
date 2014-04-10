@@ -11,7 +11,7 @@
                   <a class="button radius right" href="#/cotizar">Volver a cotización</a>
               </div> <!-- {{! end title page}} -->
 
-              <form name="impo_form" novalidate ng-submit="freightPost()">
+              <form name="cargaForm" novalidate ng-submit="freightPost()">
 
               <div class="row form-layout">
                   <div class="large-8 columns">
@@ -32,37 +32,59 @@
                     <div class="large-4 columns">
                         <label>Region</label>
                         <select
-                          name="region_origen_puerto"
+                          name="freightwaypoint_origin_region"
                           ng-model="formData.freightwaypoint_origin_region"
-                          ng-options="region.id as region.name for region in returnRegion"
+                          ng-options="region.id as region.name for region in selectRegion"
                           required>
                         </select>
-                        <div class="error-container" ng-show="(impo_form.region_origen_puerto.$dirty && impo_form.region_origen_puerto.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.region_origen_puerto.$error.required">Campo obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.freightwaypoint_origin_region.$dirty && cargaForm.freightwaypoint_origin_region.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.freightwaypoint_origin_region.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-2 columns">
                         <label>Puerto</label>
-                        <input type="text" name="puerto"  placeholder="" maxlength="50" ng-model="formData.freightwaypoint_origin_origin_destination_port" ng-minlength=3 ng-maxlength=50 required>
-                        <div class="error-container" ng-show="(impo_form.puerto.$dirty && impo_form.puerto.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.puerto.$error.required">Campo obligatorio</small>
-                          <small class="error" ng-show="impo_form.puerto.$error.minlength">El numero minimo de caracteres es 3</small>
+                        <input
+                          type="text"
+                          name="freightwaypoint_origin_origin_destination_port"
+                          placeholder=""
+                          maxlength="50"
+                          ng-model="formData.freightwaypoint_origin_origin_destination_port"
+                          ng-minlength="3"
+                          ng-maxlength="50"
+                          required>
+                        <div class="error-container" ng-show="(cargaForm.freightwaypoint_origin_origin_destination_port.$dirty && cargaForm.freightwaypoint_origin_origin_destination_port.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.freightwaypoint_origin_origin_destination_port.$error.required">Campo obligatorio</small>
+                          <small class="error" ng-show="cargaForm.freightwaypoint_origin_origin_destination_port.$error.minlength">El numero minimo de caracteres es 3</small>
                         </div>
                     </div>
 
                     <div class="large-4 columns">
                         <label>nombre nave</label>
-                        <input type="text" name="nombre_nave"  placeholder="" maxlength="50" ng-model="formData.freightwaypoint_origin_ship_name" ng-minlength=3 ng-maxlength=50 required>
-                        <div class="error-container" ng-show="(impo_form.nombre_nave.$dirty && impo_form.nombre_nave.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.nombre_nave.$error.required">Campo obligatorio</small>
-                          <small class="error" ng-show="impo_form.nombre_nave.$error.minlength">El numero minimo de caracteres es 3</small>
+                        <input
+                          type="text"
+                          name="freightwaypoint_origin_ship_name"
+                          placeholder=""
+                          maxlength="50"
+                          ng-model="formData.freightwaypoint_origin_ship_name"
+                          ng-minlength="3"
+                          ng-maxlength="50"
+                          required>
+                        <div class="error-container" ng-show="(cargaForm.freightwaypoint_origin_ship_name.$dirty && cargaForm.freightwaypoint_origin_ship_name.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.freightwaypoint_origin_ship_name.$error.required">Campo obligatorio</small>
+                          <small class="error" ng-show="cargaForm.freightwaypoint_origin_ship_name.$error.minlength">El numero minimo de caracteres es 3</small>
                         </div>
                     </div>
                     <div class="large-2 columns">
                         <label>Fecha</label>
-                        <input class="datepicker-input" name="cuando_origen" type="text" ng-model="originDate" placeholder="" required>
-                        <div class="error-container" ng-show="(impo_form.cuando_origen.$dirty && impo_form.cuando_origen.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.cuando_origen.$error.required">Campo obligatorio</small>
+                        <input
+                          class="datepicker-input"
+                          name="freightwaypoint_origin_from_date_day"
+                          type="text"
+                          ng-model="freightwaypoint_origin_date_day"
+                          placeholder=""
+                          required>
+                        <div class="error-container" ng-show="(cargaForm.freightwaypoint_origin_from_date_day.$dirty && cargaForm.freightwaypoint_origin_from_date_day.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.freightwaypoint_origin_from_date_day.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                 </div>
@@ -75,40 +97,46 @@
 
                   <div class="row">
                     <div class="large-4 columns">
-                        <label>Region</label>
+                         <label>Region</label>
                         <select
-                          name="region_origen"
-                          ng-model="destinationCommuneRegion"
-                          ng-change="destinationCommune()"
-                          ng-options="region.id as region.name for region in returnRegion"
+                          name="freightwaypoint_destination_region"
+                          ng-model="freightwaypoint_destination_region"
+                          ng-change="freightwaypoint_destination()"
+                          ng-options="region.id as region.name for region in selectRegion"
                           required>
                         </select>
-                        <div class="error-container" ng-show="(impo_form.region_origen.$dirty && impo_form.region_origen.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.region_origen.$error.required">Campo obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.freightwaypoint_destination_region.$dirty && cargaForm.freightwaypoint_destination_region_region.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.freightwaypoint_destination_region.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-4 columns">
                         <label>Comuna</label>
                           <select
-                            name="comuna_origen"
+                            name="destination_commune"
                             ng-model="formData.freightwaypoint_destination_commune"
-                            ng-options="commune.id as commune.name for commune in destinationSelectCommune"
+                            ng-options="commune.id as commune.name for commune in returnCommuneA"
                             required>
                             </select>
-                          <div class="error-container" ng-show="(impo_form.comuna_origen.$dirty && impo_form.comuna_origen.$invalid) || impo_form.submitted">
-                            <small class="error" ng-show="impo_form.comuna_origen.$error.required">Campo obligatorio</small>
+                          <div class="error-container" ng-show="(cargaForm.destination_commune.$dirty && cargaForm.destination_commune.$invalid) || cargaForm.submitted">
+                            <small class="error" ng-show="cargaForm.destination_commune.$error.required">Campo obligatorio</small>
                           </div>
                     </div>
                     <div class="large-2 columns">
                         <label>Fecha</label>
-                        <input class="datepicker-input" type="text" name="cuando_destino"  placeholder="" ng-model="destinationDate" required>
-                        <div class="error-container" ng-show="(impo_form.cuando_destino.$dirty && impo_form.cuando_destino.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.cuando_destino.$error.required">Campo obligatorio</small>
+                        <input
+                          class="datepicker-input"
+                          type="text"
+                          name="freightwaypoint_destination_from_date_day"
+                          placeholder=""
+                          ng-model="freightwaypoint_destination_from_date_day"
+                          required>
+                        <div class="error-container" ng-show="(cargaForm.freightwaypoint_destination_from_date_day.$dirty && cargaForm.freightwaypoint_destination_from_date_day.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.freightwaypoint_destination_from_date_day.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-2 columns">
                         <label>Hora</label>
-                        <select name="horaOrigen" ng-model="destinationHour" required>
+                        <select name="freightwaypoint_destination_from_date_hour" ng-model="freightwaypoint_destination_from_date_hour" required>
                           <option value="01:00">01:00</option>
                           <option value="02:00">02:00</option>
                           <option value="03:00">03:00</option>
@@ -134,26 +162,28 @@
                           <option value="23:00">23:00</option>
                           <option value="24:00">24:00</option>
                         </select>
-                        <div class="error-container" ng-show="(impo_form.horaOrigen.$dirty && impo_form.horaOrigen.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.horaOrigen.$error.required">Campo obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.freightwaypoint_destination_from_date_hour.$dirty && cargaForm.freightwaypoint_destination_from_date_hour.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.freightwaypoint_destination_from_date_hour.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="large-4 columns">
-                        <label>Quien descarga</label>
-                        <select name="quien_carga" ng-model="formData.freightwaypoint_destination_who_load_unload" required>
+                        <label>Quien carga</label>
+                        <select
+                          name="freightwaypoint_destination_who_load_unload"
+                          ng-model="formData.freightwaypoint_destination_who_load_unload"
+                          required>
                           <option value="Transportista" selected="selected">Transportista</option>
                           <option value="Cargador">Cargador</option>
                         </select>
-                        <div class="error-container" ng-show="(impo_form.quien_carga.$dirty && impo_form.quien_carga.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.quien_carga.$error.required">Campo obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.freightwaypoint_destination_who_load_unload.$dirty && cargaForm.freightwaypoint_destination_who_load_unload.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.freightwaypoint_destination_who_load_unload.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-6 columns">
                         <label>Tiempo estimado de descarga</label>
-                        <select name="tiempoEstimado" ng-model="formData.freightwaypoint_destination_load_unload_time" style="width: 40%;" required>
+                        <select name="freightwaypoint_destination_load_unload_time" ng-model="formData.freightwaypoint_destination_load_unload_time" style="width: 40%;" required>
                           <option value="1 hora">1 hora</option>
                           <option value="2 horas">2 horas</option>
                           <option value="3 horas">3 horas</option>
@@ -161,8 +191,8 @@
                           <option value="5 horas">5 horas</option>
                           <option value="mas de 6 horas">mas de 6 horas</option>
                         </select>
-                        <div class="error-container" ng-show="(impo_form.tiempoEstimado.$dirty && impo_form.tiempoEstimado.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.tiempoEstimado.$error.required">Campo obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.freightwaypoint_destination_load_unload_time.$dirty && cargaForm.freightwaypoint_destination_load_unload_time.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.freightwaypoint_destination_load_unload_time.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-2 columns">
@@ -179,34 +209,42 @@
                     <div class="large-4 columns">
                         <label>Region</label>
                         <select
-                          name="region_destino"
-                          ng-model="returnCommuneRegion"
-                          ng-change="returnCommune()"
-                          ng-options="region.id as region.name for region in returnRegion"
+                          name="freightlocation_return_region"
+                          ng-model="freightlocationRegion"
+                          ng-change="freightlocation_region()"
+                          ng-options="region.id as region.name for region in selectRegion"
                           required>
                         </select>
-                        <div class="error-container" ng-show="(impo_form.region_destino.$dirty && impo_form.region_destino.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.region_destino.$error.required">Campo obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.freightlocation_return_region.$dirty && cargaForm.freightlocation_return_region.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.freightlocation_return_region.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-4 columns">
                         <label>Comuna</label>
                           <select
-                            name="comuna_destino"
+                            name="freightlocation_return_commune"
                             ng-model="formData.freightlocation_return_commune"
-                            ng-options="commune.id as commune.name for commune in returnSelectCommune"
+                            ng-options="commune.id as commune.name for commune in returnCommuneB"
                             required>
                           </select>
-                        <div class="error-container" ng-show="(impo_form.comuna_destino.$dirty && impo_form.comuna_destino.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.comuna_destino.$error.required">Campo obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.freightlocation_return_commune.$dirty && cargaForm.freightlocation_return_commune.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.freightlocation_return_commune.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-4 columns">
                         <label>Nombre deposito</label>
-                        <input type="text" name="nombre_deposito" placeholder="Nombre o dirección" maxlength="50" ng-model="formData.freightlocation_return_deposit_name" ng-minlength=3 ng-maxlength=50 required>
-                        <div class="error-container" ng-show="(impo_form.nombre_deposito.$dirty && impo_form.nombre_deposito.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.nombre_deposito.$error.required">Campo obligatorio</small>
-                          <small class="error" ng-show="impo_form.nombre_deposito.$error.minlength">El numero minimo de caracteres es 3</small>
+                        <input
+                          type="text"
+                          name="withdraw_deposit"
+                          placeholder="Nombre o dirección"
+                          maxlength="50"
+                          ng-model="formData.freightlocation_withdraw_deposit_name"
+                          ng-minlength=3
+                          ng-maxlength=50
+                          required>
+                        <div class="error-container" ng-show="(cargaForm.withdraw_deposit.$dirty && cargaForm.withdraw_deposit.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.withdraw_deposit.$error.required">Campo obligatorio</small>
+                          <small class="error" ng-show="cargaForm.withdraw_deposit.$error.minlength">El numero minimo de caracteres es 3</small>
                         </div>
                     </div>
                 </div>
@@ -232,8 +270,8 @@
                                   ng-options="freighttype.id as freighttype.name for freighttype in returnFreightType"
                                   required>
                                 </select>
-                                <div class="error-container" ng-show="(impo_form.tipo_carga.$dirty && impo_form.tipo_carga.$invalid) || impo_form.submitted">
-                                  <small class="error" ng-show="impo_form.tipo_carga.$error.required">Campo obligatorio</small>
+                                <div class="error-container" ng-show="(cargaForm.tipo_carga.$dirty && cargaForm.tipo_carga.$invalid) || cargaForm.submitted">
+                                  <small class="error" ng-show="cargaForm.tipo_carga.$error.required">Campo obligatorio</small>
                                 </div>
                             </div>
                             <div class="large-4 columns">
@@ -244,22 +282,22 @@
                                   ng-options="containertype.id as containertype.name for containertype in returncContainerType"
                                   required>
                                 </select>
-                                <div class="error-container" ng-show="(impo_form.tipo_contenedor.$dirty && impo_form.tipo_contenedor.$invalid) || impo_form.submitted">
-                                  <small class="error" ng-show="impo_form.tipo_contenedor.$error.required">Campo obligatorio</small>
+                                <div class="error-container" ng-show="(cargaForm.tipo_contenedor.$dirty && cargaForm.tipo_contenedor.$invalid) || cargaForm.submitted">
+                                  <small class="error" ng-show="cargaForm.tipo_contenedor.$error.required">Campo obligatorio</small>
                                 </div>
                             </div>
                             <div class="large-2 columns">
                                 <label>Peso en KG</label>
                                 <input class="" name="peso_1" type="text" maxlength="50" ng-model="formData.freightdetail_units" placeholder="" ng-minlength=1 ng-maxlength=5 required>
-                                <div class="error-container" ng-show="(impo_form.peso_1.$dirty && impo_form.peso_1.$invalid) || impo_form.submitted">
-                                  <small class="error" ng-show="impo_form.peso_1.$error.required">Campo obligatorio</small>
+                                <div class="error-container" ng-show="(cargaForm.peso_1.$dirty && cargaForm.peso_1.$invalid) || cargaForm.submitted">
+                                  <small class="error" ng-show="cargaForm.peso_1.$error.required">Campo obligatorio</small>
                                 </div>
                             </div>
                             <div class="large-2 columns">
                                 <label>Unidades</label>
                                 <input class="" name="unidades_1" type="text" maxlength="50" ng-model="formData.freightdetail_weight" placeholder="" ng-minlength=1 ng-maxlength=5 required>
-                                <div class="error-container" ng-show="(impo_form.unidades_1.$dirty && impo_form.unidades_1.$invalid) || impo_form.submitted">
-                                  <small class="error" ng-show="impo_form.unidades_1.$error.required">Campo obligatorio</small>
+                                <div class="error-container" ng-show="(cargaForm.unidades_1.$dirty && cargaForm.unidades_1.$invalid) || cargaForm.submitted">
+                                  <small class="error" ng-show="cargaForm.unidades_1.$error.required">Campo obligatorio</small>
                                 </div>
                             </div>
                         </div>
@@ -267,8 +305,8 @@
                             <div class="large-12 columns">
                                 <label>Descripción de la carga</label>
                                 <input type="text" name="descripcion_carga" maxlength="100" ng-model="formData.freightdetail_description" placeholder="¿Que estas transportando?" ng-maxlength=100 required>
-                                <div class="error-contcondicionesainer" ng-show="(impo_form.descripcion_carga.$dirty && impo_form.descripcion_carga.$invalid) || impo_form.submitted">
-                                  <small class="error" ng-show="impo_form.descripcion_carga.$error.required">Campo obligatorio</small>
+                                <div class="error-contcondicionesainer" ng-show="(cargaForm.descripcion_carga.$dirty && cargaForm.descripcion_carga.$invalid) || cargaForm.submitted">
+                                  <small class="error" ng-show="cargaForm.descripcion_carga.$error.required">Campo obligatorio</small>
                                 </div>
                             </div>
                         </div>
@@ -383,8 +421,8 @@
                           <option value="90 días">90 días</option>
                           <option value="Más de 90 días">Más de 90 días</option>
                         </select>
-                        <div class="error-container" ng-show="(impo_form.tiempoPago.$dirty && impo_form.tiempoPago.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.tiempoPago.$error.required">Campo obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.tiempoPago.$dirty && cargaForm.tiempoPago.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.tiempoPago.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-4 columns">
@@ -396,8 +434,8 @@
                         <option value="Orden de servicio">Orden de servicio</option>
                         <option value="Sin especificar">Sin especificar</option>
                       </select>
-                        <div class="error-container" ng-show="(impo_form.pagoDesde.$dirty && impo_form.pagoDesde.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.pagoDesde.$error.required">Campo obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.pagoDesde.$dirty && cargaForm.pagoDesde.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.pagoDesde.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-4 columns">
@@ -471,9 +509,9 @@
                       <div class="large-12 columns">
                           <label>Correo electronico</label>
                           <input type="email" name="email" ng-model="formData.contact_email" ng-change="email()" placeholder="" style="width: 50%;" required/>
-                          <div class="error-container" ng-show="(impo_form.email.$dirty && impo_form.email.$invalid) || impo_form.submitted">
-                              <span class="error" ng-show="impo_form.email.$error.required">Campo obligatorio</span>
-                              <span class="error" ng-show="impo_form.email.$error.email">El correo ingresado no es valido</span>
+                          <div class="error-container" ng-show="(cargaForm.email.$dirty && cargaForm.email.$invalid) || cargaForm.submitted">
+                              <span class="error" ng-show="cargaForm.email.$error.required">Campo obligatorio</span>
+                              <span class="error" ng-show="cargaForm.email.$error.email">El correo ingresado no es valido</span>
                           </div>
                           <span class="error none status_user">El usuario no existe, favor agregar datos de usuario</span>
                       </div>
@@ -493,15 +531,15 @@
                       <div class="large-4 columns">
                           <label>Nombre</label>
                           <input type="text" name="nombre_user" maxlength="50" placeholder="" ng-model="formData.contact_first_name" ng-maxlength=50 ng-required="isUserValid()">
-                          <div class="error-container" ng-show="(impo_form.nombre_user.$dirty && impo_form.nombre_user.$invalid) || impo_form.submitted">
-                            <small class="error" ng-show="impo_form.nombre_user.$error.required">Campo obligatorio</small>
+                          <div class="error-container" ng-show="(cargaForm.nombre_user.$dirty && cargaForm.nombre_user.$invalid) || cargaForm.submitted">
+                            <small class="error" ng-show="cargaForm.nombre_user.$error.required">Campo obligatorio</small>
                           </div>
                       </div>
                       <div class="large-4 columns">
                           <label>Apellido</label>
                           <input type="text" name="apellido_user" maxlength="50" placeholder="" ng-model="formData.contact_last_name"  ng-maxlength=50 ng-required="isUserValid()">
-                          <div class="error-container" ng-show="(impo_form.apellido_user.$dirty && impo_form.apellido_user.$invalid) || impo_form.submitted">
-                            <small class="error" ng-show="impo_form.apellido_user.$error.required">Campo obligatorio</small>
+                          <div class="error-container" ng-show="(cargaForm.apellido_user.$dirty && cargaForm.apellido_user.$invalid) || cargaForm.submitted">
+                            <small class="error" ng-show="cargaForm.apellido_user.$error.required">Campo obligatorio</small>
                           </div>
                       </div>
                       <div class="large-4 columns">
@@ -540,11 +578,11 @@
                             <option value="75">75</option>
                           </select>
                           <input type="text" name="phone_user" placeholder="" ng-model="userPhoneNumber" maxlength="8" ng-maxlength=8 ng-minlength=6 ng-required="isUserValid()">
-                          <div class="error-container" ng-show="(impo_form.phone_user_prefix.$dirty && impo_form.phone_user_prefix.$invalid) || impo_form.submitted">
-                            <small class="error" ng-show="impo_form.phone_user_prefix.$error.required">Codigo de área obligatorio</small>
+                          <div class="error-container" ng-show="(cargaForm.phone_user_prefix.$dirty && cargaForm.phone_user_prefix.$invalid) || cargaForm.submitted">
+                            <small class="error" ng-show="cargaForm.phone_user_prefix.$error.required">Codigo de área obligatorio</small>
                           </div>
-                          <div class="error-container" ng-show="(impo_form.phone_user.$dirty && impo_form.phone_user.$invalid) || impo_form.submitted">
-                            <small class="error" ng-show="impo_form.phone_user.$error.required">Telefono obligatorio</small>
+                          <div class="error-container" ng-show="(cargaForm.phone_user.$dirty && cargaForm.phone_user.$invalid) || cargaForm.submitted">
+                            <small class="error" ng-show="cargaForm.phone_user.$error.required">Telefono obligatorio</small>
                           </div>
                       </div>
                       <div class="large-5 columns compact">
@@ -557,11 +595,11 @@
                             <option value="08">08</option>
                           </select>
                           <input type="text" name="cel_user_number" placeholder="" ng-model="userMobileNumber" maxlength="8" ng-maxlength=8 ng-minlength=6 ng-required="isUserValid()">
-                          <div class="error-container" ng-show="(impo_form.cel_user_prefix.$dirty && impo_form.cel_user_prefix.$invalid) || impo_form.submitted">
-                            <small class="error" ng-show="impo_form.cel_user_prefix.$error.required">Codigo de área obligatorio</small>
+                          <div class="error-container" ng-show="(cargaForm.cel_user_prefix.$dirty && cargaForm.cel_user_prefix.$invalid) || cargaForm.submitted">
+                            <small class="error" ng-show="cargaForm.cel_user_prefix.$error.required">Codigo de área obligatorio</small>
                           </div>
-                          <div class="error-container" ng-show="(impo_form.cel_user_number.$dirty && impo_form.cel_user_number.$invalid) || impo_form.submitted">
-                            <small class="error" ng-show="impo_form.cel_user_number.$error.required">Telefono obligatorio</small>
+                          <div class="error-container" ng-show="(cargaForm.cel_user_number.$dirty && cargaForm.cel_user_number.$invalid) || cargaForm.submitted">
+                            <small class="error" ng-show="cargaForm.cel_user_number.$error.required">Telefono obligatorio</small>
                           </div>
                       </div>
                       <div class="large-2 columns"></div>
@@ -577,22 +615,22 @@
                     <div class="large-4 columns">
                         <label>Nombre empresa</label>
                         <input class="" type="text" name="nombre_empresa" maxlength="100" placeholder="" ng-model="formData.company_name" ng-maxlength=100 ng-required="isUserValid()">
-                          <div class="error-container" ng-show="(impo_form.nombre_empresa.$dirty && impo_form.nombre_empresa.$invalid) || impo_form.submitted">
-                            <small class="error" ng-show="impo_form.nombre_empresa.$error.required">Campo obligatorio</small>
+                          <div class="error-container" ng-show="(cargaForm.nombre_empresa.$dirty && cargaForm.nombre_empresa.$invalid) || cargaForm.submitted">
+                            <small class="error" ng-show="cargaForm.nombre_empresa.$error.required">Campo obligatorio</small>
                           </div>
                     </div>
                     <div class="large-4 columns">
                         <label>Razon social</label>
                         <input type="text" name="razon_social" maxlength="50" placeholder="" ng-model="formData.company_business_name" ng-maxlength=50 ng-required="isUserValid()">
-                          <div class="error-container" ng-show="(impo_form.razon_social.$dirty && impo_form.razon_social.$invalid) || impo_form.submitted">
-                            <small class="error" ng-show="impo_form.razon_social.$error.required">Campo obligatorio</small>
+                          <div class="error-container" ng-show="(cargaForm.razon_social.$dirty && cargaForm.razon_social.$invalid) || cargaForm.submitted">
+                            <small class="error" ng-show="cargaForm.razon_social.$error.required">Campo obligatorio</small>
                           </div>
                     </div>
                     <div class="large-4 columns">
                         <label>Rut</label>
                         <input type="text" name="rut_number" class="" style="" maxlength="10" placeholder="Sin puntos y guión" ng-model="formData.company_business_number" ng-minlength=10 ng-maxlength=10 g-pattern="\b\d{1,8}\[K|k|0-9]" ng-required="isUserValid()">
-                        <div class="error-container" ng-show="(impo_form.rut_number.$dirty && impo_form.rut_number.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.rut_number.$error.required">Falta rut</small>
+                        <div class="error-container" ng-show="(cargaForm.rut_number.$dirty && cargaForm.rut_number.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.rut_number.$error.required">Falta rut</small>
                         </div>
                     </div>
                 </div>
@@ -627,11 +665,11 @@
                           <option value="75">75</option>
                         </select>
                         <input type="text" name="phone_work" placeholder="" ng-model="businessPhoneNumber" ng-required="isUserValid()">
-                        <div class="error-container" ng-show="(impo_form.phone_work.$dirty && impo_form.phone_work.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.phone_work.$error.required">Telefono obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.phone_work.$dirty && cargaForm.phone_work.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.phone_work.$error.required">Telefono obligatorio</small>
                         </div>
-                        <div class="error-container" ng-show="(impo_form.phone_work_prefix.$dirty && impo_form.phone_work_prefix.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.phone_work_prefix.$error.required">Codigo de área obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.phone_work_prefix.$dirty && cargaForm.phone_work_prefix.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.phone_work_prefix.$error.required">Codigo de área obligatorio</small>
                         </div>
                     </div>
                     <div class="large-7 columns"></div>
@@ -650,10 +688,10 @@
                           name="region_work"
                           ng-required="isUserValid()"
                           ng-model="formData.company_address_region"
-                          ng-options="region.id as region.name for region in returnRegion">
+                          ng-options="region.id as region.name for region in selectRegion">
                         </select>
-                        <div class="error-container" ng-show="(impo_form.region_work.$dirty && impo_form.region_work.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.region_work.$error.required">Campo obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.region_work.$dirty && cargaForm.region_work.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.region_work.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-8 columns"></div>
@@ -663,22 +701,22 @@
                     <div class="large-4 columns">
                         <label>Ciudad</label>
                         <input type="text" name="city_work" maxlength="50" placeholder="" ng-model="formData.company_address_city" ng-maxlength=50 ng-required="isUserValid()">
-                        <div class="error-container" ng-show="(impo_form.city_work.$dirty && impo_form.city_work.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.city_work.$error.required">Campo obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.city_work.$dirty && cargaForm.city_work.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.city_work.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-4 columns">
                         <label>Dirección</label>
                         <input type="text" name="address_work" maxlength="50" placeholder="" ng-model="formData.company_address_street" ng-maxlength=50 ng-required="isUserValid()">
-                        <div class="error-container" ng-show="(impo_form.address_work.$dirty && impo_form.address_work.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.address_work.$error.required">Campo obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.address_work.$dirty && cargaForm.address_work.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.address_work.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-2 columns">
                         <label>Numero</label>
                         <input type="text" name="number_work" maxlength="50" placeholder="" ng-model="formData.company_address_number" ng-maxlength=50 ng-required="isUserValid()">
-                        <div class="error-container" ng-show="(impo_form.number_work.$dirty && impo_form.number_work.$invalid) || impo_form.submitted">
-                          <small class="error" ng-show="impo_form.number_work.$error.required">Campo obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.number_work.$dirty && cargaForm.number_work.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.number_work.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-2 columns"></div>
