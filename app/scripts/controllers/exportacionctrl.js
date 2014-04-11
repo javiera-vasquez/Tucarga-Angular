@@ -83,9 +83,9 @@ angular.module('tucargaApp')
     };
 
     // Entrega en puerto // Fecha
-    $scope.total_freightwaypoint_destination_from_date_Hour = 'T00:00';
+    $scope.freightwaypoint_destination_from_date_hour = 'T00:00';
     $scope.total_freightwaypoint_destination_from_date = function() {
-        return $scope.freightwaypoint_destination_from_date_day + $scope.freightwaypoint_destination_from_date_Hour;
+        return $scope.freightwaypoint_destination_from_date_day + $scope.freightwaypoint_destination_from_date_hour;
     };
 
     // Funcion para parametros de cotizacion
