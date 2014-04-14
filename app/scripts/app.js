@@ -27,6 +27,7 @@ angular.module('tucargaApp', [
     //   controller: 'RegistroController'
     // })
     .when('/exito', {templateUrl: 'views/exito.html'})
+    .when('/terminos', {templateUrl: 'views/terminos.html'})
     .when('/cotizar/exito', {templateUrl: 'views/exito.html'})
     // Registro cargador
     .when('/cotizar/usuario', {
