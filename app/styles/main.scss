@@ -386,6 +386,18 @@ footer {
     }
 }
 
+.maps {
+    h5 {
+        @include bold;
+        font-size: rem-calc(16);
+    }
+    p {
+        font-size: rem-calc(13);
+        margin-bottom: 0;
+    }
+    hr {margin: 0.5em 0;}
+}
+
 .box.contact {
     background: $white url(../images/call.jpg) no-repeat right bottom;
     a {
