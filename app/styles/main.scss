@@ -27,6 +27,7 @@ $lvl2: #898989;
 $secondary: #1e84d3;
 $grey: #f3f5f5;
 $green: #88b43b;
+$red: #d85830;
 
 $header-font-family: $body-font-family;
 
@@ -358,6 +359,11 @@ footer {
     .head-directory {margin-bottom: 0;}
 }
 
+#form .title-page h3, #form .title-page h6 {
+    color: lighten($header-font-color, 20%);
+    span {color: $primary-color;}
+}
+
 .title-page.form {
     margin-bottom: 1.125em;
     border-bottom: 1px solid $ccc;
@@ -371,10 +377,10 @@ footer {
             lighten(#ccc, 10%),
             $body-font-color,
             13,
-            20
+            25
             );
-        text-shadow: none;
-    }
+            text-shadow: 0 1px 0 $white;
+        }
 }
 
 // Sidebar
@@ -652,8 +658,14 @@ footer {
                     margin-bottom: -0.5em;
                 }
             }
+            label {
+                .small-legend {
+                    font-size: rem-calc(12);
+                }
+            }
             fieldset {margin: 1.125em 0 0;}
             legend {color: $header-font-color;}
+            .required {color: $red;}
             .compact {
                 input {
                     @include left;

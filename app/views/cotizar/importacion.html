@@ -6,9 +6,9 @@
               <div class="title-page form clearfix">
                   <div class="left">
                     <h6>Estas cotizando</h6>
-                    <h3>Transporte para una importación</h3>
+                    <h3>Transporte para una <span>importación</span></h3>
                   </div>
-                  <a class="button radius right" href="#/cotizar">Volver a cotización</a>
+                  <a class="button radius right" href="#/cotizar">Volver</a>
               </div> <!-- {{! end title page}} -->
 
               <form name="cargaForm" novalidate ng-submit="freightPost()">
@@ -18,7 +18,7 @@
 
                 <div class="row step">
                     <div class="large-12 columns">
-                        <h5><span>1</span>Ruta de carga</h5>
+                        <h5><span>1</span>Origen - Destino</h5>
                     </div>
                 </div>
 
@@ -30,7 +30,7 @@
 
                 <div class="row">
                     <div class="large-4 columns">
-                        <label>Region</label>
+                        <label>Región <span class="required">*</span></label>
                         <select
                           name="freightwaypoint_origin_region"
                           ng-model="formData.freightwaypoint_origin_region"
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="large-2 columns">
-                        <label>Puerto</label>
+                        <label>Puerto <span class="required">*</span></label>
                         <input
                           type="text"
                           name="freightwaypoint_origin_origin_destination_port"
@@ -54,12 +54,12 @@
                           required>
                         <div class="error-container" ng-show="(cargaForm.freightwaypoint_origin_origin_destination_port.$dirty && cargaForm.freightwaypoint_origin_origin_destination_port.$invalid) || cargaForm.submitted">
                           <small class="error" ng-show="cargaForm.freightwaypoint_origin_origin_destination_port.$error.required">Campo obligatorio</small>
-                          <small class="error" ng-show="cargaForm.freightwaypoint_origin_origin_destination_port.$error.minlength">El numero minimo de caracteres es 3</small>
+                          <small class="error" ng-show="cargaForm.freightwaypoint_origin_origin_destination_port.$error.minlength">El numero minimo de caracteres es tres</small>
                         </div>
                     </div>
 
                     <div class="large-4 columns">
-                        <label>nombre nave</label>
+                        <label>Nombre nave <span class="required">*</span></label>
                         <input
                           type="text"
                           name="freightwaypoint_origin_ship_name"
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <div class="large-2 columns">
-                        <label>Fecha</label>
+                        <label>Fecha <span class="required">*</span></label>
                         <input
                           class="datepicker-input"
                           name="freightwaypoint_origin_from_date_day"
@@ -97,7 +97,7 @@
 
                   <div class="row">
                     <div class="large-4 columns">
-                         <label>Region</label>
+                         <label>Región <span class="required">*</span></label>
                         <select
                           name="freightwaypoint_destination_region"
                           ng-model="freightwaypoint_destination_region"
@@ -110,7 +110,7 @@
                         </div>
                     </div>
                     <div class="large-4 columns">
-                        <label>Comuna</label>
+                        <label>Comuna <span class="required">*</span></label>
                           <select
                             name="destination_commune"
                             ng-model="formData.freightwaypoint_destination_commune"
@@ -122,7 +122,7 @@
                           </div>
                     </div>
                     <div class="large-2 columns">
-                        <label>Fecha</label>
+                        <label>Fecha <span class="required">*</span></label>
                         <input
                           class="datepicker-input"
                           type="text"
@@ -135,7 +135,7 @@
                         </div>
                     </div>
                     <div class="large-2 columns">
-                        <label>Hora</label>
+                        <label>Hora <span class="required">*</span></label>
                         <select name="freightwaypoint_destination_from_date_hour" ng-model="freightwaypoint_destination_from_date_hour" required>
                           <option value="01:00">01:00</option>
                           <option value="02:00">02:00</option>
@@ -169,12 +169,12 @@
                 </div>
                 <div class="row">
                     <div class="large-4 columns">
-                        <label>Quien carga</label>
+                        <label>Quien descarga <span class="required">*</span></label>
                         <select
                           name="freightwaypoint_destination_who_load_unload"
                           ng-model="formData.freightwaypoint_destination_who_load_unload"
                           required>
-                          <option value="Transportista" selected="selected">Transportista</option>
+                          <option value="Cliente" selected="selected">Cliente</option>
                           <option value="Cargador">Cargador</option>
                         </select>
                         <div class="error-container" ng-show="(cargaForm.freightwaypoint_destination_who_load_unload.$dirty && cargaForm.freightwaypoint_destination_who_load_unload.$invalid) || cargaForm.submitted">
@@ -182,13 +182,14 @@
                         </div>
                     </div>
                     <div class="large-6 columns">
-                        <label>Tiempo estimado de descarga</label>
+                        <label>Tiempo estimado de descarga <span class="required">*</span></label>
                         <select name="freightwaypoint_destination_load_unload_time" ng-model="formData.freightwaypoint_destination_load_unload_time" style="width: 40%;" required>
                           <option value="1 hora">1 hora</option>
                           <option value="2 horas">2 horas</option>
                           <option value="3 horas">3 horas</option>
                           <option value="4 horas">4 horas</option>
                           <option value="5 horas">5 horas</option>
+                          <option value="6 horas">6 horas</option>
                           <option value="mas de 6 horas">mas de 6 horas</option>
                         </select>
                         <div class="error-container" ng-show="(cargaForm.freightwaypoint_destination_load_unload_time.$dirty && cargaForm.freightwaypoint_destination_load_unload_time.$invalid) || cargaForm.submitted">
@@ -259,11 +260,11 @@
 
                 <div class="carga-box">
                     <fieldset>
-                        <legend>Carga numero 1</legend>
+                        <legend>Carga número 1</legend>
 
                         <div class="row">
                             <div class="large-4 columns">
-                                <label>Tipo de carga</label>
+                                <label>Tipo de carga <span class="required">*</span></label>
                                 <select
                                   name="tipo_carga"
                                   ng-model="formData.freightdetail_obj_type"
@@ -275,7 +276,7 @@
                                 </div>
                             </div>
                             <div class="large-4 columns">
-                                <label>Tipo de Contenedor</label>
+                                <label>Tipo de Contenedor <span class="required">*</span></label>
                                 <select
                                   name="tipo_contenedor"
                                   ng-model="formData.freightdetail_container_type"
@@ -287,14 +288,14 @@
                                 </div>
                             </div>
                             <div class="large-2 columns">
-                                <label>Peso en KG</label>
+                                <label>Peso <span class="small-legend">- KG</span> <span class="required">*</span></label>
                                 <input class="" name="peso_1" type="text" maxlength="50" ng-model="formData.freightdetail_weight" placeholder="" ng-minlength=1 ng-maxlength=5 required>
                                 <div class="error-container" ng-show="(cargaForm.peso_1.$dirty && cargaForm.peso_1.$invalid) || cargaForm.submitted">
                                   <small class="error" ng-show="cargaForm.peso_1.$error.required">Campo obligatorio</small>
                                 </div>
                             </div>
                             <div class="large-2 columns">
-                                <label>Unidades</label>
+                                <label>Unidades <span class="required">*</span></label>
                                 <input class="" name="unidades_1" type="text" maxlength="50" ng-model="formData.freightdetail_units" placeholder="" ng-minlength=1 ng-maxlength=5 required>
                                 <div class="error-container" ng-show="(cargaForm.unidades_1.$dirty && cargaForm.unidades_1.$invalid) || cargaForm.submitted">
                                   <small class="error" ng-show="cargaForm.unidades_1.$error.required">Campo obligatorio</small>
@@ -303,7 +304,7 @@
                         </div>
                         <div class="row">
                             <div class="large-12 columns">
-                                <label>Descripción de la carga</label>
+                                <label>Descripción de la carga <span class="required">*</span></label>
                                 <input type="text" name="descripcion_carga" maxlength="100" ng-model="formData.freightdetail_description" placeholder="¿Que estas transportando?" ng-maxlength=100 required>
                                 <div class="error-contcondicionesainer" ng-show="(cargaForm.descripcion_carga.$dirty && cargaForm.descripcion_carga.$invalid) || cargaForm.submitted">
                                   <small class="error" ng-show="cargaForm.descripcion_carga.$error.required">Campo obligatorio</small>
@@ -313,11 +314,11 @@
                     </fieldset>
                 </div> <!-- end caga box -->
 
-<!--                 <div class="row">
+                <div class="row">
                     <div class="large-12 columns">
                         <p class="add-new-carga">Agregar otra carga</p>
                     </div>
-                </div> -->
+                </div>
 
                 <br>
                 <!-- REQUERIMIENTOS -->
@@ -328,7 +329,7 @@
                 </div>
                 <div class="row">
                     <div class="large-4 columns">
-                        <label>Forma de pago</label>
+                        <label>Forma de pago <span class="required">*</span></label>
                         <select name="tiempoPago" class="" ng-model="tiempoPago" required>
                           <option value="Al Contado">Al Contado</option>
                           <option value="Menos de 15 días">Menos de 15 días</option>
@@ -344,7 +345,7 @@
                         </div>
                     </div>
                     <div class="large-4 columns">
-                      <label>Desde</label>
+                      <label>Desde <span class="required">*</span></label>
                       <select name="pagoDesde" class="" ng-model="pagoDesde" required>
                         <option value="Emisión de factura">Emisión de factura</option>
                         <option value="Despacho de factura">Despacho de factura</option>
@@ -425,7 +426,7 @@
                   </div>
                   <div class="row">
                       <div class="large-12 columns">
-                          <label>Correo electronico</label>
+                          <label>Correo electronico <span class="required">*</span></label>
                           <input type="email" name="email" ng-model="formData.contact_email" ng-change="email()" placeholder="" style="width: 50%;" required/>
                           <div class="error-container" ng-show="(cargaForm.email.$dirty && cargaForm.email.$invalid) || cargaForm.submitted">
                               <span class="error" ng-show="cargaForm.email.$error.required">Campo obligatorio</span>
@@ -437,7 +438,7 @@
                   </div>
                 </div>
 
-                <div id="add-person" class="none">
+                <div id="add-person" class="">
 
                 <div class="row step">
                     <div class="large-12 columns">
@@ -448,7 +449,7 @@
                   <div class="row">
                       <div class="large-4 columns">
                           <label>Nombre</label>
-                          <input type="text" name="nombre_user" maxlength="50" placeholder="" ng-model="formData.contact_first_name" ng-maxlength=50 ng-required="isUserValid()">
+                          <input type="text" name="nombre_user" maxlength="50" placeholder="{{hola}}" ng-model="formData.contact_first_name" ng-maxlength=50 ng-required="isUserValid()" disabled="">
                           <div class="error-container" ng-show="(cargaForm.nombre_user.$dirty && cargaForm.nombre_user.$invalid) || cargaForm.submitted">
                             <small class="error" ng-show="cargaForm.nombre_user.$error.required">Campo obligatorio</small>
                           </div>
@@ -526,7 +527,7 @@
                 <!-- DATOS EMPRESA -->
                 <div class="row step">
                     <div class="large-12 columns">
-                        <h5 class="subhearder">Contacto empresa</h5>
+                        <h5 class="subhearder">Datos empresa</h5>
                     </div>
                 </div>
                 <div class="row">
@@ -553,94 +554,6 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="large-5 columns compact">
-                        <label>Telefono</label>
-                        <select name="phone_work_prefix" ng-model="businessPhonePrefix" ng-required="isUserValid()">
-                          <option value="02">02</option>
-                          <option value="32">32</option>
-                          <option value="33">33</option>
-                          <option value="34">34</option>
-                          <option value="35">35</option>
-                          <option value="41">41</option>
-                          <option value="42">42</option>
-                          <option value="43">43</option>
-                          <option value="45">45</option>
-                          <option value="51">51</option>
-                          <option value="52">52</option>
-                          <option value="53">53</option>
-                          <option value="55">55</option>
-                          <option value="57">57</option>
-                          <option value="58">58</option>
-                          <option value="61">61</option>
-                          <option value="63">63</option>
-                          <option value="64">64</option>
-                          <option value="65">65</option>
-                          <option value="67">67</option>
-                          <option value="71">71</option>
-                          <option value="72">72</option>
-                          <option value="73">73</option>
-                          <option value="75">75</option>
-                        </select>
-                        <input type="text" name="phone_work" placeholder="" ng-model="businessPhoneNumber" ng-required="isUserValid()">
-                        <div class="error-container" ng-show="(cargaForm.phone_work.$dirty && cargaForm.phone_work.$invalid) || cargaForm.submitted">
-                          <small class="error" ng-show="cargaForm.phone_work.$error.required">Telefono obligatorio</small>
-                        </div>
-                        <div class="error-container" ng-show="(cargaForm.phone_work_prefix.$dirty && cargaForm.phone_work_prefix.$invalid) || cargaForm.submitted">
-                          <small class="error" ng-show="cargaForm.phone_work_prefix.$error.required">Codigo de área obligatorio</small>
-                        </div>
-                    </div>
-                    <div class="large-7 columns"></div>
-                </div>
-
-                <div class="row step">
-                    <div class="large-12 columns">
-                        <h5 class="subhearder">Dirección empresa</h5>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="large-4 columns">
-                        <label>Region</label>
-                        <select
-                          name="region_work"
-                          ng-required="isUserValid()"
-                          ng-model="formData.company_address_region"
-                          ng-options="region.id as region.name for region in selectRegion">
-                        </select>
-                        <div class="error-container" ng-show="(cargaForm.region_work.$dirty && cargaForm.region_work.$invalid) || cargaForm.submitted">
-                          <small class="error" ng-show="cargaForm.region_work.$error.required">Campo obligatorio</small>
-                        </div>
-                    </div>
-                    <div class="large-8 columns"></div>
-                </div>
-
-                <div class="row">
-                    <div class="large-4 columns">
-                        <label>Ciudad</label>
-                        <input type="text" name="city_work" maxlength="50" placeholder="" ng-model="formData.company_address_city" ng-maxlength=50 ng-required="isUserValid()">
-                        <div class="error-container" ng-show="(cargaForm.city_work.$dirty && cargaForm.city_work.$invalid) || cargaForm.submitted">
-                          <small class="error" ng-show="cargaForm.city_work.$error.required">Campo obligatorio</small>
-                        </div>
-                    </div>
-                    <div class="large-4 columns">
-                        <label>Dirección</label>
-                        <input type="text" name="address_work" maxlength="50" placeholder="" ng-model="formData.company_address_street" ng-maxlength=50 ng-required="isUserValid()">
-                        <div class="error-container" ng-show="(cargaForm.address_work.$dirty && cargaForm.address_work.$invalid) || cargaForm.submitted">
-                          <small class="error" ng-show="cargaForm.address_work.$error.required">Campo obligatorio</small>
-                        </div>
-                    </div>
-                    <div class="large-2 columns">
-                        <label>Numero</label>
-                        <input type="text" name="number_work" maxlength="50" placeholder="" ng-model="formData.company_address_number" ng-maxlength=50 ng-required="isUserValid()">
-                        <div class="error-container" ng-show="(cargaForm.number_work.$dirty && cargaForm.number_work.$invalid) || cargaForm.submitted">
-                          <small class="error" ng-show="cargaForm.number_work.$error.required">Campo obligatorio</small>
-                        </div>
-                    </div>
-                    <div class="large-2 columns"></div>
-                </div>
-
-                  <br>
                 </div> <!-- end add-person -->
 
                 <br>
@@ -670,37 +583,5 @@
 
 <script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <script src="bower_components/bootstrap-datepicker/js/locales/bootstrap-datepicker.es.js"></script>
+<script src="scripts/form.js"></script>
 
-<script>
-    $(document).foundation();
-    $(document).ready(function() {
-        // select the corret type
-        // Cargo datepicker
-        $('.datepicker-input').datepicker({
-          format: "yyyy-mm-dd",
-          weekStart: 1,
-          language: "es",
-        });
-        // Show input almacenaje
-        $('#si_almacenaje').on("click", function(){
-          $('.show_amalcenaje').removeClass('none');
-          $('.show_amalcenaje').addClass('show');
-        });
-        $('#no_almacenaje').on("click", function(){
-          $('.show_amalcenaje').removeClass('show');
-          $('.show_amalcenaje').addClass('none');
-        });
-        // if/else de numero de cargas
-        var i = 2;
-        $(".add-new-carga").click(function () {
-            if (i <= 3) {
-                $('.carga-box'+ (i++)).show();
-                console.log(i);
-                if (i == 4) {
-                    $(".add-new-carga").remove();
-                    console.log(i);
-                }
-            }
-        });
-    });
-</script>

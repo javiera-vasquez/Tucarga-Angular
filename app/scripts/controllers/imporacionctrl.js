@@ -3,6 +3,8 @@
 angular.module('tucargaApp')
   .controller('ImpoController', function ($scope, $http, $location) {
 
+$scope.hola = "Manuel";
+
     // Pregunto por las regiones = selectRegion
     $http({
         method : 'GET',
