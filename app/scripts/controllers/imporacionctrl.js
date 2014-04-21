@@ -3,8 +3,6 @@
 angular.module('tucargaApp')
   .controller('ImpoController', function ($scope, $http, $location) {
 
-$scope.hola = "Manuel";
-
     // Pregunto por las regiones = selectRegion
     $http({
         method : 'GET',
@@ -113,8 +111,14 @@ $scope.hola = "Manuel";
     };
 
     // Necesito almacenamiento
-    $scope.addNeedStorage = function() {
-        return 'Si, ' + $scope.needs_storage_string;
+    $scope.storageFuncton = function() {
+        if($scope.addNeedStorage == "true" ) {
+            $scope.storageState = "false"
+            return 'Si, ' + 'Dias: ' + $scope.needs_storage_days + ', Descripcion: '+ $scope.needs_storage_string;
+        }
+        else if($scope.addNeedStorage == "false") {
+            return 'No';
+        }
     };
 
     // $scope.rut = function() {
@@ -136,13 +140,13 @@ $scope.hola = "Manuel";
         })
         .success(function(data) {
            // console.log("win");
-           $('#add-person').addClass('none');
-           $('.status_user').addClass('none');
+           // $('#add-person').addClass('none');
+           // $('.status_user').addClass('none');
             $scope.isUserValid = function() {return false;}
         }).error(function(data) {
             // console.log("fail");
-            $('#add-person').removeClass('none');
-            $('.status_user').removeClass('none');
+            // $('#add-person').removeClass('none');
+            // $('.status_user').removeClass('none');
             $scope.isUserValid = function() {return true;}
         });
     };
@@ -155,8 +159,8 @@ $scope.hola = "Manuel";
         $scope.formData.freightwaypoint_origin_from_date = $scope.total_freightwaypoint_origin_date();
         $scope.formData.freightwaypoint_destination_from_date =  $scope.total_freightwaypoint_destination_from_date();
         // Parametros de una cotizacion
-        $scope.formData.needs_storage = $scope.addNeedStorage();
-        $scope.formData.other = $scope.otherInfo();
+        $scope.formData.needs_storage = $scope.storageFuncton();
+        $scope.formData.reason = $scope.otherInfo();
         $scope.formData.service_conditions = $scope.conditions();
         //Telefonos empresa y usuario
         $scope.formData.company_phone =  $scope.businessPhone();
@@ -182,6 +186,7 @@ $scope.hola = "Manuel";
               });
         }else {
             $scope.cargaForm.submitted = true;
+            $('.form-status').removeClass('none');
             // console.log("no valid");
         };
 
