@@ -4,7 +4,8 @@ angular.module('tucargaApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'platanus.rut'
 ])
 
 .config(function ($routeProvider) {

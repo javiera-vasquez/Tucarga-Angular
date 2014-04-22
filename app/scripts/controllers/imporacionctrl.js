@@ -140,13 +140,22 @@ angular.module('tucargaApp')
         })
         .success(function(data) {
            // console.log("win");
-           // $('#add-person').addClass('none');
-           // $('.status_user').addClass('none');
+           // Arreglo de datos de usuario
+           $scope.infoUser = data;
+           // Elimino validacion de usuario
+            $scope.userDisable= function() {return true;}
+            // Bloqueo input
             $scope.isUserValid = function() {return false;}
+            // Manejo modal de status
+           $('.status-mail.valid').removeClass('none');
+           $('.status-mail.invalid').addClass('none');
+           $('.status-mail.nothing').addClass('none');
         }).error(function(data) {
             // console.log("fail");
-            // $('#add-person').removeClass('none');
-            // $('.status_user').removeClass('none');
+           $('.status-mail.invalid').removeClass('none');
+           $('.status-mail.valid').addClass('none');
+           $('.status-mail.nothing').addClass('none');
+            // Agrego validacion de usuario
             $scope.isUserValid = function() {return true;}
         });
     };

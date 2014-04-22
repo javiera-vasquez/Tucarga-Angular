@@ -770,6 +770,42 @@ footer {
     }
 }
 
+.status-mail {
+    border: 2px solid $ccc;
+    margin-bottom: 1em;
+    div.left {
+        margin: 10px 0 5px 70px;
+    }
+    img {
+        margin-top: 10px;
+        position: absolute;
+    }
+    h5 {
+        @include bold;
+        font-size: rem-calc(15);
+        margin-bottom: 0.3em;
+    }
+    p {
+        font-size: rem-calc(13);
+        margin-bottom: 0;
+        line-height: 1.3;
+    }
+}
+
+.status-mail.valid {
+    border-color: #96c5a8;
+    background-color: #d2ecdc;
+    img {margin-top: 0;}
+    p, h5 {color: #2e8c51;}
+}
+
+.status-mail.invalid {
+    border-color: #e2beb2;
+    background-color: #f5d5cb;
+    img {margin-top: 0;}
+    p, h5 {color: #d85830;}
+}
+
 #exito {
     text-align: center;
     .fi-check {
