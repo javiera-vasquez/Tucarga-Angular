@@ -111,15 +111,6 @@ angular.module('tucargaApp')
         return $scope.tiempoPago + ', ' + $scope.pagoDesde;
     };
 
-    // Necesito almacenamiento
-    $scope.addNeedStorage = function() {
-        return 'Si, ' + $scope.needs_storage_string;
-    };
-
-    // $scope.rut = function() {
-    //     $scope.numero_rut + $scope.verificador_rut;
-    // };
-
     // Array of the element to send
     $scope.formData = {};
 
@@ -135,14 +126,25 @@ angular.module('tucargaApp')
         })
         .success(function(data) {
            // console.log("win");
-           $('#add-person').addClass('none');
-           $('.status_user').addClass('none');
+           // Arreglo de datos de usuario
+           $scope.infoUser = data;
+           // Bloqueo input
+            $scope.userDisable= function() {return true;}
+            // Elimino validacion de usuario
             $scope.isUserValid = function() {return false;}
+            // Manejo modal de status
+           $('.status-mail.valid').removeClass('none');
+           $('.status-mail.invalid').addClass('none');
+           $('.status-mail.nothing').addClass('none');
         }).error(function(data) {
             // console.log("fail");
-            $('#add-person').removeClass('none');
-            $('.status_user').removeClass('none');
+           // desbloque input
+            $scope.userDisable= function() {return false;}
+            // Agrego validacion de usuario
             $scope.isUserValid = function() {return true;}
+           $('.status-mail.invalid').removeClass('none');
+           $('.status-mail.valid').addClass('none');
+           $('.status-mail.nothing').addClass('none');
         });
     };
 
@@ -150,13 +152,11 @@ angular.module('tucargaApp')
     $scope.freightPost = function() {
         // Tipo de cotizacion
         $scope.formData.obj_type = 'empt';
-        $scope.formData.freightdetail_obj_type = '7';
         // Funciones de fechas
         $scope.formData.freightlocation_withdraw_from_date= $scope.total_freightlocation_withdraw_from_date();
         $scope.formData.freightlocation_return_to_date =  $scope.total_freightlocation_return_to_date();
         // Parametros de una cotizacion
-        $scope.formData.needs_storage = $scope.addNeedStorage();
-        $scope.formData.other = $scope.otherInfo();
+        $scope.formData.reason = $scope.otherInfo();
         $scope.formData.service_conditions = $scope.conditions();
         //Telefonos empresa y usuario
         $scope.formData.company_phone =  $scope.businessPhone();
@@ -182,6 +182,7 @@ angular.module('tucargaApp')
               });
         }else {
             $scope.cargaForm.submitted = true;
+            $('.form-status').removeClass('none');
             // console.log("no valid");
         };
 

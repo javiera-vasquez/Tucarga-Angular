@@ -121,10 +121,6 @@ angular.module('tucargaApp')
         }
     };
 
-    // $scope.rut = function() {
-    //     $scope.numero_rut + $scope.verificador_rut;
-    // };
-
     // Array of the element to send
     $scope.formData = {};
 
@@ -142,9 +138,9 @@ angular.module('tucargaApp')
            // console.log("win");
            // Arreglo de datos de usuario
            $scope.infoUser = data;
-           // Elimino validacion de usuario
+           // Bloqueo input
             $scope.userDisable= function() {return true;}
-            // Bloqueo input
+            // Elimino validacion de usuario
             $scope.isUserValid = function() {return false;}
             // Manejo modal de status
            $('.status-mail.valid').removeClass('none');
@@ -152,11 +148,13 @@ angular.module('tucargaApp')
            $('.status-mail.nothing').addClass('none');
         }).error(function(data) {
             // console.log("fail");
+           // desbloque input
+            $scope.userDisable= function() {return false;}
+            // Agrego validacion de usuario
+            $scope.isUserValid = function() {return true;}
            $('.status-mail.invalid').removeClass('none');
            $('.status-mail.valid').addClass('none');
            $('.status-mail.nothing').addClass('none');
-            // Agrego validacion de usuario
-            $scope.isUserValid = function() {return true;}
         });
     };
 
@@ -175,8 +173,6 @@ angular.module('tucargaApp')
         $scope.formData.company_phone =  $scope.businessPhone();
         $scope.formData.userdirectory_mobile = $scope.userMobile();
         $scope.formData.userdirectory_phone = $scope.userPhone();
-        // Rut usuario
-        // $scope.formData.company_business_number = $scope.rut();
         // Submit validation
         if($scope.cargaForm.$valid) {
             // send the form
@@ -198,7 +194,6 @@ angular.module('tucargaApp')
             $('.form-status').removeClass('none');
             // console.log("no valid");
         };
-
       };
 
   });
