@@ -646,7 +646,7 @@ $orbit-timer-show-progress-bar: false;
 // $include-html-pricing-classes: $include-html-classes;
 
 // We use this to control the border color
-// $price-table-border: solid 1px #ddd;
+$price-table-border: solid 1px #fff;
 
 // We use this to control the bottom margin of the pricing table
 // $price-table-margin-bottom: rem-calc(20);
@@ -848,22 +848,22 @@ $orbit-timer-show-progress-bar: false;
 
 // These control the background color for the table and even rows
 // $table-bg: #fff;
-// $table-even-row-bg: #f9f9f9  ;
+$table-even-row-bg: none  ;
 
 // These control the table cell border style
 // $table-border-style: solid;
 // $table-border-size: 1px;
-// $table-border-color: #ddd;
+$table-border-color: white;
 
 // These control the table head styles
 // $table-head-bg: #f5f5f5  ;
 // $table-head-font-size: rem-calc(14);
 // $table-head-font-color: #222;
-// $table-head-font-weight: bold;
-// $table-head-padding: rem-calc(8 10 10);
+$table-head-font-weight: bold;
+$table-head-padding: rem-calc(5 8 7);
 
 // These control the row padding and font styles
-// $table-row-padding: rem-calc(9 10);
+$table-row-padding: rem-calc(4 7);
 // $table-row-font-size: rem-calc(14);
 // $table-row-font-color: #222;
 // $table-line-height: rem-calc(18);

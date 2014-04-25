@@ -1,0 +1,31 @@
+<div id="content-page"><div id="form" class="row"><div class="small-9 small-centered columns"><div id="content-view"><div class="title-page form clearfix"><div class="left"><h6>Estas cotizando</h6><h3>Transporte para una importación</h3></div><a class="button radius right" href="#/cotizar">Volver a cotización</a></div><!-- {{! end title page}} --><form name="impo_form" novalidate ng-submit="freightPost()"><div class="row form-layout"><div class="large-8 columns"><div class="row step"><div class="large-12 columns"><h5><span>1</span>Ruta de carga</h5></div></div><div class="row step"><div class="large-12 columns"><h5 class="subhearder">Puerto de origen</h5></div></div><div class="row"><div class="large-4 columns"></div><div class="large-4 columns"><label>Puerto</label><input type="text" name="puerto" placeholder="" maxlength="50" ng-model="formData.freightwaypoint_origin_origin_destination_port" ng-minlength="3" ng-maxlength="50" required><div class="error-container" ng-show="(impo_form.puerto.$dirty && impo_form.puerto.$invalid) || impo_form.submitted"><small class="error" ng-show="impo_form.puerto.$error.required">Campo obligatorio</small> <small class="error" ng-show="impo_form.puerto.$error.minlength">El numero minimo de caracteres es 3</small></div></div><div class="large-4 columns"></div></div><div class="row"><div class="large-6 columns"><label>¿Necesita almacenaje?</label><input type="radio" id="si_almacenaje" name="almacenaje" value="si" placeholder="" ng-change="add_needs_storage()" ng-model="a"><label for="si_almacenaje">Si</label><input type="radio" id="no_almacenaje" name="almacenaje" value="no" placeholder=""><label for="no_almacenaje">No</label><div class="show_amalcenaje none"><input type="text" name="" ng-model="needs_storage_string" placeholder="¿Necesita almacenaje?" ng-maxlength="45"></div></div><div class="large-6 columns"></div></div><div class="row step"><div class="large-12 columns"><h5 class="subhearder">Motivo de la cotización</h5></div></div><div class="row"><div class="large-8 columns"><input type="checkbox" id="2" ng-model="otherOne" ng-true-value="Busco transporte por temporada"><label for="2">Busco transporte por temporada</label><br><input type="checkbox" id="3" ng-model="otherTwo" ng-true-value="Busco proveedores con los que trabajar"><label for="3">Busco proveedores con los que trabajar</label><br><input type="checkbox" id="4" ng-model="otherThree" ng-true-value="Busco conocer tarifas de mercado"><label for="4">Busco conocer tarifas de mercado</label><br></div><div class="large-4 columns"></div>{{otherInfo()}}</div><!-- DATOS PERSONALES --><div class="asdf"><div class="row step"><div class="large-12 columns"><h5><span>4</span>Información de contacto</h5></div></div><div class="row"><div class="large-6 columns"><label>Correo electronico</label><input type="email" name="email" ng-model="formData.contact_email" ng-change="email()" placeholder="" required><div class="error-container" ng-show="(impo_form.email.$dirty && impo_form.email.$invalid) || impo_form.submitted"><span class="error" ng-show="impo_form.email.$error.required">Campo obligatorio</span> <span class="error" ng-show="impo_form.email.$error.email">El correo ingresado no es valido</span></div><span class="error none status_user">El usuario no existe, favor agregar datos de usuario</span></div><div class="large-6 columns"></div></div></div><div id="add-person" class="none"><div class="row step"><div class="large-12 columns"><h5 class="subhearder">Datos personales</h5></div></div><div class="row"><div class="large-4 columns"><label>Nombre</label><input type="text" name="nombre_user" maxlength="50" placeholder="" ng-model="formData.contact_first_name" ng-maxlength="50" ng-required="isUserValid()"><div class="error-container" ng-show="(impo_form.nombre_user.$dirty && impo_form.nombre_user.$invalid) || impo_form.submitted"><small class="error" ng-show="impo_form.nombre_user.$error.required">Campo obligatorio</small></div></div><div class="large-4 columns"></div><div class="large-4 columns"></div></div><br></div><!-- end add-person --><br><button class="button success radius large-12">Enviar cotización</button></div></div></form><!-- End  freighPost --></div><!-- {{!end form content}} --><div class="large-4 columns"><div class="why sidebar"><h5>Beneficios de cotizar</h5><ul><li><i class="fi-check"></i>Trabaja con clientes confiables y recomendados</li><li><i class="fi-check"></i>Nosotros te avisamos cada ves que tengas una oferta.</li><li><i class="fi-check"></i>Aumenta el volumen de carga y retornos vacios.</li></ul></div></div><!-- {{! end why}} --></div><!-- {{! end form-layout}} --></div><!-- {{! end #content-view}} --></div><!-- {{! end centered}} --><!-- {{! end #form}} --><!-- {{! end content page }} --><script src="bower_components/bootstrap-datepicker/js/bootstrap-datepicker.js"></script><script src="bower_components/bootstrap-datepicker/js/locales/bootstrap-datepicker.es.js"></script><script>$(document).foundation();
+    $(document).ready(function() {
+        // select the corret type
+        // Cargo datepicker
+        $('.datepicker-input').datepicker({
+          format: "yyyy-mm-dd",
+          weekStart: 1,
+          language: "es",
+        });
+        // Show input almacenaje
+        $('#si_almacenaje').on("click", function(){
+          $('.show_amalcenaje').removeClass('none');
+          $('.show_amalcenaje').addClass('show');
+        });
+        $('#no_almacenaje').on("click", function(){
+          $('.show_amalcenaje').removeClass('show');
+          $('.show_amalcenaje').addClass('none');
+        });
+        // if/else de numero de cargas
+        var i = 2;
+        $(".add-new-carga").click(function () {
+            if (i <= 3) {
+                $('.carga-box'+ (i++)).show();
+                console.log(i);
+                if (i == 4) {
+                    $(".add-new-carga").remove();
+                    console.log(i);
+                }
+            }
+        });
+    });</script>

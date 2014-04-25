@@ -383,6 +383,11 @@ footer {
         }
 }
 
+.title-page.form.cotiza {
+    h3 {margin-bottom: 0;}
+    p {margin-bottom: 0.5em;}
+}
+
 // Sidebar
 .filters {
     h4 {
@@ -417,6 +422,17 @@ footer {
     p {
         font-size: rem-calc(13);
         margin-right: 5em;
+    }
+}
+
+.box.cotiza {
+    box-shadow: none;
+    // background:  #f6f6f5;
+    border: solid 1px #dddddd;
+    table {
+        margin-left: 10px;
+        margin-bottom: 0;
+        width: 95%;
     }
 }
 
@@ -903,7 +919,6 @@ footer {
 }
 
 // Form validation
-
 span.error, small.error {
     background: $white;
     color: $red;
