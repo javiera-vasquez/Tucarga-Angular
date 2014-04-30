@@ -1,0 +1,17 @@
+{
+    "name": "eternicode/bootstrap-datepicker",
+    "type": "component",
+    "require": {
+        "robloach/component-installer": "*"
+    },
+    "extra": {
+        "component": {
+            "scripts": [
+                "js/bootstrap-datepicker.js"
+            ],
+            "styles": [
+                "css/datepicker.css"
+            ]
+        }
+    }
+}

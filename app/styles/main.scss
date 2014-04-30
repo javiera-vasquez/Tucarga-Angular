@@ -407,6 +407,47 @@ footer {
         margin-bottom: 0;
     }
     hr {margin: 0.5em 0;}
+    .bg-chile {
+        background: url(../images/zona/1.png) no-repeat top right;
+        height: 375px;
+        width: 215px;
+    }
+    .bg-hover div  {
+        background-repeat: no-repeat;
+        background-position: top right;
+        height: 375px;
+        width: 215px;
+        ul {
+            width: 75%;
+            margin: 0;
+            li.first {
+                @include bold;
+                list-style: none;
+                color: darken($lvl2, 20%);
+                font-size: rem-calc(13);
+                &:hover {
+                    color: $primary-color;
+                    cursor: pointer;
+                }
+            }
+            .active {color: $primary-color;}
+        }
+        .zone {
+            margin: 0.1em 0 0.4em 0.4em;
+            li {
+                list-style: none;
+                font-size: rem-calc(13);
+            }
+        }
+    }
+    .img-2 {background-image: url(../images/zona/2.png);}
+    .img-3 {background-image: url(../images/zona/3.png);}
+    .img-4 {background-image: url(../images/zona/4.png);}
+    .img-5 {background-image: url(../images/zona/5.png);}
+    .img-6 {background-image: url(../images/zona/6.png);}
+    .img-7 {background-image: url(../images/zona/7.png);}
+    .img-8 {background-image: url(../images/zona/8.png);}
+    .img-9 {background-image: url(../images/zona/9.png);}
 }
 
 .box.contact {
@@ -571,29 +612,49 @@ footer {
 }
 
 // Tranportistas
-.loop-list {
-    border-bottom: 1px solid $ccc;
+.loop-transport {
     padding: 0.5em 0 1em;
+    border-bottom: 1px solid $ccc;
+    hr {
+        margin: 0;
+    }
+}
+
+div.avatar {
+    width: 11%;
+    margin-right: 2%;
+    margin-top: 4px;
+    box-shadow: $basic-box-shadow;
+    border-radius: 50px;
+    img {border-radius: 50px;}
+}
+
+.loop-list {
+    width: 87%;
     h5 {
         font-size: rem-calc(18);
-        margin-bottom: -2px;
+        margin-bottom: 0;
     }
     ul {
         margin: 0;
         li {
             @include left;
             list-style: none;
-            width: 33%;
+            width: 25%;
             span {
                 font-size: rem-calc(11);
                 text-transform: uppercase;
                 color: $lvl2;
             }
             p {
-                margin: -5px 0 0;
+                margin: 0;
                 font-size: rem-calc(14);
+                line-height: 1.5;
             }
         }
+        li.coverage {width: 50%;}
+        li.false .si {display: none;}
+        li.true .no {display: none;}
     }
 }
 
