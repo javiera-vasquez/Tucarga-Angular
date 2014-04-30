@@ -1,0 +1,190 @@
+<div class="overlay" ng-show="loading">
+    <div class="spinner"><img src="images/ajax-loader.gif" alt="Cargando"></div>
+    <div class="bg-overlay"></div>
+</div>
+
+<div id="content-page">
+    <div  class="row">
+
+    <div id="sidebar" class="large-3 medium-4 columns">
+
+        <div class="box register">
+            <div class="margin">
+                <p>Sumate a la red de transporte mas grande de Chile y ve como aumenta <strong>Tucarga</strong></p>
+                <p><a href="#/registro" class="button radius">Unete al club</a></p>
+            </div>
+        </div>
+
+        <div class="box maps">
+            <h5>Coberturas</h5>
+            <p>Te explicamos cuales son las áreas que crubrimos en Tucarga.</p>
+            <hr>
+            <div class="bg-chile">
+                <div class="bg-hover">
+                    <div class="">
+                        <ul>
+                            <li class="first hover-2 active">Norte</li>
+                            <ul class="zone div-2">
+                                <li>XV-Arica y Parinacota</li>
+                                <li>I-Tarapacá </li>
+                                <li>II-Antofagasta </li>
+                                <li>III-Atacama </li>
+                                <li>IV-Coquimbo </li>
+                            </ul>
+                            <li class="first hover-3">Centro - norte</li>
+                            <ul class="zone div-3 none">
+                                <li><strong>De</strong></li>
+                                <li>V-Valparaíso</li>
+                                <li>RM-Metropolitana de Santiago</li>
+                                <li><strong>Hasta</strong></li>
+                                <li>XV-Arica y Parinacota </li>
+                                <li>I-Tarapacá </li>
+                                <li>II-Antofagasta </li>
+                                <li>III-Atacama </li>
+                                <li>IV-Coquimbo </li>
+                            </ul>                            
+                            <li class="first hover-4">Región metropolitana</li>
+                            <ul class="zone div-4 none">
+                                <li>RM-Metropolitana de Santiago</li>
+                            </ul>                            
+                            <li class="first hover-5">Centro</li>
+                            <ul class="zone div-5 none">
+                                <li>V-Valparaíso </li>
+                                <li>RM-Metropolitana de Santiago</li>
+                            </ul>                            
+                            <li class="first hover-6">Centro - Sur</li>
+                            <ul class="zone div-6 none">
+                                <li><strong>De</strong></li>
+                                <li>V-Valparaíso </li>
+                                <li>RM-Metropolitana de Santiago</li>
+                                <li><strong>Hasta</strong></li>
+                                <li>VI-Libertador General Bernardo O'Higgins</li>
+                                <li>VII-Maule</li>
+                                <li>VIII-Biobío </li>
+                            </ul>                            
+                            <li class="first hover-7">Sur</li>
+                            <ul class="zone div-7 none">
+                                <li>VI-Libertador General Bernardo O'Higgins</li>
+                                <li>VII-Maule</li>
+                                <li>VIII-Biobío </li>
+                            </ul>                            
+                            <li class="first hover-8">Sur Extremo</li>
+                            <ul class="zone div-8 none">
+                                <li>IX-La Araucanía</li>
+                                <li>XIV-de Los Ríos</li>
+                                <li>X-de Los Lagos</li>
+                                <li>XI-Aysén del General Carlos Ibáñez del Campo</li>
+                                <li>XII-Magallanes y de la Antártica Chilena </li>
+                            </ul>                            
+                            <li class="first hover-9">Centro - Sur extremo </li>
+                            <ul class="zone div-9 none">
+                                <li><strong>De</strong></li>
+                                <li>V-Valparaíso </li>
+                                <li>RM-Metropolitana de Santiago</li>
+                                <li><strong>Hasta</strong></li>
+                                <li>IX-La Araucanía</li>
+                                <li>XIV-de Los Ríos</li>
+                                <li>X-de Los Lagos</li>
+                                <li>XI-Aysén del General Carlos Ibáñez del Campo</li>
+                                <li>XII-Magallanes y de la Antártica Chilena </li>
+                            </ul>                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!--         <div class="box filters">
+                <h4>Desde</h4>
+                <select>
+                    <option value="husker">Husker</option>
+                    <option value="starbuck">Starbuck</option>
+                    <option value="hotdog">Hot Dog</option>
+                    <option value="apollo">Apollo</option>
+                </select>
+                <h4>Hasta</h4>
+                <select>
+                    <option value="husker">Husker</option>
+                    <option value="starbuck">Starbuck</option>
+                    <option value="hotdog">Hot Dog</option>
+                    <option value="apollo">Apollo</option>
+                </select>
+                <h4>Tipo de carga</h4>
+                <input id="check1" type="checkbox" name="check" value="check1">
+                <label for="check1">Checkbox No. 1</label>
+                <br>
+                <input id="check2" type="checkbox" name="check" value="check2">
+                <label for="check2">Checkbox No. 2</label>
+                <br>
+                <input id="check3" type="checkbox" name="check" value="check3">
+                <label for="check3">Checkbox No. 1</label>
+                <br>
+                <input id="check4" type="checkbox" name="check" value="check4">
+                <label for="check4">Checkbox No. 1</label>
+        </div> -->
+
+    </div> <!-- {{! end sidebar }} -->
+
+    <div id="content-view" class="large-9 medium-8 columns">
+        <div class="title-page clearfix">
+            <div class="left">
+                <h3 class="head-directory">Directorio de transporte</h3>
+                <h5 class="subheader">Descubre nuevas empresas con las que puedes trabajar</h5>
+            </div>
+            <!-- <a href="#/cotizar" class="button radius right">Cotizar</a> -->
+        </div> <!-- {{! end title page}} -->
+
+        <div class="loop-transport clearfix"
+            ng-repeat="transportista in directory | startFrom:currentPage*pageSize | limitTo:pageSize">
+            <div class="avatar left">
+                <img src="{{ transportista.logo }}" alt="" />
+            </div>
+            <div class="loop-list  left clearfix">
+                <h5>{{ transportista.name }}</h5>
+                <ul class="">
+                    <li class="coverage">
+                        <span>Cobertura</span></br>
+                        <p>{{ transportista.coverage }}</p>
+                    </li>
+                    <li class="region">
+                        <span>Sucursales</span></br>
+                        <p>{{ transportista.address_commune }}</p>
+                    </li>
+                    <li class="storage {{ transportista.storage }}">
+                        <span>Almacenaje</span></br>
+                        <p class="no">No</p>
+                        <p class="si">Si</p>
+                    </li>
+                </ul>
+            </div>
+        </div> <!-- {{! end loop }} -->
+
+        <br /><br />
+        <div class="pagination-centered">
+          <ul class="pagination">
+            <li class="arrow "><a href ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">&laquo; Anterior</a></li>
+            <li class="current"><a href>{{currentPage+1}}/{{numberOfPages()}}</a></li>
+            <li class="arrow"><a href ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">Siguiente &raquo;</a></li>
+          </ul>
+        </div>
+        <br /><br />
+
+        <a id="ad-loop" class="" href="#/cotizar">
+            <div class="box cotiza-ad">
+                <div class="margin clearfix">
+                    <div class="left">
+                        <h3>Te ayudamos a elegir</h3>
+                        <p>En Tucarga estamos comprometidos en brindarte la mejor solución de transporte</p>
+                    </div>
+                    <i class="fi-play right"></i>
+                </div>
+            </div>
+        </a>
+
+    </div> <!-- {{! end content view }} -->
+
+    </div>
+</div> <!-- {{! end content page }} -->
+
+<script src="scripts/directorio.js"></script>
+
