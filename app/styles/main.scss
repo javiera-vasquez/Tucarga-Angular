@@ -854,7 +854,7 @@ div.avatar {
         margin: 10px 0 5px 70px;
     }
     img {
-        margin-top: 10px;
+        margin-top: 0;
         position: absolute;
     }
     h5 {
@@ -997,6 +997,15 @@ span.error, small.error {
 
 .status_user.error.none {display: none;}
 .status_user.error {display: block;}
+
+// Media-querys
+@media (max-width: 950px) {
+    #header .top-bar-section .talk {@include none;}
+}
+
+@media (max-width: 800px) {
+    #header .has-dropdown {@include none;}
+}
 
 
 

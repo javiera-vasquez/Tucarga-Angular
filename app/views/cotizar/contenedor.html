@@ -1,7 +1,7 @@
 
 <div id="content-page">
     <div  id="form" class="row">
-        <div class="small-9 small-centered columns">
+        <div class="small-12 medium-10 large-9 medium-centered large-centered columns">
             <div id="content-view">
 
               <div class="title-page form clearfix">
@@ -15,7 +15,7 @@
             <form name="cargaForm" novalidate ng-submit="freightPost()">
 
               <div class="row form-layout">
-                  <div class="large-8 columns">
+                  <div class="large-8 medium-12 columns">
 
                 <div class="row step header">
                     <div class="large-12 columns">
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="large-4 columns">
+                    <div class="large-4 medium-4 columns">
                         <label>Region <span class="required">*</span></label>
                         <select
                           name="withdraw_region"
@@ -43,7 +43,7 @@
                           <small class="error" ng-show="cargaFormwithdraw_commune.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
-                    <div class="large-4 columns">
+                    <div class="large-4 medium-4 columns">
                         <label>Comuna <span class="required">*</span></label>
                           <select
                             name="withdraw_commune"
@@ -55,7 +55,7 @@
                           <small class="error" ng-show="cargaFormwithdraw_commune.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
-                    <div class="large-4 columns">
+                    <div class="large-4 medium-4 columns">
                         <label>Nombre deposito <span class="required">*</span></label>
                         <input
                           type="text"
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="large-4 columns">
+                    <div class="large-4 medium-4 columns">
                         <label>Region <span class="required">*</span></label>
                         <select
                           name="freightlocation_return_region"
@@ -93,7 +93,7 @@
                           <small class="error" ng-show="cargaForm.freightlocation_return_region.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
-                    <div class="large-4 columns">
+                    <div class="large-4 medium-4 columns">
                         <label>Comuna <span class="required">*</span></label>
                           <select
                             name="freightlocation_return_commune"
@@ -105,7 +105,7 @@
                           <small class="error" ng-show="cargaForm.freightlocation_return_commune.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
-                    <div class="large-4 columns">
+                    <div class="large-4 medium-4 columns">
                         <label>Nombre deposito <span class="required">*</span></label>
                         <input
                           type="text"
@@ -130,7 +130,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="large-3 columns">
+                    <div class="large-3 medium-3 columns">
                         <label>Desde <span class="required">*</span></label>
                         <input
                           class="datepicker-input"
@@ -144,7 +144,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="large-3 columns">
+                        <div class="large-3 medium-3 columns">
                             <label>Hasta <span class="required">*</span></label>
                             <input
                               class="datepicker-input"
@@ -158,7 +158,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="large-6 columns"></div>
+                    <div class="large-6 medium-6 columns"></div>
                 </div>
 
                 <!-- PARTE CARGA -->
@@ -173,7 +173,7 @@
                         <legend>Carga número 1</legend>
 
                         <div class="row">
-                            <div class="large-4 columns">
+                            <div class="large-4 medium-4 columns">
                                 <label>Tipo de Contenedor <span class="required">*</span></label>
                                 <select
                                   name="tipo_contenedor"
@@ -185,14 +185,14 @@
                                   <small class="error" ng-show="cargaForm.tipo_contenedor.$error.required">Campo obligatorio</small>
                                 </div>
                             </div>
-                            <div class="large-2 columns">
+                            <div class="large-2 medium-2 columns">
                                 <label>Unidades <span class="required">*</span></label>
                                 <input class="" name="unidades" type="text" maxlength="50" ng-model="formData.freightdetail_0_units" placeholder="" ng-minlength=1 ng-maxlength=5 required>
                                 <div class="error-container" ng-show="(cargaForm.unidades.$dirty && cargaForm.unidades.$invalid) || cargaForm.submitted">
                                   <small class="error" ng-show="cargaForm.unidades.$error.required">Campo obligatorio</small>
                                 </div>
                             </div>
-                            <div class="large-6 columns">
+                            <div class="large-6 medium-6 columns">
                                 <label>Descripción de la carga <span class="required">*</span></label>
                                 <input type="text" name="descripcion_carga" maxlength="100" ng-model="formData.freightdetail_0_description" placeholder="¿Que estas transportando?" ng-maxlength=100 required>
                                 <div class="error-contcondicionesainer" ng-show="(cargaForm.descripcion_carga.$dirty && cargaForm.descripcion_carga.$invalid) || cargaForm.submitted">
@@ -208,7 +208,7 @@
                         <legend>Carga número 2</legend>
 
                         <div class="row">
-                            <div class="large-4 columns">
+                            <div class="large-4 medium-4 columns">
                                 <label>Tipo de Contenedor <span class="required">*</span></label>
                                 <select
                                   name="tipo_contenedor_1"
@@ -217,11 +217,11 @@
                                   >
                                 </select>
                             </div>
-                            <div class="large-2 columns">
+                            <div class="large-2 medium-2 columns">
                                 <label>Unidades <span class="required">*</span></label>
                                 <input class="" name="unidades_1" type="text" maxlength="50" ng-model="formData.freightdetail_1_units" placeholder="" ng-minlength=1 ng-maxlength=5 >
                             </div>
-                            <div class="large-6 columns">
+                            <div class="large-6 medium-6 columns">
                                 <label>Descripción de la carga <span class="required">*</span></label>
                                 <input type="text" name="descripcion_carga_1" maxlength="100" ng-model="formData.freightdetail_1_description" placeholder="¿Que estas transportando?" ng-maxlength=100 >
                             </div>
@@ -234,7 +234,7 @@
                         <legend>Carga número 3</legend>
 
                         <div class="row">
-                            <div class="large-4 columns">
+                            <div class="large-4 medium-4 columns">
                                 <label>Tipo de Contenedor <span class="required">*</span></label>
                                 <select
                                   name="tipo_contenedor_2"
@@ -243,11 +243,11 @@
                                   >
                                 </select>
                             </div>
-                            <div class="large-2 columns">
+                            <div class="large-2 medium-2 columns">
                                 <label>Unidades <span class="required">*</span></label>
                                 <input class="" name="unidades_2" type="text" maxlength="50" ng-model="formData.freightdetail_2_units" placeholder="" ng-minlength=1 ng-maxlength=5 >
                             </div>
-                            <div class="large-6 columns">
+                            <div class="large-6 medium-6 columns">
                                 <label>Descripción de la carga <span class="required">*</span></label>
                                 <input type="text" name="descripcion_carga_2" maxlength="100" ng-model="formData.freightdetail_2_description" placeholder="¿Que estas transportando?" ng-maxlength=100 >
                             </div>
@@ -269,25 +269,25 @@
                 </div>
 
                 <div class="row">
-                    <div class="large-3 columns">
+                    <div class="large-3 medium-3 columns">
                         <label>Seguro de carga <span class="small-legend">- UF</span></label>
                         <input class="" type="text" name="" ng-model="formData.insurance" placeholder="">
                     </div>
-                    <div class="large-3 columns">
+                    <div class="large-3 medium-3 columns">
                         <label>Tipo de camión</label>
                         <select
                           ng-model="formData.truck_type"
                           ng-options="trucktype.id as trucktype.name for trucktype in returnTruckType">
                         </select>
                     </div>
-                    <div class="large-3 columns">
+                    <div class="large-3 medium-3 columns">
                         <label>Equipamiento</label>
                         <select
                           ng-model="formData.equipment"
                           ng-options="equipment.id as equipment.name for equipment in returnEquipment">
                         </select>
                     </div>
-                    <div class="large-3 columns">
+                    <div class="large-3 medium-3 columns">
                         <label>Otros</label>
                         <input type="text" name="" ng-model="formData.other" placeholder="">
                     </div>
@@ -299,7 +299,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="large-4 columns">
+                    <div class="large-4 medium-4 columns">
                         <label>Forma de pago <span class="required">*</span></label>
                         <select name="tiempoPago" class="" ng-model="tiempoPago" required>
                           <option value="Al Contado">Al Contado</option>
@@ -315,7 +315,7 @@
                           <small class="error" ng-show="cargaForm.tiempoPago.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
-                    <div class="large-4 columns">
+                    <div class="large-4 medium-4 columns">
                       <label>Desde <span class="required">*</span></label>
                       <select name="pagoDesde" class="" ng-model="pagoDesde" required>
                         <option value="Emisión de factura">Emisión de factura</option>
@@ -328,7 +328,7 @@
                           <small class="error" ng-show="cargaForm.pagoDesde.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
-                    <div class="large-4 columns">
+                    <div class="large-4 medium-4 columns">
                         <label>Información adicional</label>
                         <input type="text" name="" ng-model="formData.comments" placeholder="Peoneta, enrcarpado, etc…">
                     </div>
@@ -342,28 +342,28 @@
                       </div>
                   </div>
                   <div class="row">
-                      <div class="large-10 columns">
+                      <div class="large-10 medium-10 columns">
                           <label>Correo electronico <span class="required">*</span></label>
                           <input type="email" name="email" ng-model="formData.contact_email" ng-change="email()" placeholder="" style="width: 50%;" required/>
 
                           <div class="status-mail nothing">
                             <div class="row">
-                                <div class="large-12 columns">
-                                  <img src="images/mail.png" alt="Ingresa tu correo" class="left">
-                                  <div class="left">
+                                <div class="large-2 medium-2 columns">
+                                  <img src="images/mail.png" alt="Correo no existente">
+                                </div>
+                                <div class="large-10 medium-10 columns">
                                     <h5>Ingresa tu correo</h5>
                                     <p>Si has trabajado antes con nosotros porfavor ingresa tu correo electronico de lo contrario agrega tus datos de usuario.</p>
-                                  </div>
                                 </div>
                             </div>
                           </div>
 
                           <div class="status-mail valid none">
                             <div class="row">
-                                <div class="large-2 columns">
+                                <div class="large-2 medium-2 columns">
                                   <img src="images/valid.png" alt="Correo no existente">
                                 </div>
-                                <div class="large-10 columns">
+                                <div class="large-10 medium-10 columns">
                                   <h5>Felicidades!</h5>
                                   <p>Tu usuario ya se encuentra en el sistema ya puedes enviar tu publicación de carga.</p>
                                 </div>
@@ -372,10 +372,10 @@
 
                           <div class="status-mail invalid none">
                             <div class="row">
-                                <div class="large-2 columns">
+                                <div class="large-2 medium-2 columns">
                                   <img src="images/invalid.png" alt="Listo">
                                 </div>
-                                <div class="large-10 columns">
+                                <div class="large-10 medium-10 columns">
                                   <h5>Lo sentimos</h5>
                                   <p>Tu usuario no existe en nuestra base de datos porfavor agrega tus datos de usuario a continuación.</p>
                                 </div>
@@ -402,28 +402,28 @@
                 </div>
 
                   <div class="row">
-                      <div class="large-4 columns">
+                      <div class="large-4 medium-4 columns">
                           <label>Nombre <span class="required" ng-show="isUserValid()">*</span></label>
                           <input type="text" name="nombre_user" maxlength="50" placeholder="{{infoUser.first_name}}" ng-model="formData.contact_first_name" ng-maxlength=50 ng-required="isUserValid()" ng-disabled="userDisable()">
                           <div class="error-container" ng-show="(cargaForm.nombre_user.$dirty && cargaForm.nombre_user.$invalid) || cargaForm.submitted">
                             <small class="error" ng-show="cargaForm.nombre_user.$error.required">Campo obligatorio</small>
                           </div>
                       </div>
-                      <div class="large-4 columns">
+                      <div class="large-4 medium-4 columns">
                           <label>Apellido <span class="required" ng-show="isUserValid()">*</span></label>
                           <input type="text" name="apellido_user" maxlength="50" placeholder="{{infoUser.last_name}}" ng-model="formData.contact_last_name"  ng-maxlength=50 ng-required="isUserValid()" ng-disabled="userDisable()">
                           <div class="error-container" ng-show="(cargaForm.apellido_user.$dirty && cargaForm.apellido_user.$invalid) || cargaForm.submitted">
                             <small class="error" ng-show="cargaForm.apellido_user.$error.required">Campo obligatorio</small>
                           </div>
                       </div>
-                      <div class="large-4 columns">
+                      <div class="large-4 medium-4 columns">
                           <label>Cargo que desempeña</label>
                           <input type="text" maxlength="50" placeholder="{{infoUser.position}}" ng-model="formData.userdirectory_position" ng-maxlength=50 ng-disabled="userDisable()">
                       </div>
                   </div>
 
                   <div class="row">
-                      <div class="large-5 columns compact">
+                      <div class="large-5 medium-5 columns compact">
                           <label>Telefono fijo <span class="required" ng-show="isUserValid()">*</span></label>
                           <select ng-model="userPhonePrefix" name="phone_user_prefix" ng-required="isUserValid()" ng-disabled="userDisable()">
                             <option value="02">02</option>
@@ -459,7 +459,7 @@
                             <small class="error" ng-show="cargaForm.phone_user.$error.required">Telefono obligatorio</small>
                           </div>
                       </div>
-                      <div class="large-5 columns compact">
+                      <div class="large-5 medium-5 columns compact">
                           <label>Telefono celular <span class="required" ng-show="isUserValid()">*</span></label>
                           <select ng-model="userMobilePrefix" name="cel_user_prefix" ng-required="isUserValid()" ng-disabled="userDisable()">
                             <option value="09">09</option>
@@ -476,7 +476,7 @@
                             <small class="error" ng-show="cargaForm.cel_user_number.$error.required">Telefono obligatorio</small>
                           </div>
                       </div>
-                      <div class="large-2 columns"></div>
+                      <div class="large-2 medium-2 columns"></div>
                   </div>
                   <br>
                 <!-- DATOS EMPRESA -->
@@ -486,21 +486,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="large-4 columns">
+                    <div class="large-4 medium-4 columns">
                         <label>Nombre empresa <span class="required" ng-show="isUserValid()">*</span></label>
                         <input class="" type="text" name="nombre_empresa" maxlength="100" placeholder="{{infoUser.company_name}}" ng-model="formData.company_name" ng-maxlength=100 ng-required="isUserValid()" ng-disabled="userDisable()">
                           <div class="error-container" ng-show="(cargaForm.nombre_empresa.$dirty && cargaForm.nombre_empresa.$invalid) || cargaForm.submitted">
                             <small class="error" ng-show="cargaForm.nombre_empresa.$error.required">Campo obligatorio</small>
                           </div>
                     </div>
-                    <div class="large-4 columns">
+                    <div class="large-4 medium-4 columns">
                         <label>Razon social <span class="required" ng-show="isUserValid()">*</span></label>
                         <input type="text" name="razon_social" maxlength="50" placeholder="{{infoUser.company_business_name}}" ng-model="formData.company_business_name" ng-maxlength=50 ng-required="isUserValid()" ng-disabled="userDisable()">
                           <div class="error-container" ng-show="(cargaForm.razon_social.$dirty && cargaForm.razon_social.$invalid) || cargaForm.submitted">
                             <small class="error" ng-show="cargaForm.razon_social.$error.required">Campo obligatorio</small>
                           </div>
                     </div>
-                    <div class="large-4 columns">
+                    <div class="large-4 medium-4 columns">
                         <label>Rut <span class="required" ng-show="isUserValid()">*</span></label>
                         <rut-input
                           name="rut_number"
