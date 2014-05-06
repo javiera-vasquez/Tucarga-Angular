@@ -69,7 +69,7 @@ angular.module('tucargaApp')
     $scope.freightwaypoint_destination = function() {
         $http({
             method : 'GET',
-            url : 'http://127.0.0.1:8000/directory/commune/' + $scope.freightwaypoint_destination_region + '/',
+            url : 'http://127.0.0.1:8000/directory/commune/' + $scope.formData.freightwaypoint_destination_region + '/',
             headers: {'Content-Type': 'application/json'}
         })
         .success(function(data) {
@@ -101,9 +101,9 @@ angular.module('tucargaApp')
         return $scope.userMobilePrefix + $scope.userMobileNumber;
     };
 
-    $scope.businessPhone = function() {
-        return $scope.businessPhonePrefix + $scope.businessPhoneNumber;
-    };
+    // $scope.businessPhone = function() {
+    //     return $scope.businessPhonePrefix + $scope.businessPhoneNumber;
+    // };
 
     // Condiciones de pago
     $scope.conditions = function() {
@@ -170,7 +170,7 @@ angular.module('tucargaApp')
         $scope.formData.reason = $scope.otherInfo();
         $scope.formData.service_conditions = $scope.conditions();
         //Telefonos empresa y usuario
-        $scope.formData.company_phone =  $scope.businessPhone();
+        // $scope.formData.company_phone =  $scope.businessPhone();
         $scope.formData.userdirectory_mobile = $scope.userMobile();
         $scope.formData.userdirectory_phone = $scope.userPhone();
         // Submit validation

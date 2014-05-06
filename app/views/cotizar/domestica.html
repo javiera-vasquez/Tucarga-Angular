@@ -144,7 +144,7 @@
                          <label>Region <span class="required">*</span></label>
                         <select
                           name="freightwaypoint_destination_region"
-                          ng-model="freightwaypoint_destination_region"
+                          ng-model="formData.freightwaypoint_destination_region"
                           ng-change="freightwaypoint_destination()"
                           ng-options="region.id as region.name for region in selectRegion"
                           required>

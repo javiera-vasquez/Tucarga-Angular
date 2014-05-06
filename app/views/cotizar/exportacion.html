@@ -33,7 +33,7 @@
                         <label>Region <span class="required">*</span></label>
                         <select
                           name="withdraw_region"
-                          ng-model="withdrawRegion"
+                          ng-model="formData.freightlocation_withdraw_region"
                           ng-change="withdrawCommune()"
                           ng-options="region.id as region.name for region in selectRegion"
                           required>

@@ -100,7 +100,7 @@
                          <label>Región <span class="required">*</span></label>
                         <select
                           name="freightwaypoint_destination_region"
-                          ng-model="freightwaypoint_destination_region"
+                          ng-model="formData.freightwaypoint_destination_region"
                           ng-change="freightwaypoint_destination()"
                           ng-options="region.id as region.name for region in selectRegion"
                           required>
@@ -217,7 +217,7 @@
                             <label>Region <span class="required" ng-show="returnContainer == 'true'">*</span></label>
                             <select
                               name="freightlocation_return_region"
-                              ng-model="freightlocationRegion"
+                              ng-model="formData.freightlocation_return_region"
                               ng-change="freightlocation_region()"
                               ng-options="region.id as region.name for region in selectRegion"
                               ng-disabled="returnContainer == 'false'"

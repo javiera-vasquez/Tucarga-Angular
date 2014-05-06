@@ -33,42 +33,42 @@
                     <div class="large-4 medium-4 columns">
                         <label>Region <span class="required">*</span></label>
                         <select
-                          name="withdraw_region"
-                          ng-model="withdrawRegion"
+                          name="freightlocation_withdraw_region"
+                          ng-model="formData.freightlocation_withdraw_region"
                           ng-change="withdrawCommune()"
                           ng-options="region.id as region.name for region in selectRegion"
                           required>
                         </select>
-                        <div class="error-container" ng-show="(cargaFormwithdraw_commune.$dirty && cargaFormwithdraw_commune.$invalid) || cargaFormsubmitted">
-                          <small class="error" ng-show="cargaFormwithdraw_commune.$error.required">Campo obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.freightlocation_withdraw_region.$dirty && cargaForm.freightlocation_withdraw_region.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.freightlocation_withdraw_region.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-4 medium-4 columns">
                         <label>Comuna <span class="required">*</span></label>
                           <select
-                            name="withdraw_commune"
+                            name="freightlocation_withdraw_commune"
                             ng-model="formData.freightlocation_withdraw_commune"
                             ng-options="commune.id as commune.name for commune in returnCommuneA"
                             required>
                           </select>
-                        <div class="error-container" ng-show="(cargaFormwithdraw_commune.$dirty && cargaFormwithdraw_commune.$invalid) || cargaFormsubmitted">
-                          <small class="error" ng-show="cargaFormwithdraw_commune.$error.required">Campo obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.freightlocation_withdraw_commune.$dirty && cargaForm.freightlocation_withdraw_commune.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.freightlocation_withdraw_commune.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-4 medium-4 columns">
                         <label>Nombre deposito <span class="required">*</span></label>
                         <input
                           type="text"
-                          name="withdraw_deposit"
+                          name="freightlocation_withdraw_deposit_name"
                           placeholder="Nombre o dirección"
                           maxlength="50"
                           ng-model="formData.freightlocation_withdraw_deposit_name"
                           ng-minlength=3
                           ng-maxlength=50
                           required>
-                        <div class="error-container" ng-show="(cargaFormwithdraw_deposit.$dirty && cargaFormwithdraw_deposit.$invalid) || cargaFormsubmitted">
-                          <small class="error" ng-show="cargaFormwithdraw_deposit.$error.required">Campo obligatorio</small>
-                          <small class="error" ng-show="cargaFormwithdraw_deposit.$error.minlength">El numero minimo de caracteres es 3</small>
+                        <div class="error-container" ng-show="(cargaForm.freightlocation_withdraw_deposit_name.$dirty && cargaForm.freightlocation_withdraw_deposit_name.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.freightlocation_withdraw_deposit_name.$error.required">Campo obligatorio</small>
+                          <small class="error" ng-show="cargaForm.freightlocation_withdraw_deposit_name.$error.minlength">El numero minimo de caracteres es 3</small>
                         </div>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                         <label>Region <span class="required">*</span></label>
                         <select
                           name="freightlocation_return_region"
-                          ng-model="freightlocationRegion"
+                          ng-model="formData.freightlocation_return_region"
                           ng-change="freightlocation_region()"
                           ng-options="region.id as region.name for region in selectRegion"
                           required>
@@ -109,16 +109,16 @@
                         <label>Nombre deposito <span class="required">*</span></label>
                         <input
                           type="text"
-                          name="withdraw_deposit"
+                          name="freightlocation_return_deposit_name"
                           placeholder="Nombre o dirección"
                           maxlength="50"
                           ng-model="formData.freightlocation_return_deposit_name"
                           ng-minlength=3
                           ng-maxlength=50
                           required>
-                        <div class="error-container" ng-show="(cargaForm.withdraw_deposit.$dirty && cargaForm.withdraw_deposit.$invalid) || cargaForm.submitted">
-                          <small class="error" ng-show="cargaForm.withdraw_deposit.$error.required">Campo obligatorio</small>
-                          <small class="error" ng-show="cargaForm.withdraw_deposit.$error.minlength">El numero minimo de caracteres es 3</small>
+                        <div class="error-container" ng-show="(cargaForm.freightlocation_return_deposit_name.$dirty && cargaForm.freightlocation_return_deposit_name.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.freightlocation_return_deposit_name.$error.required">Campo obligatorio</small>
+                          <small class="error" ng-show="cargaForm.freightlocation_return_deposit_name.$error.minlength">El numero minimo de caracteres es 3</small>
                         </div>
                     </div>
                 </div>
