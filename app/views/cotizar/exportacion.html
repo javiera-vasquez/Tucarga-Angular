@@ -287,8 +287,9 @@
                             </div>
                             <div class="large-2 medium-2 columns">
                                 <label>Peso <span class="small-legend">- KG</span> <span class="required">*</span></label>
-                                <input class="" name="peso" type="text" maxlength="50" ng-model="formData.freightdetail_0_weight" placeholder="" ng-minlength=1 ng-maxlength=5 required>
+                                <input class="" name="peso" type="number" maxlength="50" ng-model="formData.freightdetail_0_weight" placeholder="" ng-minlength=1 ng-maxlength=10 required>
                                 <div class="error-container" ng-show="(cargaForm.peso.$dirty && cargaForm.peso.$invalid) || cargaForm.submitted">
+                                  <small class="error" ng-show="cargaForm.peso.$error.required">Solo numeros</small>
                                   <small class="error" ng-show="cargaForm.peso.$error.required">Campo obligatorio</small>
                                 </div>
                             </div>
@@ -671,7 +672,6 @@
                           maxlength="10"
                           placeholder="{{infoUser.company_business_number}}"
                           ng-model="formData.company_business_number"
-                          ng-model="model.rut"
                           ng-required="isUserValid()"
                           ng-disabled="userDisable()"
                           />
