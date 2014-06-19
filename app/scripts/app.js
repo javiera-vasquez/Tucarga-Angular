@@ -6,8 +6,7 @@ angular.module('tucargaApp', [
   'ngSanitize',
   'ngRoute',
   'platanus.rut',
-  'angulartics',
-  'angulartics.google.analytics'
+  'angulartics'
 ])
 
 .config(function ($routeProvider) {
