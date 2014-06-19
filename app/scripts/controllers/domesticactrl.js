@@ -175,6 +175,9 @@ angular.module('tucargaApp')
         $scope.formData.userdirectory_phone = $scope.userPhone();
         // Submit validation
         if($scope.cargaForm.$valid) {
+            // load button change
+            $('.status-button-send').addClass('none');
+            $('.status-button-wait').removeClass('none');
             // send the form
             $http({
                 method : 'POST',
@@ -187,6 +190,8 @@ angular.module('tucargaApp')
                 //console.log('win' + data);
               })
             .error(function(data) {
+                $('.status-button-send').removeClass('none');
+                $('.status-button-wait').addClass('none');
                 // console.log('fail' + data);
               });
         }else {
