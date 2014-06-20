@@ -6,7 +6,7 @@
               <div class="title-page form clearfix">
                   <div class="left">
                     <h6>Estás cotizando</h6>
-                    <h3>Transporte para una <span>carga domestica</span></h3>
+                    <h3>Transporte para una <span>carga doméstica</span></h3>
                   </div>
                   <a class="button radius right" href="#/cotizar">Volver</a>
               </div> <!-- {{! end title page}} -->
@@ -102,16 +102,16 @@
                 </div>
                 <div class="row">
                     <div class="large-4 medium-4 columns">
-                        <label>Quien carga <span class="required">*</span></label>
+                        <label>Quién carga <span class="required">*</span></label>
                         <select
-                          name="freightwaypoint_origin_load_unload_time"
-                          ng-model="formData.freightwaypoint_origin_load_unload_time"
+                          name="freightwaypoint_origin_load_unload"
+                          ng-model="formData.freightwaypoint_origin_load_unload"
                           required>
                           <option value="Transportista" selected="selected">Transportista</option>
                           <option value="Cliente">Cliente</option>
                         </select>
-                        <div class="error-container" ng-show="(cargaForm.freightwaypoint_origin_load_unload_time.$dirty && cargaForm.freightwaypoint_origin_load_unload_time.$invalid) || cargaForm.submitted">
-                          <small class="error" ng-show="cargaForm.freightwaypoint_origin_load_unload_time.$error.required">Campo obligatorio</small>
+                        <div class="error-container" ng-show="(cargaForm.freightwaypoint_origin_load_unload.$dirty && cargaForm.freightwaypoint_origin_load_unload_time.$invalid) || cargaForm.submitted">
+                          <small class="error" ng-show="cargaForm.freightwaypoint_origin_load_unload.$error.required">Campo obligatorio</small>
                         </div>
                     </div>
                     <div class="large-6 medium-6 columns">

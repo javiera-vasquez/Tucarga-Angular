@@ -1,41 +1,12 @@
-<!-- <div class="overlay" ng-show="loading">
+<div class="overlay" ng-show="loading">
     <div class="spinner"><img src="images/ajax-loader.gif" alt="Cargando"></div>
     <div class="bg-overlay"></div>
-</div> -->
+</div>
 
 <div id="content-page">
     <div  class="row">
 
     <div id="sidebar" class="large-3 medium-4 columns">
-
-        <div class="box filters">
-                <h4>Desde</h4>
-                <select>
-                    <option value="husker">Husker</option>
-                    <option value="starbuck">Starbuck</option>
-                    <option value="hotdog">Hot Dog</option>
-                    <option value="apollo">Apollo</option>
-                </select>
-                <h4>Hasta</h4>
-                <select>
-                    <option value="husker">Husker</option>
-                    <option value="starbuck">Starbuck</option>
-                    <option value="hotdog">Hot Dog</option>
-                    <option value="apollo">Apollo</option>
-                </select>
-                <h4>Tipo de carga</h4>
-                <input id="check1" type="checkbox" name="check" value="check1">
-                <label for="check1">Checkbox No. 1</label>
-                <br>
-                <input id="check2" type="checkbox" name="check" value="check2">
-                <label for="check2">Checkbox No. 2</label>
-                <br>
-                <input id="check3" type="checkbox" name="check" value="check3">
-                <label for="check3">Checkbox No. 1</label>
-                <br>
-                <input id="check4" type="checkbox" name="check" value="check4">
-                <label for="check4">Checkbox No. 1</label>
-        </div>
 
         <div class="box register">
             <div class="margin">
@@ -123,6 +94,35 @@
             </div>
         </div>
 
+<!--         <div class="box filters">
+                <h4>Desde</h4>
+                <select>
+                    <option value="husker">Husker</option>
+                    <option value="starbuck">Starbuck</option>
+                    <option value="hotdog">Hot Dog</option>
+                    <option value="apollo">Apollo</option>
+                </select>
+                <h4>Hasta</h4>
+                <select>
+                    <option value="husker">Husker</option>
+                    <option value="starbuck">Starbuck</option>
+                    <option value="hotdog">Hot Dog</option>
+                    <option value="apollo">Apollo</option>
+                </select>
+                <h4>Tipo de carga</h4>
+                <input id="check1" type="checkbox" name="check" value="check1">
+                <label for="check1">Checkbox No. 1</label>
+                <br>
+                <input id="check2" type="checkbox" name="check" value="check2">
+                <label for="check2">Checkbox No. 2</label>
+                <br>
+                <input id="check3" type="checkbox" name="check" value="check3">
+                <label for="check3">Checkbox No. 1</label>
+                <br>
+                <input id="check4" type="checkbox" name="check" value="check4">
+                <label for="check4">Checkbox No. 1</label>
+        </div> -->
+
     </div> <!-- {{! end sidebar }} -->
 
     <div id="content-view" class="large-9 medium-8 columns">
@@ -134,10 +134,15 @@
             <!-- <a href="#/cotizar" class="button radius right">Cotizar</a> -->
         </div> <!-- {{! end title page}} -->
 
+        <span>{{ pages / 10 }}</span>
+
+        <button ng-click='previousPage()' >Anterior</button>
+        <button ng-click='nextPage()'>Siguiente</button>
+
         <div class="loop-transport clearfix"
-            ng-repeat="transportista in directory | startFrom:currentPage*pageSize | limitTo:pageSize">
+            ng-repeat="transportista in directory ">
             <div class="avatar left">
-                <img src="{{ transportista.logo }}" alt="" />
+                <!-- <img src="{{ transportista.logo }}" alt="" /> -->
             </div>
             <div class="loop-list  left clearfix">
                 <h5>{{ transportista.name }}</h5>
@@ -159,27 +164,15 @@
             </div>
         </div> <!-- {{! end loop }} -->
 
-        <br /><br />
-        <div class="pagination-centered">
+
+
+<!--         <div class="pagination-centered">
           <ul class="pagination">
             <li class="arrow "><a href ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">&laquo; Anterior</a></li>
             <li class="current"><a href>{{currentPage+1}}/{{numberOfPages()}}</a></li>
             <li class="arrow"><a href ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">Siguiente &raquo;</a></li>
           </ul>
-        </div>
-        <br /><br />
-
-        <a id="ad-loop" class="" href="#/cotizar">
-            <div class="box cotiza-ad">
-                <div class="margin clearfix">
-                    <div class="left">
-                        <h3>Te ayudamos a elegir</h3>
-                        <p>En Tucarga estamos comprometidos en brindarte la mejor solución de transporte</p>
-                    </div>
-                    <i class="fi-play right"></i>
-                </div>
-            </div>
-        </a>
+        </div> -->
 
     </div> <!-- {{! end content view }} -->
 
