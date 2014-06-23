@@ -161,7 +161,7 @@ angular.module('tucargaApp')
     // Post to server
     $scope.freightPost = function() {
         // Tipo de cotizacion
-        $scope.formData.obj_type = 'expo';
+        $scope.formData.obj_type = 'dome';
         // Funciones de fechas
         $scope.formData.freightwaypoint_origin_from_date= $scope.total_freightwaypoint_origin_date();
         $scope.formData.freightwaypoint_destination_from_date =  $scope.total_freightwaypoint_destination_from_date();
