@@ -31,18 +31,21 @@ angular.module('tucargaApp')
             $scope.pagesCount = data.count;
             // Numero las paginas
             $scope.numberOfPages=function(){
-                return Math.ceil($scope.directory.length/$scope.baseFilters.pageSize);
-            }
+                return Math.ceil($scope.pagesCount / $scope.baseFilters.pageSize)
+            };
+            // Inicio funcion
+            $scope.stringOfPages = $scope.numberOfPages();
           })
         .error(function(data) {
             console.log(data);
           });
     };
 
+    // Get del directorio
     $scope.loadPage();
 
     $scope.nextPage = function() {
-      if($scope.baseFilters.page < 11) {
+      if($scope.baseFilters.page < $scope.stringOfPages) {
         $scope.baseFilters.page++;
         $scope.loadPage();
       }
