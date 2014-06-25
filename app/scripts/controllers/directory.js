@@ -46,6 +46,7 @@ angular.module('tucargaApp')
 
     $scope.nextPage = function() {
       if($scope.baseFilters.page < $scope.stringOfPages) {
+        $scope.loading = true;
         $scope.baseFilters.page++;
         $scope.loadPage();
       }
@@ -53,6 +54,7 @@ angular.module('tucargaApp')
 
     $scope.previousPage = function() {
       if($scope.baseFilters.page > 1) {
+        $scope.loading = true;
         $scope.baseFilters.page--;
         $scope.loadPage();
       }
