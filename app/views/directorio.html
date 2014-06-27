@@ -134,20 +134,10 @@
             <!-- <a href="#/cotizar" class="button radius right">Cotizar</a> -->
         </div> <!-- {{! end title page}} -->
 
-        <div id="pagination-box clearfix">
-            <div class="buttons-list left">
-                <a class="button radius grey" ng-click='previousPage()' ng-disabled="baseFilters.page <= 1">&laquo; Anterior</a>
-                <a class="button radius grey" ng-click='nextPage()' ng-disabled="baseFilters.page >= stringOfPages">Siguiente &raquo;</a>
-            </div>
-            <div class="pages-count right">
-                <p>Página <strong>{{ baseFilters.page }}</strong> de <strong>{{ stringOfPages }}</strong></p>
-            </div>
-        </div>
-
         <div class="loop-transport clearfix"
             ng-repeat="transportista in directory ">
             <div class="avatar left">
-                <!-- <img src="{{ transportista.logo }}" alt="" /> -->
+                <img src="{{ transportista.logo }}" alt="" />
             </div>
             <div class="loop-list  left clearfix">
                 <h5>{{ transportista.name }}</h5>
@@ -168,6 +158,16 @@
                 </ul>
             </div>
         </div> <!-- {{! end loop }} -->
+
+        <div class="pagination-box clearfix">
+            <div class="buttons-list left">
+                <a class="button radius grey" ng-click='previousPage()' ng-disabled="baseFilters.page <= 1">&laquo; Anterior</a>
+                <a class="button radius grey" ng-click='nextPage()' ng-disabled="baseFilters.page >= stringOfPages">Siguiente &raquo;</a>
+            </div>
+            <div class="pages-count right">
+                <p>Página <strong>{{ baseFilters.page }}</strong> de <strong>{{ stringOfPages }}</strong></p>
+            </div>
+        </div>
 
     </div> <!-- {{! end content view }} -->
 
