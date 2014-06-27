@@ -545,7 +545,20 @@ footer {
 }
 
 // Pagination
-
+#pagination-box  {
+    .button.grey {
+        @include basic-button(
+            #d7d7d7,
+            $body-font-color,
+            14,
+            15
+        );
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-top: 6px;
+        right: 20px;
+    }
+}
 
 // Como funciona
 .como.vimeo {
