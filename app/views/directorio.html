@@ -134,16 +134,14 @@
             <!-- <a href="#/cotizar" class="button radius right">Cotizar</a> -->
         </div> <!-- {{! end title page}} -->
 
-        <span>{{ stringOfPages }}</span> / <span>{{ baseFilters.page }}</span>
-
-        <button ng-click='previousPage()'>Anterior</button>
-        <button ng-click='nextPage()'>Siguiente</button>
-
-        <div class="pagination">
-          <ul class="pagination">
-            <li class="arrow "><a href ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">&laquo; Anterior</a></li>
-            <li class="arrow"><a href class="" ng-disabled="currentPage >= data.length/pageSize - 1" ng-click="currentPage=currentPage+1">Siguiente &raquo;</a></li>
-          </ul>
+        <div class="pagination-box clearfix">
+            <div class="buttons-list left">
+                <a class="button radius grey" ng-click='previousPage()' ng-disabled="baseFilters.page <= 1">&laquo; Anterior</a>
+                <a class="button radius grey" ng-click='nextPage()' ng-disabled="baseFilters.page >= stringOfPages">Siguiente &raquo;</a>
+            </div>
+            <div class="pages-count right">
+                <p>Página <strong>{{ baseFilters.page }}</strong> de <strong>{{ stringOfPages }}</strong></p>
+            </div>
         </div>
 
         <div class="loop-transport clearfix"
@@ -156,7 +154,7 @@
                 <ul class="">
                     <li class="coverage">
                         <span>Cobertura</span></br>
-                        <p>{{ transportista.coverage }}</p>
+                        <p ng-bind-html="transportista.coverage | replace"></p>
                     </li>
                     <li class="region">
                         <span>Sucursales</span></br>
